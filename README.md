@@ -1,27 +1,5 @@
-# README
+# データベース設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 ## userテーブル
 |Column|Type|Options|
@@ -187,3 +165,6 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+
+<img width="1057" alt="スクリーンショット 2019-12-04 16 47 22" src="https://user-images.githubusercontent.com/57389471/70134729-fbfc2780-16cb-11ea-9ab9-b7e51b998430.png">
