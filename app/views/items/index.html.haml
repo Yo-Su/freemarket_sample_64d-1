@@ -1,0 +1,68 @@
+%h1 Items#index
+%p Find me in app/views/items/index.html.erb
+
+.header
+  .header-logo-search
+   .header-logo
+    =link to root_path do
+      =image_tag("app/assets/images/Mercari-icon.svg")
+   .header-search
+    .fa.fa-search
+    /= f.text_field :content, class: 'form__message', placeholder: 'type a message'
+
+  %ul.header-lists
+    .header-list.left
+      .header-category
+        カテゴリーから探す
+      .header-bland
+        ブランドから探す
+    .header-list.right  
+      .header-favorite
+        = link_to '#' do
+        .fa.fa-hart
+        いいね！一覧
+      .header-news
+        = link_to '#' do
+        .fa.fa-bell
+        お知らせ
+      .header-todo
+        = link_to '#' do
+        .fa.fa-check
+        やることリスト
+      .header-mypage
+        = link_to '#' do
+        /ユーザーのアイコン
+        マイページ
+
+.contents
+  .scrollimage
+  /画像スクロールさせる/
+    .scrollimage-1
+    .scrollimage-2
+    /"スマホでかんたん"
+    /"フリマアプリ"
+      .scrollimage2-2
+       /"メルカリはスマホアプリからすぐに出品できる"
+       /"購入時も安心な独自システムのアプリです"
+
+  .contents-title
+    .category-title
+  .items
+    .category-subtitle
+      .items-image
+        .items-price
+        .items-title
+    .more
+
+
+.footer
+  .footer-contents
+    .footer-contents1
+      .contents-title
+    .footer-contents2
+      .contents-title
+    .footer-contents3
+      .contents-title
+    .footer-contents4
+      .contents-title
+.button
