@@ -1,0 +1,30 @@
+// Place all the styles related to the signup controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.first-header{
+  height: 10vh;
+  background-color: ghostwhite;
+  img{
+    width: 185px;
+    height: 49px;
+  }
+}
+.first-main{
+  &__title{
+    text-align: center;
+  }
+  &__box{
+    display: flex;
+    flex-direction: column;
+  }
+}
+.first-footer{
+  text-align: center;
+  ul{
+    list-style: none;
+    img{
+      width: 80px;
+      height: 65px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.first-header
+  = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3230380584, alt=mercari"
+.first-main
+  .first-main__title
+    会員情報入力
+  
+  = form_for @user, url: step2_signup_index_path, method: :get, html: {class: 'first-main__box'} do |f|
+    ニックネーム
+    = f.text_field :nick_name, placeholder: '例) メルカリ太郎'
+    メールアドレス
+    = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+    パスワード
+    = f.password_field :password, placeholder: '7文字以上の半角英数字'
+    お名前(全角)
+    = f.text_field :last_name, placeholder: '例) 山田'
+    = f.text_field :first_name, placeholder: '例）彩'
+    お名前カナ(全角)
+    = f.text_field :last_name_kana, placeholder: '例) ヤマダ'
+    = f.text_field :first_name_kana, placeholder: '例) アヤ'
+    生年月日
+    = f.select :nick_name, placeholder: '例) メルカリ太郎'
+    = f.select :nick_name, placeholder: '例) メルカリ太郎'
+    = f.select :nick_name, placeholder: '例) メルカリ太郎'
+
+.first-footer
+  %ul
+    %li プライバシーポリシー メルカリ利用規約 特定商取引に関する表記
+    =image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3230380584, alt=mercari"
+    %li ©️ 2019 Mercari
