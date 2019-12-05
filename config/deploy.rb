@@ -56,12 +56,3 @@ set :default_env, {
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
-
-# server "db.example.com", user: "deploy", roles: %w{db}
-server "18.177.70.129", user: "ec2-user", roles: %w{app db web}
-
-set :rails_env, "production"
-set :unicorn_rack_env, "production"
-
-# role-based syntax
-# ==================
