@@ -1,27 +1,5 @@
-# README
+# データベース設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 ## userテーブル
 |Column|Type|Options|
@@ -113,10 +91,6 @@ Things you may want to cover:
 - belongs_to :item
 
 
-
-
-
-
 ## likeテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -157,7 +131,7 @@ Things you may want to cover:
 - belongs_to :category_middle
 - belongs_to :category_mini
 
-## mailAddressテーブル
+## mail_addressテーブル
 |Column|Type|Options|
 |------|----|-------|
 |mail_address|string|null: false|unique: true|
