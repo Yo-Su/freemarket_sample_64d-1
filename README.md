@@ -11,14 +11,14 @@
 |last_name_kana|string|null: false|
 |birthday|date|null: false|
 |password|string|null: false|
+|mail_address|string|null: false|unique: true|
+|phone_number|integer|null: false|unique: true|
 ### Association
 - has_many :cashflows,dependent: :destroy
-- has_many :phone_numbers,dependent: :destroy
 - has_many  :addresses,dependent: :destroy
 - has_many  :credit_card_infos,dependent: :destroy
 - has_many  :messages,dependent: :destroy
 - has_many  :items,dependent: :destroy
-- has_many  :mail_addresses,dependent: :destroy
 - has_many  :likes,dependent: :destroy
 
 
@@ -29,14 +29,6 @@
 |point|integer|null: false|
 |cashflow_type|string|null: false|
 |cashflow_date|date|null: false|
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
-
-## phone_numberテーブル
-|Column|Type|Options|
-|------|----|-------|
-|number|integer|null: false|unique: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -88,7 +80,7 @@
 |brand_name|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :item
+- has_many  :items
 
 
 ## likeテーブル
@@ -97,8 +89,8 @@
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many  :items
-- has_many  :category_middles
+- belongs_to :item
+- belongs_to :user
 
 
 ## itemテーブル
@@ -117,9 +109,6 @@
 |describe|string|null: false|
 |buyer_id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|category_big_id|integer|null: false, foreign_key: true|
-|category_middle_id|integer|null: false, foreign_key: true|
-|category_mini_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many  :images,dependent: :destroy
@@ -127,17 +116,7 @@
 - has_many  :likes,dependent: :destroy
 - belongs_to :user
 - belongs_to :brand
-- belongs_to :category_big
-- belongs_to :category_middle
-- belongs_to :category_mini
-
-## mail_addressテーブル
-|Column|Type|Options|
-|------|----|-------|
-|mail_address|string|null: false|unique: true|
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
+- belongs_to :category
 
 ## categoryテーブル
 |Column|Type|Options|
@@ -146,5 +125,6 @@
 |ancestry|string|null: false|
 ### Association
 - has_many  :items
+- has_ancestry
 
 
