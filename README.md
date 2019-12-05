@@ -34,13 +34,14 @@ Things you may want to cover:
 |birthday|date|null: false|
 |password|string|null: false|
 ### Association
-- has_many :cashflows
-- has_many :phoneNumbers
-- has_many  :addresses
-- has_many  :creditCardInfos
-- has_many  :messages
-- has_many  :items
-- has_many  :mailAddresses
+- has_many :cashflows,dependent: :destroy
+- has_many :phone_numbers,dependent: :destroy
+- has_many  :addresses,dependent: :destroy
+- has_many  :credit_card_infos,dependent: :destroy
+- has_many  :messages,dependent: :destroy
+- has_many  :items,dependent: :destroy
+- has_many  :mail_addresses,dependent: :destroy
+- has_many  :likes,dependent: :destroy
 
 
 ## cashflowテーブル
@@ -54,7 +55,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-## phoneNumberテーブル
+## phone_numberテーブル
 |Column|Type|Options|
 |------|----|-------|
 |number|integer|null: false|unique: true|
@@ -65,20 +66,20 @@ Things you may want to cover:
 ## addressテーブル
 |Column|Type|Options|
 |------|----|-------|
-|address1|string|null: false|
-|address2|string|null: false|
-|address3|string|null: false|
-|address4|string|null: false|
 |post_number|integer|null: false|
-|address_phone|integer|null: false|
+|address_prefecture|string|null: false|
+|address_municipality|string|null: false|
+|address_block|string|null: false|
+|address_building|string|
+|address_phone|integer|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
-## creditCardInfoテーブル
+## credit_card_infoテーブル
 |Column|Type|Options|
 |------|----|-------|
-|cardNumber|integer|null: false|
+|card_number|integer|null: false|
 |pin_number|integer|null: false|
 |expiration_date|date|null: false|
 |user_id|integer|null: false, foreign_key: true|
@@ -111,44 +112,19 @@ Things you may want to cover:
 ### Association
 - belongs_to :item
 
-## categoryMiniテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-|category_group|string|null: false|
-### Association
-- has_many  :items
-- belongs_to :categoryMiddles
 
 
-## categoryMiddleテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-|category_group|string|null: false|
-### Association
-- has_many  :categoryMinis
-- belongs_to :categoryBig
-- has_many  :items
 
-## categoryBigテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-### Association
-- has_many  :items
-- has_many  :categoryMiddles
 
 
 ## likeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|count|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many  :items
-- has_many  :categoryMiddles
+- has_many  :category_middles
 
 
 ## itemテーブル
@@ -167,18 +143,19 @@ Things you may want to cover:
 |describe|string|null: false|
 |buyer_id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|categoryBig_id|integer|null: false, foreign_key: true|
-|categoryMiddle_id|integer|null: false, foreign_key: true|
-|categoryMini_id|integer|null: false, foreign_key: true|
+|category_big_id|integer|null: false, foreign_key: true|
+|category_middle_id|integer|null: false, foreign_key: true|
+|category_mini_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many  :images
-- has_many  :messages
+- has_many  :images,dependent: :destroy
+- has_many  :messages,dependent: :destroy
+- has_many  :likes,dependent: :destroy
 - belongs_to :user
 - belongs_to :brand
-- belongs_to :categoryBig
-- belongs_to :categoryMiddle
-- belongs_to :categoryMini
+- belongs_to :category_big
+- belongs_to :category_middle
+- belongs_to :category_mini
 
 ## mailAddressテーブル
 |Column|Type|Options|
@@ -187,3 +164,13 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+## categoryテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string|null: false|
+### Association
+- has_many  :items
+
+
