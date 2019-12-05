@@ -26,8 +26,8 @@
 |------|----|-------|
 |amount|integer|null: false|
 |point|integer|null: false|
-|cashflow_type|string|null: false|
-|cashflow_date|date|null: false|
+|type|string|null: false|
+|date|date|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -36,11 +36,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |post_number|integer|null: false|
-|address_prefecture|string|null: false|
-|address_municipality|string|null: false|
-|address_block|string|null: false|
-|address_building|string|
-|address_phone|integer|
+|prefecture|string|null: false|
+|municipality|string|null: false|
+|block|string|null: false|
+|building|string|
+|phone_number|integer|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -76,7 +76,7 @@
 ## brandテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|null: false|
+|name|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many  :items
