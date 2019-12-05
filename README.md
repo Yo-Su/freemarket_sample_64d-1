@@ -21,7 +21,6 @@
 - has_many  :items,dependent: :destroy
 - has_many  :likes,dependent: :destroy
 
-
 ## cashflowテーブル
 |Column|Type|Options|
 |------|----|-------|
