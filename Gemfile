@@ -76,3 +76,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'ancestry'
+
+gem 'haml-rails'
+gem 'erb2haml'
+gem 'font_awesome5_rails'
