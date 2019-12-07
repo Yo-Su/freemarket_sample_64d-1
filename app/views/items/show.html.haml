@@ -1,0 +1,115 @@
+.wrapper
+  .content
+    .content__top
+      メンズ　ビジネスシューズ　ブラック25cm
+    .content__item-data
+      .content__item-data__photo
+        .content__item-data__photo__main-image
+          = image_tag 'show-item01.jpg', size: "300x300", alt: "ユーザー投稿写真"
+          -# = image_tag 'show-item02.jpg', size: "300x300", alt: "ユーザー投稿写真"
+          -# = image_tag 'show-item03.jpg', size: "300x300", alt: "ユーザー投稿写真"
+          -# = image_tag 'show-item04.jpg', size: "300x300", alt: "ユーザー投稿写真"
+          -# = image_tag 'show-item05.jpg', size: "300x300", alt: "ユーザー投稿写真"
+          -# = image_tag 'show-item06.jpg', size: "300x300", alt: "ユーザー投稿写真"
+        .content__item-data__photo__sub-image
+          = image_tag 'show-item01.jpg', size: "60x60", alt: "ユーザー投稿写真"
+          = image_tag 'show-item02.jpg', size: "60x60", alt: "ユーザー投稿写真"
+          = image_tag 'show-item03.jpg', size: "60x60", alt: "ユーザー投稿写真"
+          = image_tag 'show-item04.jpg', size: "60x60", alt: "ユーザー投稿写真"
+          = image_tag 'show-item05.jpg', size: "60x60", alt: "ユーザー投稿写真"
+          = image_tag 'show-item06.jpg', size: "60x60", alt: "ユーザー投稿写真"
+      .content__item-data__table
+        %table
+          %tr.content__item-data__table__user-line
+            %td.content__item-data__table__td= "出品者"
+            %td
+              .content__item-data__table__user-line__user-name
+                = link_to "のんたん", ""
+              .content__item-data__table__user-line__evaluate
+                .content__item-data__table__user-line__evaluate__good
+                  = fa_icon 'laugh', class: 'icon'
+                  = "16"
+                .content__item-data__table__user-line__evaluate__normal
+                  = fa_icon 'meh', class: 'icon'
+                  = "1"
+                .content__item-data__table__user-line__evaluate__bad
+                  = fa_icon 'frown', class: 'icon'
+                  = "0"
+          %tr.content__item-data__table__category
+            %td.content__item-data__table__td= "カテゴリー"
+            %td
+              = link_to "メンズ", "", class: "content__item-data__table__category__big"
+              = link_to "靴", "", class: "content__item-data__table__category__middle"
+              = link_to "ドレス/ビジネス", "", class: "content__item-data__table__category__small"
+          %tr.content__item-data__table__brand
+            %td.content__item-data__table__td= "ブランド"
+            %td= ""
+          %tr.content__item-data__table__size
+            %td.content__item-data__table__td= "商品のサイズ"
+            %td= "25cm"
+          %tr.content__item-data__table__status
+            %td.content__item-data__table__td= "商品の状態"
+            %td= "新品、未使用"
+          %tr.content__item-data__table__cost
+            %td.content__item-data__table__td= "配送料の負担"
+            %td= "送料込み(出品者負担)"
+          %tr.content__item-data__table__type
+            %td.content__item-data__table__td= "配送の方法"
+            %td= "ゆうゆうメルカリ便"
+          %tr.content__item-data__table__area
+            %td.content__item-data__table__td= "配送元地域"
+            %td= link_to "奈良県", ""
+          %tr.content__item-data__table__day
+            %td.content__item-data__table__td= "発送日の目安"
+            %td= "2~3日で発送"
+    .content__price
+      .content__price__price
+        = "¥5,000"
+        %span.content__price__tax
+          = "(税込) "
+        %span.content__price__fee
+          = "送料込み"
+    .content__buy-btn
+      = link_to "購入画面に進む", "", class: "content__buy-btn__submit"
+      -# %input.content__buy-btn__submit{type: "button", value: "購入画面に進む"}
+    .content__note
+      この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+    .content__item-description
+      日本製　本革　
+      新品未使用
+      抗菌、消臭加工
+      25cm
+      %br
+      写真5、6枚目のブラックの靴のみ商品です。
+    .content__button-area
+      .content__button-area__box
+        %label.content__button-area__box__good
+          = fa_icon 'heart', class: 'icon'
+          いいね!
+          = "0"
+        %label.content__button-area__box__report
+          = fa_icon 'flag', class: 'icon'
+          不適切な商品の報告
+      = link_to "", class: "content__button-area__safety" do
+        = fa_icon 'lock', class: 'icon'
+        あんしん・あんぜんへの取り組み
+
+      -# .content__button-box__good
+      -# .content__button-box__report
+      -# .content__button-box__safety
+      /いいね! 0  不適切な商品の報告 あんしん・あんぜんへの取り組み
+  .message
+    .message__note
+    .message__textarea
+    .message__submit-btn
+  .navi
+    .navi__left-box
+    .navi__right-box
+  .social-media
+    .social-media__box
+  .related-item
+    .related-item__user-item
+    .related-item__category-item
+  .modal
+  .bottom
+    .bottom__box
