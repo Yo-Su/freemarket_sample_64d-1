@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f5f5f5;
+}
+
+.main {
+  display: flex;
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  .content {
+    width: 700px;
+    .user-icon {
+      position: relative;
+      height: 160px;
+      padding: 20px;
+      background-image: url("/user-bg.jpg");
+      text-align: center;
+      &__area {
+        position: absolute;
+        top: 25%;
+        left: 0;
+        right: 0;
+        color: #333;
+        text-decoration: none;
+        &__figure {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          &__img {
+            border-radius: 50%;
+          }
+        }
+        &__name {
+          margin: 8px 0 0;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4;
+        }
+        &__information {
+          margin: 8px 0 0;
+          height: 16px;
+          &__evaluation {
+            display: inline-block;
+            font-size: 14px;
+            &__number {
+              margin: 0 0 0 8px;
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+          &__exhibits {
+            margin: 0 0 0 16px;
+            display: inline-block;
+            font-size: 14px;
+            &__number {
+              margin: 0 0 0 8px;
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+    .notification-todo {
+      background: #fff;
+      .mypage-tabs {
+        background-color: #eee;
+        text-decoration: none;
+        height: 72px;
+        display: flex;
+        line-height: 72px;
+        font-size: 16px;
+        &__tag1 {
+          width: 350px;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          background: #fff;
+          border-top: 2px solid #ea352d;
+          color: #333;
+        }
+        &__tag2 {
+          width: 350px;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          color: #333;
+        }
+      }
+      .tab-content {
+        font-size: 14px;
+        &__body {
+          position: relative;
+          border-bottom: 1px solid #eee;
+          height: 47px;
+          padding: 16px;
+          &__list {
+            text-decoration: none;
+            display: flex;
+            color: #333;
+            &__img {
+              width: 48px;
+              height: 48px;
+            }
+            &__item {
+              margin: 0 40px 0 20px;
+            }
+            &--icon {
+              position: absolute;
+              right: 16px;
+              line-height: 48px;
+              font-size: 16px;
+            }
+          }
+        }
+        &__bottom {
+          padding: 16px;
+          height: 56px;
+          text-align: center;
+          line-height: 56px;
+          &__mypage-go-list {
+            width: 668px;
+            background: #eee;
+            color: #333;
+            text-decoration: none;
+            padding: 21px 299px 21px 299px;
+          }
+        }
+      }
+    }
+    .bought-items {
+      color: #333;
+      font-weight: bold;
+      height: 382px;
+      width: 700px;
+      margin: 40px 0 0;
+      background: #fff;
+      .head {
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+        padding: 0 16px;
+      }
+      .tabs {
+        font-weight: bold;
+        background: #eee;
+        display: flex;
+        .now-traiding {
+          background: #fff;
+          width: 50%;
+          text-align: center;
+          border-top: 2px solid #ea352d;
+          font-size: 16px;
+          line-height: 72px;
+          color: #333;
+          text-decoration: none;
+          display: block;
+        }
+        .past-traiding {
+          width: 50%;
+          text-align: center;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+          text-decoration: none;
+          display: block;
+        }
+      }
+      .tab-content {
+        .item-list__now-traiding {
+          height: 16px;
+          padding: 160px 0 60px 0;
+          text-align: center;
+          color: #cccccc;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
