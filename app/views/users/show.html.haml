@@ -1,18 +1,12 @@
-.navbar
-  %ul
-    %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
-      %a{:href => "https://www.mercari.com/jp/", :itemprop => "url"}
-        %span{:itemprop => "title"} メルカリ
-      %i.icon-arrow-right
-    %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
-      %span{:itemprop => "title"} マイページ
+
 .main
-  = render "side"
+  = render "sidebar"
+
   .content
     .user-icon
-      =link_to "https://www.mercari.com/jp/u/438249768/", class: "user-icon__area" do
+      =link_to "", class: "user-icon__area" do
         .user-icon__area__figure
-          %img{:alt => "", :height => "60", :src => "//static.mercdn.net/thumb/members/438249768.jpg?1563108055", :width => "60"}/
+          %img.user-icon__area__figure__img{alt: "", height: "60", width: "60", src: "https://www.pakutaso.com/shared/img/thumb/HIRA86_nezuminoomocyapuranpuran_TP_V.jpg"}/
         .user-icon__area__name aaa
         .user-icon__area__information
           .user-icon__area__information__evaluation
@@ -23,102 +17,104 @@
             %span.user-icon__area__information__exhibits__number 93
     .notification-todo
       .mypage-tabs
-        .tag1
-          %a{"data-toggle" => "tab", :href => "#mypage-tab-notification"}
-            お知らせ
-        .tag2
-          %a{"data-toggle" => "tab", :href => "#mypage-tab-todo"}
-            やることリスト
+        =link_to "", class: "mypage-tabs__tag1" do
+          お知らせ
+        =link_to "", class: "mypage-tabs__tag2" do
+          やることリスト
+
+
       .tab-content
-        %ul#mypage-tab-notification.mypage-item-list.tab-pane.active
-          %li
-            %a.mypage-item-link{:href => "https://item.mercari.com/jp/m95157724563/"}
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519", :src => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519"}/
-              .mypage-item-body
-                .mypage-item-text ちゃばるさんが「全日本スキー技術選2010 D...」にいいね！しました
-                %time
-                  %i.icon-time
-                  %span 21 時間前
-              %i.icon-arrow-right
-          %li
-            %a.mypage-item-link{"data-modal" => "banner", "data-open" => "modal", :href => ""}
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static.mercdn.net/thumb/photos/m66141830387_1.jpg?1563960026", :src => "//static.mercdn.net/thumb/photos/m66141830387_1.jpg?1563960026"}/
-              .mypage-item-body
-                .mypage-item-text アストロメンズさんからの「アンダーアーマー ハーフパンツ」への¥2000のオファーを承諾しませんでした
-                %time
-                  %i.icon-time
-                  %span 23 時間前
-              %i.icon-arrow-right
-          %li
-            %a.mypage-item-link{"data-modal" => "banner", "data-open" => "modal", :href => ""}
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static.mercdn.net/images/mercari_profile.png", :src => "//static.mercdn.net/images/mercari_profile.png"}/
-              .mypage-item-body
-                .mypage-item-text 最大P3,000もらえる《買うシカないキャンペーン》開催中！
-                %time
-                  %i.icon-time
-                  %span 1 日前
-              %i.icon-arrow-right
-          %li
-            %a.mypage-item-link{:href => "https://item.mercari.com/jp/m66141830387/"}
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static.mercdn.net/thumb/members/475275881.jpg?1525231341", :src => "//static.mercdn.net/thumb/members/475275881.jpg?1525231341"}/
-              .mypage-item-body
-                .mypage-item-text アストロメンズさん、他1名が「アンダーアーマー ハーフパンツ」にいいね！しました
-                %time
-                  %i.icon-time
-                  %span 1 日前
-              %i.icon-arrow-right
-          %li
-            %a.mypage-item-link{:href => "https://item.mercari.com/jp/m45749841939/"}
-              %figure
-                %img.lazyloaded{:alt => "", "data-src" => "//static.mercdn.net/thumb/photos/m45749841939_1.jpg?1575222732", :src => "//static.mercdn.net/thumb/photos/m45749841939_1.jpg?1575222732"}/
-              .mypage-item-body
-                .mypage-item-text 「UNIQLO ミッキー　ニット」について、コメントの返信を忘れていませんか？
-                %time
-                  %i.icon-time
-                  %span 2 日前
-              %i.icon-arrow-right
-          %li.mypage-go-list
-            %a{:href => "/jp/mypage/notification/"} 一覧を見る
-        %ul#mypage-tab-todo.mypage-item-list.tab-pane
-          %li
-            %a.mypage-item-link{:href => "https://www.mercari.com/jp/transaction/order_status/m82963669748/"}
-              %figure
-                %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/c!/w=240/thumb/photos/m82963669748_1.jpg?1568120356"}/
-              .mypage-item-body
-                .mypage-item-text シナ丸さんが「スノーフレーク」を購入しました。内容を確認の上、発送をお願いします
-                %time
-                  %i.icon-time
-                  %span 3 時間前
-              %i.icon-arrow-right
-          %li
-            %a.mypage-item-link{:href => "https://www.mercari.com/jp/transaction/order_status/m13620491235/"}
-              %figure
-                %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/c!/w=240/thumb/photos/m13620491235_1.jpg?1575382233"}/
-              .mypage-item-body
-                .mypage-item-text エイジさんが「SCOTT スキー ストック 105cm」を購入しました。内容を確認の上、発送をお願いします
-                %time
-                  %i.icon-time
-                  %span 2 日前
-              %i.icon-arrow-right
-          %li.mypage-go-list
-            %a{:href => "/jp/mypage/todo/"} 一覧を見る
+        .tab-content__body
+          =link_to "", class: "tab-content__body__list" do            
+            %img.tab-content__body__list__img{:alt => "", height: "48", width: "48","data-src" => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519", :src => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519"}/
+            .tab-content__body__list__item
+              .tab-content__body__list__item__text ☆☆さんが「○○○」にいいね！しました              
+              = icon('far', 'clock',  class: "tab-content__body__list__item--icon")
+              %span 21 時間前
+            = icon('fas', 'chevron-right',  class: "tab-content__body__list--icon")
+        .tab-content__body
+          =link_to "", class: "tab-content__body__list" do            
+            %img.tab-content__body__list__img{:alt => "", height: "48", width: "48","data-src" => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519", :src => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519"}/
+            .tab-content__body__list__item
+              .tab-content__body__list__item__text ☆☆さんが「○○○」にいいね！しました              
+              = icon('far', 'clock',  class: "tab-content__body__list__item--icon")
+              %span 21 時間前
+            = icon('fas', 'chevron-right',  class: "tab-content__body__list--icon")
+        .tab-content__body
+          =link_to "", class: "tab-content__body__list" do            
+            %img.tab-content__body__list__img{:alt => "", height: "48", width: "48","data-src" => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519", :src => "//static.mercdn.net/thumb/members/724370101.jpg?1482846519"}/
+            .tab-content__body__list__item
+              .tab-content__body__list__item__text ☆☆さんが「○○○」にいいね！しました              
+              = icon('far', 'clock',  class: "tab-content__body__list__item--icon")
+              %span 21 時間前
+            = icon('fas', 'chevron-right',  class: "tab-content__body__list--icon")
+        .tab-content__body
+          =link_to "", class: "tab-content__body__list" do            
+            %img.tab-content__body__list__img
+            .tab-content__body__list__item
+              .tab-content__body__list__item__text 最大P3,000もらえる《買うシカないキャンペーン》開催中！              
+              = icon('far', 'clock',  class: "tab-content__body__list__item--icon")
+              %span 21 時間前
+            = icon('fas', 'chevron-right',  class: "tab-content__body__list--icon")
+        .tab-content__body
+          =link_to "", class: "tab-content__body__list" do            
+            %img.tab-content__body__list__img
+            .tab-content__body__list__item
+              .tab-content__body__list__item__text 最大P3,000もらえる《買うシカないキャンペーン》開催中！              
+              = icon('far', 'clock',  class: "tab-content__body__list__item--icon")
+              %span 21 時間前
+            = icon('fas', 'chevron-right',  class: "tab-content__body__list--icon")
+        .tab-content__bottom
+          =link_to "", class: "tab-content__bottom__mypage-go-list" do
+            一覧を見る
+
     .bought-items
-      %h2.mypage-tab-head 購入した商品
-      %ul.mypage-tabs
-        %li.active
-          %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-now"}
-              取引中
-        %li
-          %h3
-            %a{"data-toggle" => "tab", :href => "#mypage-tab-transaction-old"}
-              過去の取引
+      .head 購入した商品
+      .tabs
+        =link_to "", class: "now-traiding" do
+          取引中
+        =link_to "", class: "past-traiding" do
+          過去の取引
       .tab-content
-        %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
-          %li.mypage-item-not-found.bold 取引中の商品がありません
-        %ul#mypage-tab-transaction-old.mypage-item-list.tab-pane
-          %li.mypage-item-not-found.bold 過去に取引した商品がありません
+        .item-list__now-traiding
+          取引中の商品がありません
+        .item-list__past-traiding
+
+
+
+
+
+
+
+-# .navbar
+-#   %ul
+-#     %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+-#       %a{:href => "https://www.mercari.com/jp/", :itemprop => "url"}
+-#         %span{:itemprop => "title"} メルカリ
+-#       %i.icon-arrow-right
+-#     %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+-#       %span{:itemprop => "title"} マイページ
+
+
+          -# .tab-content__todo__list
+          -#   %a.mypage-item-link{:href => "https://www.mercari.com/jp/transaction/order_status/m82963669748/"}
+          -#     %figure
+          -#       %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/c!/w=240/thumb/photos/m82963669748_1.jpg?1568120356"}/
+          -#     .mypage-item-body
+          -#       .mypage-item-text シナ丸さんが「スノーフレーク」を購入しました。内容を確認の上、発送をお願いします
+          -#       %time
+          -#         %i.icon-time
+          -#         %span 3 時間前
+          -#     %i.icon-arrow-right
+          -# %li
+          -#   %a.mypage-item-link{:href => "https://www.mercari.com/jp/transaction/order_status/m13620491235/"}
+          -#     %figure
+          -#       %img.lazyload{:alt => "", "data-src" => "//static.mercdn.net/c!/w=240/thumb/photos/m13620491235_1.jpg?1575382233"}/
+          -#     .mypage-item-body
+          -#       .mypage-item-text エイジさんが「SCOTT スキー ストック 105cm」を購入しました。内容を確認の上、発送をお願いします
+          -#       %time
+          -#         %i.icon-time
+          -#         %span 2 日前
+          -#     %i.icon-arrow-right
+          -# %li.mypage-go-list
+          -#   %a{:href => "/jp/mypage/todo/"} 一覧を見る
