@@ -1,3 +1,9 @@
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "users";
+@import "./items";
+
+.test {
+  background-color: green;
+}
