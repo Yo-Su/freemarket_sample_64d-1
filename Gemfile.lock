@@ -304,9 +304,9 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  erb2haml
   fog-aws
   font-awesome-sass
-  erb2haml
   haml-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
