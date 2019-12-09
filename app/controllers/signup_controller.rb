@@ -9,7 +9,13 @@ class SignupController < ApplicationController
     session[:nick_name] = user_params[:nick_name]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
+    session[:last_name] = user_params[:last_name]
+    session[:first_name] = user_params[:first_name]
+    session[:last_name_kana] = user_params[:last_name_kana]
+    session[:first_name_kana] = user_params[:first_name_kana]
+    session[:birth_year] = user_params[:birth_year]
+    session[:birth_month] = user_params[:birth_month]
+    session[:birth_day] = user_params[:birth_day]
     @user = User.new # 新規インスタンス作成
   end
 
@@ -34,7 +40,7 @@ class SignupController < ApplicationController
       :last_name_kana,
       :first_name_kana,
       :birthday
-      #私はロボットではありません
     )
   end
+
 end
