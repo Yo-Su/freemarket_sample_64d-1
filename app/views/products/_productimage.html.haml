@@ -1,0 +1,17 @@
+.back-image
+  .image-block
+    .image
+      = link_to product_path(product.id) do
+
+        =image_tag product.images.first.image.url, class:"item-image",size: "188x188"
+
+
+      %h1
+        ¥
+        = product.price
+      .price
+        .price-content
+    .image-content
+      .item-name
+        = product.name
+      

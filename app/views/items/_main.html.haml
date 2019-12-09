@@ -1,0 +1,147 @@
+-# .toppage-main
+-#   .top-image
+-#     %ul.slider
+-#       %li
+-#         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg",height:"400px", width:"100%")
+-#       %li
+-#         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-kaushika-8f6ea672063dd8a0266bc2a36b80711a.jpg",height:"400px", width:"100%")
+-#       %li
+-#         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg",height:"400px", width:"100%")
+
+-#     %div{id: "arrows"}
+-#       .slick-next
+-#         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/carousel-next-bc3a1438a1435e953bc67d720cd05c61.png")
+-#       .slick-prev
+-#         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png")
+.top-main
+  =image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg",height: "390",width: "100%",class:"header-image",alt: "")
+  .main
+    .main-header
+      .famous-categories
+        人気のカテゴリー
+      .category
+        .ladies
+          .font
+            レディース
+        .mens
+          .font
+            メンズ
+        .av
+          .font
+            家電・スマホ・カメラ
+        .hoby
+          .font
+            おもちゃ・ホビー・グッズ
+    .items
+      .item-review
+        .ladies-new
+          .content
+            レディース新着アイテム
+            %li
+              =link_to "", id:"",class: "more" do
+                もっと見る >
+        .item-images
+          .item-images__review
+            -# - @products.each do |product|
+            -#   = render partial: "productimage", locals: { product: product } 
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           メンズ新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           家電・スマホ・カメラ新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           おもちゃ・ホビー・グッズ新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 
+  -# .main
+  -#   .main-header
+  -#     .famous-categories
+  -#       人気のブランド
+  -#     .category
+  -#       .ladies
+  -#         .font
+  -#           シャネル
+  -#       .mens
+  -#         .font
+  -#           ルイヴィトン
+  -#       .av
+  -#         .font
+  -#           シュプリーム
+  -#       .hoby
+  -#         .font
+  -#           ナイキ
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           シャネル新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           ルイヴィトン新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           シュプリーム新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 
+  -#   .items
+  -#     .item-review
+  -#       .ladies-new
+  -#         .content
+  -#           ナイキ新着アイテム
+  -#           %li
+  -#             =link_to "", id:"",class: "more" do
+  -#               もっと見る >
+  -#       .item-images
+  -#         .item-images__review
+  -#           -# - @products.each do |product|
+  -#           -#   = render partial: "productimage", locals: { product: product } 

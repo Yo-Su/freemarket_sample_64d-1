@@ -1,0 +1,113 @@
+.aside {
+  height: 260px;
+  background: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?61716930");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.app-text {
+  padding: 30px;
+  h2 {
+    color: #FFF;
+    font-size: 24px;
+    text-align: left;
+    font-weight: bold;
+  }
+  p {
+    color: #FFF;
+    font-size: 36px;
+    text-align: left;
+  }
+  &__figure {
+    display: flex;
+    padding: 24px;
+    ul {
+      display: flex;
+      li {
+        padding: 10px;
+      }
+      a:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.footer {
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  padding: 0px 20px 10px;
+  h2 {
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    font-weight: 600;
+    line-height: 1.4em;
+  }
+  a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  i {
+    color: #fff;
+    font-size: 3em;
+  }
+  span {
+    color: #fff;
+  }
+}
+
+.footer-content {
+  width: 1020px;
+  margin: 0 auto;
+  padding-top: 18px;
+}
+
+.footer-top {
+  width: 1020px;
+  display: flex;
+  justify-content: center;
+  &__content {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    margin: 0px auto;
+    li {
+      margin-top: 12px;
+      opacity: 0.7;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &--social {
+      display: flex;
+      margin-top: 30px;
+      li {
+        padding-right: 20px;
+      }
+    }
+    &--divide {
+      display: flex;
+      &--left {
+        width: 50%;
+        padding: 0px 10px 0px 0px;
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  display: flex;
+  margin: 30px 110px 20px;
+  span {
+    text-align: center;
+    line-height: 33px;
+    padding-left: 15px;
+    width: 75%;
+  }
+}
