@@ -1,6 +1,11 @@
-@import "./reset";
-@import "footer";
-@import 'font-awesome';
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "users";
+@import "items";
+@import "sidebar";
 @import 'header';
 @import 'sell-btn';
 @import 'main';
+@import "footer";
+@import "./reset";
