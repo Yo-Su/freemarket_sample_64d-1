@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "items#index"
-  get 'users/logout', to: "users#logout"
-  resources :users, only: :show
+  resources :users, only: :show do
+    collection do
+      get 'logout'
+    end
+  end
   resources :items, only: :show
 end
