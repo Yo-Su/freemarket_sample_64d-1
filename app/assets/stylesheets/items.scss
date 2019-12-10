@@ -42,10 +42,6 @@
           display: block;
         }
 
-        &__main-image {
-
-        }
-
         &__sub-image {
           width: 300px;
           display: flex;
@@ -58,7 +54,7 @@
         height: 420px;
         margin: 0 auto;
         font-size: 14px;
-  
+
         td {
           border-collapse: collapse;
           border: 1px solid #f5f5f5;
@@ -102,9 +98,20 @@
             }
           }
         }
-  
+
         &__category {
           height: 65px;
+
+          &__middle {
+            &__icon {
+              color: #51B7D6;
+            }
+          }
+          &__small {
+            &__icon {
+              color: #51B7D6;
+            }
+          }
         }
         &__brand {
           height: 40px;

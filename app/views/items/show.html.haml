@@ -6,11 +6,6 @@
       .content__item-data__photo
         .content__item-data__photo__main-image
           = image_tag 'show-item01.jpg', size: "300x300", alt: "ユーザー投稿写真"
-          -# = image_tag 'show-item02.jpg', size: "300x300", alt: "ユーザー投稿写真"
-          -# = image_tag 'show-item03.jpg', size: "300x300", alt: "ユーザー投稿写真"
-          -# = image_tag 'show-item04.jpg', size: "300x300", alt: "ユーザー投稿写真"
-          -# = image_tag 'show-item05.jpg', size: "300x300", alt: "ユーザー投稿写真"
-          -# = image_tag 'show-item06.jpg', size: "300x300", alt: "ユーザー投稿写真"
         .content__item-data__photo__sub-image
           = image_tag 'show-item01.jpg', size: "60x60", alt: "ユーザー投稿写真"
           = image_tag 'show-item02.jpg', size: "60x60", alt: "ユーザー投稿写真"
@@ -27,20 +22,27 @@
                 = link_to "のんたん", ""
               .content__item-data__table__user-line__evaluate
                 .content__item-data__table__user-line__evaluate__good
-                  = fa_icon 'laugh', class: 'icon'
+                  = icon 'fas', 'laugh', class: 'icon'
                   = "16"
                 .content__item-data__table__user-line__evaluate__normal
-                  = fa_icon 'meh', class: 'icon'
+                  = icon 'fas', 'meh', class: 'icon'
                   = "1"
                 .content__item-data__table__user-line__evaluate__bad
-                  = fa_icon 'frown', class: 'icon'
+                  = icon 'fas', 'frown', class: 'icon'
                   = "0"
           %tr.content__item-data__table__category
             %td.content__item-data__table__td= "カテゴリー"
             %td
-              = link_to "メンズ", "", class: "content__item-data__table__category__big"
-              = link_to "靴", "", class: "content__item-data__table__category__middle"
-              = link_to "ドレス/ビジネス", "", class: "content__item-data__table__category__small"
+              .content__item-data__table__category__big
+                = link_to "メンズ", ""
+              .content__item-data__table__category__middle
+                = link_to "" do
+                  = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__middle__icon'
+                  =  "靴"
+              .content__item-data__table__category__small
+                = link_to  "" do
+                  = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__small__icon'
+                  = "ドレス/ビジネス"
           %tr.content__item-data__table__brand
             %td.content__item-data__table__td= "ブランド"
             %td= ""
@@ -71,7 +73,6 @@
           = "送料込み"
     .content__buy-btn
       = link_to "購入画面に進む", "", class: "content__buy-btn__submit"
-      -# %input.content__buy-btn__submit{type: "button", value: "購入画面に進む"}
     .content__note
       この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
     .content__item-description
@@ -84,32 +85,29 @@
     .content__button-area
       .content__button-area__box
         %label.content__button-area__box__good
-          = fa_icon 'heart', class: 'icon'
+          = icon 'far', 'heart', class: 'icon'
           いいね!
           = "0"
         %label.content__button-area__box__report
-          = fa_icon 'flag', class: 'icon'
+          = icon 'far', 'flag', class: 'icon'
           不適切な商品の報告
       = link_to "", class: "content__button-area__safety" do
-        = fa_icon 'lock', class: 'icon'
+        = icon 'fas', 'lock', class: 'icon'
         あんしん・あんぜんへの取り組み
 
-      -# .content__button-box__good
-      -# .content__button-box__report
-      -# .content__button-box__safety
-      /いいね! 0  不適切な商品の報告 あんしん・あんぜんへの取り組み
-  .message
-    .message__note
-    .message__textarea
-    .message__submit-btn
-  .navi
-    .navi__left-box
-    .navi__right-box
-  .social-media
-    .social-media__box
-  .related-item
-    .related-item__user-item
-    .related-item__category-item
-  .modal
-  .bottom
-    .bottom__box
+-# ToDoリスト商品詳細ページ コメントページ/リンク/アイコン欄実装用クラス定義のみ
+  -# .message
+  -#   .message__note
+  -#   .message__textarea
+  -#   .message__submit-btn
+  -# .navi
+  -#   .navi__left-box
+  -#   .navi__right-box
+  -# .social-media
+  -#   .social-media__box
+  -# .related-item
+  -#   .related-item__user-item
+  -#   .related-item__category-item
+  -# .modal
+  -# .bottom
+  -#   .bottom__box

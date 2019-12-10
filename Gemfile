@@ -79,4 +79,4 @@ gem 'ancestry'
 
 gem 'haml-rails'
 gem 'erb2haml'
-gem 'font_awesome5_rails'
+gem 'font-awesome-sass'
