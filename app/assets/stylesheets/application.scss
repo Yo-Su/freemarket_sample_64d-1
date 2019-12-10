@@ -1,4 +1,10 @@
-@import "./reset";
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "./items.scss";
+@import "users";
+@import "./items";
+@import "sidebar";
+
+.test {
+  background-color: green;
+}
