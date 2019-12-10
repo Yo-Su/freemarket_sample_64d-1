@@ -6,7 +6,7 @@
     .first-main__content
       .first-main__content__title
         会員情報入力
-      = form_with model: @user, url: step2_signup_index_path, method: :get, html: {class: 'first-main__content__box'} do |f|
+      = form_with model: @user, url: step2_signup_index_path, method: :get, local: true, html: {class: 'first-main__content__box'} do |f|
         .first-main__content__box__group
           .first-main__content__box__group__tag
             .first-main__content__box__group__tag-name

@@ -1,5 +1,23 @@
-= form_for @user, url: step3_signup_index_path, method: :get, html: {class: 'second-wrapper__box'} do |f|
-  = f.text_field :last_name, placeholder: '例) 山田'
-  = f.text_field :first_name, placeholder: '例) 彩'
-  = f.text_field :last_name_kana, placeholder: '例) ヤマダ'
-  = f.text_field :first_name_kana, placeholder: '例) アヤ'
+.signup-container
+  = render partial: 'header'
+
+  .second-main
+    .second-main__content
+      .second-main__content__title
+        電話番号の確認
+      = form_with model: @user, url: step3_signup_index_path, method: :get, local: true, html: {class: 'second-main__content__box'} do |f|
+        .second-main__content__box__group
+          .second-main__content__box__group__name
+            携帯電話の番号
+          = f.text_field :phone_number, placeholder: '携帯電話の番号を入力', class: "second-main__content__box__group__form"
+          %p.second-main__content__box__group__message1
+            本人確認のため、、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          = f.submit value: "SMSを送信する", class: "second-main__content__box__group__submit"
+          %p.second-main__content__box__group__message2
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .second-main__content__box__group__message3
+            = link_to 'https://www.mercari.com/jp/help_center/article/244/',class: "second-main__content__box__group__message3__link" do
+              電話番号の確認が必要な理由
+              = fa_icon("chevron-right")
+
+  = render partial: 'footer'
