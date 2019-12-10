@@ -1,0 +1,51 @@
+.signup-container
+  = render partial: 'header'
+
+  .fifth-main
+    .fifth-main__content
+      .fifth-main__content__title
+        支払い方法
+      = form_with model: @user, url: done_signup_index_path, method: :get, local: true, html: {class: 'fifth-main__content__box'} do |f|
+        .fifth-main__content__box__group
+          .fifth-main__content__box__group__tag
+            .fifth-main__content__box__group__tag-name
+              カード番号
+            .fifth-main__content__box__group__tag__form-require
+              必須
+          = f.text_field :phone_number, placeholder: '携帯電話の番号を入力', class: "fifth-main__content__box__group__form"
+          .fifth-main__content__box__group__images
+            = image_tag("credit-VISA.png", class: "fifth-main__content__box__group__images__image")
+            = image_tag("credit-Master.png", class: "fifth-main__content__box__group__images__image")
+            = image_tag("credit-SAISON.png", class: "fifth-main__content__box__group__images__image")
+            = image_tag("credit-JCB.png", class: "fifth-main__content__box__group__images__image")
+            = image_tag("credit-AMERICAN.png", class: "fifth-main__content__box__group__images__image")
+            = image_tag("credit-Diners.png", class: "fifth-main__content__box__group__images__image")
+            = image_tag("credit-DISCOVER.png", class: "fifth-main__content__box__group__images__image")
+        .fifth-main__content__box__group#margin_top
+          .fifth-main__content__box__group__tag
+            .fifth-main__content__box__group__tag-name
+              有効期限
+            .fifth-main__content__box__group__tag__form-require
+              必須
+          .fifth-main__content__box__group__selects
+            = f.select :prefecture, ["01"], {}, class: "fifth-main__content__box__group__selects__select"
+            %span.fifth-main__content__box__group__selects__text
+              月
+            = f.select :prefecture, ["19"], {}, class: "fifth-main__content__box__group__selects__select"
+            %span.fifth-main__content__box__group__selects__text
+              年
+        .fifth-main__content__box__group#margin_top
+          .fifth-main__content__box__group__tag
+            .fifth-main__content__box__group__tag-name
+              セキュリティーコード
+            .fifth-main__content__box__group__tag__form-require
+              必須
+          = f.text_field :phone_number, placeholder: 'カード背面4桁もしくは3桁の番号', class: "fifth-main__content__box__group__form"
+          .fifth-main__content__box__group__message
+            = link_to 'https://www.mercari.com/jp/help_center/article/244/',class: "fifth-main__content__box__group__message__link" do
+              = fa_icon("question-circle")
+              カード裏面の番号とは？
+          = f.submit value: "次へ進む", class: "fifth-main__content__box__group__submit"
+          
+          
+  = render partial: 'footer'

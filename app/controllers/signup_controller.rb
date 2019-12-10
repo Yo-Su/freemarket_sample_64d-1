@@ -30,6 +30,29 @@ class SignupController < ApplicationController
     end
   end
 
+  def step4
+    @address = Address.new
+  end
+
+  def step5
+    if params[:address]
+      session[:last_name] = address_params[:last_name]
+      session[:first_name] = address_params[:first_name]
+      session[:last_name_kana] = address_params[:last_name_kana]
+      session[:first_name_kana] = address_params[:first_name_kana]
+      session[:post_number] = address_params[:post_number]
+      session[:prefecture] = address_params[:prefecture]
+      session[:municipality] = address_params[:municipality]
+      session[:block] = address_params[:block]
+      session[:building] = address_params[:building]
+      session[:phone_number] = address_params[:phone_number]
+    end
+  end
+
+  def done
+    
+  end
+
   private
   # 許可するキーを設定します
   def user_params
@@ -45,10 +68,24 @@ class SignupController < ApplicationController
         :birth_year,
         :birth_month,
         :birth_day,
-        :birthday,
         :phone_number
       )
     end
+  end
+
+  def address_params
+    params.require(:address).permit(
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :post_number,
+      :prefecture,
+      :municipality,
+      :block,
+      :building,
+      :phone_number
+    )
   end
 
 end
