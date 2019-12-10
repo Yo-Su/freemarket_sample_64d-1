@@ -180,5 +180,24 @@ body {
         }
       }
     }
+    .logout {
+      background-color: #fff;
+      width: 700px;
+      padding: 64px;
+      &__area {
+        background-color: #EA352D;
+        width: 320px;
+        height: 48px;
+        line-height: 48px;
+        margin: 0 auto;
+        &__btn {
+          text-align: center;
+          display: block;
+          text-decoration: none;
+          color: #fff;
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
