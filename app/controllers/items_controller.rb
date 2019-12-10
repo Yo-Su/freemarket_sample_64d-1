@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    binding.pry
     @item = Item.find(params[:id])
     @image = Image.includes(:item)
+    # binding.pry
   end
 end
