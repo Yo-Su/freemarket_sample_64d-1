@@ -72,9 +72,6 @@
           &__evaluate {
             font-size: 14px;
             display: flex;
-            .fas{
-              font-family: "Font Awesome 5 Free";
-            }
             &__good {
               padding-right: 20px;
               .fas{
@@ -200,7 +197,6 @@
           cursor: pointer;
 
           .icon {
-            font-family: "Font Awesome 5 Free";
             color: #ccc;
             font-weight: 400;
             content: "\f004";
@@ -219,7 +215,6 @@
           cursor: pointer;
 
           .icon {
-            font-family: "Font Awesome 5 Free";
             color: #333;
             font-weight: 400;
             content: "\f024";
@@ -235,7 +230,6 @@
         border-radius: 40px;
 
         .icon {
-          font-family: "Font Awesome 5 Free";
           font-weight: 900;
           content: "\f023";
         }
