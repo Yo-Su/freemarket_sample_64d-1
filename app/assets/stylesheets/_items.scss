@@ -1,0 +1,281 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.wrapper {
+  background-color: #f5f5f5;
+  width: 100vw;
+  height: 100%;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+
+  a {
+    text-decoration: none;
+    color: #0099e8;
+  }
+
+  .content {
+    background-color: #fff;
+    width: 620px;
+    margin: 40px auto 0;
+    padding: 24px 40px 40px;
+
+    &__top {
+      font-size: 24px;
+      text-align: center;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+
+    &__item-data {
+      margin: 16px 0 0;
+      display: flex;
+
+      &__photo {
+        position: relative;
+        background-color: #f5f5f5;
+
+        img {
+          padding: 0;
+          margin: 0;
+          display: block;
+        }
+
+        &__sub-image {
+          width: 300px;
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+
+      &__table {
+        max-width: 300px;
+        height: 420px;
+        margin: 0 auto;
+        font-size: 14px;
+
+        td {
+          border-collapse: collapse;
+          border: 1px solid #f5f5f5;
+        }
+  
+        &__td {
+          background-color: #fafafa;
+        }
+  
+        &__user-line {
+          height: 65px;
+          &__user-name {
+            margin: 0;
+          }
+          &__evaluate {
+            font-size: 14px;
+            display: flex;
+            &__good {
+              padding-right: 20px;
+              .fas{
+                font-size: 16px;
+                color: #FC5485;
+              }
+            }
+            &__normal {
+              padding-right: 20px;
+              .fas{
+                font-size: 16px;
+                color: #FFA647;
+              }
+            }
+            &__bad {
+              padding-right: 20px;
+              .fas{
+                font-size: 16px;
+                color: #51B7D6;
+              }
+            }
+          }
+        }
+
+        &__category {
+          height: 65px;
+
+          &__middle {
+            &__icon {
+              color: #51B7D6;
+            }
+          }
+          &__small {
+            &__icon {
+              color: #51B7D6;
+            }
+          }
+        }
+        &__brand {
+          height: 40px;
+        }
+        &__size {
+          height: 40px;
+        }
+        &__status {
+          height: 40px;
+        }
+        &__cost {
+          height: 40px;
+        }
+        &__type {
+          height: 40px;
+        }
+        &__area {
+          height: 40px;
+        }
+        &__day {
+          height: 40px;
+        }
+      }
+    }
+
+    &__price {
+      margin: 24px 0 0;
+      text-align: center;
+
+      &__price {
+        margin: 0 16px 0 0;
+        font-size: 50px;
+      }
+      &__tax {
+        font-size: 10px;
+      }
+      &__fee {
+        font-size: 16px;
+      }
+    }
+
+    &__buy-btn {
+      text-align: center;
+
+      &__submit {
+        font-size: 24px;
+        line-height: 60px;
+        width: 100%;
+        margin-top: 16px;
+        display: block;
+        background: #ea352d;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    &__note {
+      text-align: center;
+      margin-top: 16px;
+      color: #ea352d;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    &__item-description {
+      padding: 32px 0 0;
+      font-size: 18px;
+      white-space: pre-wrap;
+    }
+
+    &__button-area {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      vertical-align: middle;
+
+      &__box {
+        &__good {
+          display: inline-block;
+          font-size: 14px;
+          color: #333;
+          border: 1px solid #f5f5f5;
+          background-color: #f5f5f5;
+          padding: 8px 16px;
+          border-radius: 40px;
+          cursor: pointer;
+
+          .icon {
+            color: #ccc;
+            font-weight: 400;
+            content: "\f004";
+          }
+        }
+
+        &__report {
+          display: inline-block;
+          margin-left: 16px;
+          font-size: 14px;
+          color: #333;
+          border: 1px solid #f5f5f5;
+          background-color: #f5f5f5;
+          padding: 8px 16px;
+          border-radius: 40px;
+          cursor: pointer;
+
+          .icon {
+            color: #333;
+            font-weight: 400;
+            content: "\f024";
+          }
+        }
+      }
+
+      &__safety {
+        font-size: 14px;
+        border: 1px solid #f5f5f5;
+        background-color: #f5f5f5;
+        padding: 8px 16px;
+        border-radius: 40px;
+
+        .icon {
+          font-weight: 900;
+          content: "\f023";
+        }
+      }
+    }
+
+  }
+  .message {
+    background-color: #139;
+    width: 652px;
+    height: 214px;
+    margin: 8px auto;
+    padding: 24px;
+  }
+
+  .navi {
+    background-color: #410;
+    width: 700px;
+    height: 14px;
+    margin: 24px auto 0;
+  }
+
+  .social-media {
+    background-color: #9a2;
+    width: 700px;
+    height: 82px;
+    margin: 24px auto;
+    padding: 32px 0 24px;
+  }
+
+  .related-item {
+    background-color: #2d3;
+    width: 700px;
+    height: 1500px;
+    margin: 0 auto;
+  }
+
+  .modal {
+    padding: 20px 0;
+  }
+
+  .bottom {
+    background-color: #2cc;
+    width: 1020px;
+    height: 16px;
+    margin: 0 auto;
+    padding: 16px 0;
+  }
+}

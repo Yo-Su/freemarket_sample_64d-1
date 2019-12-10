@@ -1,27 +1,5 @@
-# README
+# データベース設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 ## userテーブル
 |Column|Type|Options|
@@ -33,31 +11,23 @@ Things you may want to cover:
 |last_name_kana|string|null: false|
 |birthday|date|null: false|
 |password|string|null: false|
+|mail_address|string|null: false|unique: true|
+|phone_number|integer|null: false|unique: true|
 ### Association
-- has_many :cashflows
-- has_many :phoneNumbers
-- has_many  :addresses
-- has_many  :creditCardInfos
-- has_many  :messages
-- has_many  :items
-- has_many  :mailAddresses
-
+- has_many :cashflows,dependent: :destroy
+- has_many  :addresses,dependent: :destroy
+- has_many  :credit_card_infos,dependent: :destroy
+- has_many  :messages,dependent: :destroy
+- has_many  :items,dependent: :destroy
+- has_many  :likes,dependent: :destroy
 
 ## cashflowテーブル
 |Column|Type|Options|
 |------|----|-------|
 |amount|integer|null: false|
 |point|integer|null: false|
-|cashflow_type|string|null: false|
-|cashflow_date|date|null: false|
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
-
-## phoneNumberテーブル
-|Column|Type|Options|
-|------|----|-------|
-|number|integer|null: false|unique: true|
+|type|string|null: false|
+|date|date|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -65,20 +35,20 @@ Things you may want to cover:
 ## addressテーブル
 |Column|Type|Options|
 |------|----|-------|
-|address1|string|null: false|
-|address2|string|null: false|
-|address3|string|null: false|
-|address4|string|null: false|
 |post_number|integer|null: false|
-|address_phone|integer|null: false|
+|prefecture|string|null: false|
+|municipality|string|null: false|
+|block|string|null: false|
+|building|string|
+|phone_number|integer|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
-## creditCardInfoテーブル
+## credit_card_infoテーブル
 |Column|Type|Options|
 |------|----|-------|
-|cardNumber|integer|null: false|
+|card_number|integer|null: false|
 |pin_number|integer|null: false|
 |expiration_date|date|null: false|
 |user_id|integer|null: false, foreign_key: true|
@@ -106,49 +76,20 @@ Things you may want to cover:
 ## brandテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|null: false|
+|name|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :item
-
-## categoryMiniテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-|category_group|string|null: false|
-### Association
 - has_many  :items
-- belongs_to :categoryMiddles
-
-
-## categoryMiddleテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-|category_group|string|null: false|
-### Association
-- has_many  :categoryMinis
-- belongs_to :categoryBig
-- has_many  :items
-
-## categoryBigテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_name|string|null: false|
-### Association
-- has_many  :items
-- has_many  :categoryMiddles
 
 
 ## likeテーブル
 |Column|Type|Options|
 |------|----|-------|
-|count|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many  :items
-- has_many  :categoryMiddles
+- belongs_to :item
+- belongs_to :user
 
 
 ## itemテーブル
@@ -167,23 +108,22 @@ Things you may want to cover:
 |describe|string|null: false|
 |buyer_id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|categoryBig_id|integer|null: false, foreign_key: true|
-|categoryMiddle_id|integer|null: false, foreign_key: true|
-|categoryMini_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
 ### Association
-- has_many  :images
-- has_many  :messages
+- has_many  :images,dependent: :destroy
+- has_many  :messages,dependent: :destroy
+- has_many  :likes,dependent: :destroy
 - belongs_to :user
 - belongs_to :brand
-- belongs_to :categoryBig
-- belongs_to :categoryMiddle
-- belongs_to :categoryMini
+- belongs_to :category
 
-## mailAddressテーブル
+## categoryテーブル
 |Column|Type|Options|
 |------|----|-------|
-|mail_address|string|null: false|unique: true|
-|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|ancestry|string|null: false|
 ### Association
-- belongs_to :user
+- has_many  :items
+- has_ancestry
+
+
