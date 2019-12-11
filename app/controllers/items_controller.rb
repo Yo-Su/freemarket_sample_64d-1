@@ -4,21 +4,22 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @images = Image.includes(:item)
   end
 
   def buy
-    @item = Item.find(params[:id])
     @image = Image.includes(:item).first
   end
 
   def pay
-    @item.update(item_buy_params)
-    redirect_to checkout_item_path
+    if @item.update(item_buy_params)
+      redirect_to checkout_item_path
+    else
+      redirect_to root_path
+    end
   end
 
-  def done
+  def checkout
   end
 
   private
