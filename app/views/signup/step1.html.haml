@@ -73,13 +73,14 @@
             *本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
           %p.first-main__content__box__group__message4
             「次へ進む」のボタンを押すことにより、
-            %a{href: 'https://www.mercari.com/jp/tos_list/'}利用規約
+            = link_to 'https://www.mercari.com/jp/tos_list/', class: "first-main__content__box__group__message4__link" do
+              利用規約
             に同意したものとみなします
           = f.submit value: "次へ進む", class: "first-main__content__box__group__submit"
           .first-main__content__box__group__message5
             = link_to 'https://www.mercari.com/jp/help_center/article/423/',class: "first-main__content__box__group__message5__link" do
               本人情報の登録について
-              = fa_icon("chevron-right")
+              = icon "fas", "chevron-right"
 
 
   = render partial: 'footer'

@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 2019_12_10_101949) do
     t.string "building"
     t.integer "phone_number"
     t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
