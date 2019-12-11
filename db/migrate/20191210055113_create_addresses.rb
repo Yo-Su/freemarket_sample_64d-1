@@ -11,6 +11,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :block,              null: false
       t.string :building
       t.integer :phone_number
+      t.integer :user_id,           null: false
       t.timestamps
     end
   end

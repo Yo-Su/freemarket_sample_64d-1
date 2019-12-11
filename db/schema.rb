@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_055113) do
     t.string "block", null: false
     t.string "building"
     t.integer "phone_number"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

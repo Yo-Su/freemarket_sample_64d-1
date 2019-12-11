@@ -5,7 +5,7 @@
     .fifth-main__content
       .fifth-main__content__title
         支払い方法
-      = form_with model: @user, url: done_signup_index_path, method: :get, local: true, html: {class: 'fifth-main__content__box'} do |f|
+      = form_with model: @user, url: signup_index_path, method: :post, local: true, html: {class: 'fifth-main__content__box'} do |f|
         .fifth-main__content__box__group
           .fifth-main__content__box__group__tag
             .fifth-main__content__box__group__tag-name

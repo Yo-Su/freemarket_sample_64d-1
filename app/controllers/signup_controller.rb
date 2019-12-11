@@ -49,8 +49,31 @@ class SignupController < ApplicationController
     end
   end
 
+  def create
+    @user = User.new(
+      nick_name: session[:nick_name], # sessionに保存された値をインスタンスに渡す
+      email: session[:email],
+      password: session[:password],
+      last_name: session[:last_name], 
+      first_name: session[:first_name], 
+      last_name_kana: session[:last_name_kana], 
+      first_name_kana: session[:first_name_kana],
+      phone_number: session[:phone_number],
+      birthday: "2019-12-03"
+      #セレクトボックス 実装後に下を使う
+      # birthday: "#{session[:birth_year]}-#{session[:birth_month]}-#{session[:birth_day]}"
+    )
+    if @user.save
+    # ログインするための情報を保管
+      session[:id] = @user.id
+      redirect_to done_signup_index_path
+    else
+      render action: :done
+    end
+  end
+
   def done
-    
+    sign_in User.find(session[:id]) unless user_signed_in?
   end
 
   private
