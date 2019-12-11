@@ -1,0 +1,93 @@
+.aside
+  .app-text
+    %h2 スマホでかんたんフリマアプリ
+    %p 今すぐ無料ダウンロード！
+    .app-text__figure
+      .app-text__figure--image
+        = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?3135490372", width: "70px")
+      %ul
+        %li
+          = link_to "#" do
+            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3135490372", width: "130px")
+        %li
+          = link_to "#" do
+            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3135490372", width: "130px")
+  .app-image
+    = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?3135490372", height: "260px")
+.footer
+  .footer-content
+    .footer-top
+      .footer-top__content
+        %h2 メルカリについて
+        %ul
+          %li
+            = link_to "会社概要（運営会社）", "#"
+          %li
+            = link_to "採用情報", "#"
+          %li
+            = link_to "プレスリリース", "#"
+          %li
+            = link_to "公式ブログ", "#"
+          %li
+            = link_to "メルカリロゴ利用ガイドライン", "#"
+          .footer-top__content--social
+            %ul
+            %li
+              = link_to "#" do
+                = fa_icon 'twitter'
+            %li
+              = link_to "#" do
+                = fa_icon 'facebook-square'
+      .footer-top__content
+        %h2 ヘルプ＆ガイド
+        %ul
+          %li
+            = link_to "メルカリガイド", "#"
+          %li
+            = link_to "らくらくメルカリ便", "#"
+          %li
+            = link_to "ゆうゆうメルカリ便", "#"
+          %li
+            = link_to "大型メルカリ便", "#"
+          %li
+            = link_to "車体取引ガイド", "#"
+          %li
+            = link_to "メルカリあんしん・あんぜん宣言！", "#"
+          %li
+            = link_to "偽ブランド品撲滅への取り組み", "#"
+          %li
+            = link_to "メルカリボックス", "#"
+      .footer-top__content
+        %h2 プライバシーと利用規約
+        .footer-top__content--divide
+          .footer-top__content--divide--left
+            %ul
+              %li
+                = link_to "プライバシーポリシー", "#"
+              %li
+                = link_to "メルカリ利用規約", "#"
+              %li
+                = link_to "あんしんスマホサポート制度に関する利用特約", "#"
+              %li
+                = link_to "コンプライアンスポリシー", "#"
+          .footer-top__content--divide--right
+            %ul
+              %li
+                = link_to "個人データの安全管理に係る基本方針", "#"
+              %li
+                = link_to "特定商取引に関する表記", "#"
+              %li
+                = link_to "資金決済法に基づく表示", "#"
+              %li
+                = link_to "法令順守と犯罪抑止のために", "#"
+      .footer-top__content
+        %h2 国
+        %ul
+          %li
+            = link_to "日本", "#"
+          %li
+            = link_to "United States", "#"
+  .footer-bottom
+    = link_to root_path do
+      = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?3135490372", width: "120px")
+    %span © Mercari, Inc.
