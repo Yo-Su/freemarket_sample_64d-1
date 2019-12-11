@@ -1,25 +1,21 @@
 .wrapper
   .content
     .content__top
-      メンズ　ビジネスシューズ　ブラック25cm
+      = @item.name
     .content__item-data
       .content__item-data__photo
         .content__item-data__photo__main-image
-          = image_tag 'show-item01.jpg', size: "300x300", alt: "ユーザー投稿写真"
+          = image_tag @images.first.url, size: "300x300", alt: "ユーザー投稿写真"
         .content__item-data__photo__sub-image
-          = image_tag 'show-item01.jpg', size: "60x60", alt: "ユーザー投稿写真"
-          = image_tag 'show-item02.jpg', size: "60x60", alt: "ユーザー投稿写真"
-          = image_tag 'show-item03.jpg', size: "60x60", alt: "ユーザー投稿写真"
-          = image_tag 'show-item04.jpg', size: "60x60", alt: "ユーザー投稿写真"
-          = image_tag 'show-item05.jpg', size: "60x60", alt: "ユーザー投稿写真"
-          = image_tag 'show-item06.jpg', size: "60x60", alt: "ユーザー投稿写真"
+          - @images.each do |image|
+            = image_tag image.url, size: "60x60", alt: "ユーザー投稿写真"
       .content__item-data__table
         %table
           %tr.content__item-data__table__user-line
             %td.content__item-data__table__td= "出品者"
             %td
               .content__item-data__table__user-line__user-name
-                = link_to "のんたん", ""
+                = link_to @item.user_id, ""
               .content__item-data__table__user-line__evaluate
                 .content__item-data__table__user-line__evaluate__good
                   = icon 'fas', 'laugh', class: 'icon'
@@ -45,43 +41,38 @@
                   = "ドレス/ビジネス"
           %tr.content__item-data__table__brand
             %td.content__item-data__table__td= "ブランド"
-            %td= ""
+            %td= @item.try(:brand)
           %tr.content__item-data__table__size
             %td.content__item-data__table__td= "商品のサイズ"
-            %td= "25cm"
+            %td= @item.try(:size)
           %tr.content__item-data__table__status
             %td.content__item-data__table__td= "商品の状態"
-            %td= "新品、未使用"
+            %td= @item.grade
           %tr.content__item-data__table__cost
             %td.content__item-data__table__td= "配送料の負担"
-            %td= "送料込み(出品者負担)"
+            %td= @item.transfer_fee
           %tr.content__item-data__table__type
             %td.content__item-data__table__td= "配送の方法"
-            %td= "ゆうゆうメルカリ便"
+            %td= @item.delivery_type
           %tr.content__item-data__table__area
             %td.content__item-data__table__td= "配送元地域"
-            %td= link_to "奈良県", ""
+            %td= link_to @item.from_delivery_area, ""
           %tr.content__item-data__table__day
             %td.content__item-data__table__td= "発送日の目安"
-            %td= "2~3日で発送"
+            %td= @item.delivery_date
     .content__price
       .content__price__price
-        = "¥5,000"
+        = "¥#{@item.price.to_s(:delimited)}"
         %span.content__price__tax
           = "(税込) "
         %span.content__price__fee
           = "送料込み"
     .content__buy-btn
-      = link_to "購入画面に進む", "", class: "content__buy-btn__submit"
+      = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
     .content__note
       この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
     .content__item-description
-      日本製　本革　
-      新品未使用
-      抗菌、消臭加工
-      25cm
-      %br
-      写真5、6枚目のブラックの靴のみ商品です。
+      = @item.describe
     .content__button-area
       .content__button-area__box
         %label.content__button-area__box__good
