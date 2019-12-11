@@ -6,6 +6,13 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  resources :items, only: :show
+  resources :items, only: [:index, :show] do
+    member do
+      get 'buy'
+      post 'pay'
+      get 'checkout'
+    end
+  end
+  resources :sell, only: [:index, :new, :create]
   resources :card, only: [:index, :create, :new, :destroy]
 end

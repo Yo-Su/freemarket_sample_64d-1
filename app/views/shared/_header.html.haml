@@ -6,7 +6,7 @@
     .fuzzy_search
       = form_tag("#",method: :get) do
         %label.fuzzy_search__label
-          = fa_icon 'search', class: "fuzzy_search__label--icon"
+          = icon 'fas', 'search', class: "fuzzy_search__label--icon"
           = submit_tag 'search', :name => nil,class:"fuzzy_search__label--btn"
         = text_field_tag :search, "",class:"fuzzy_search__field",placeholder:"何かお探しですか？"
   .header-bottom
@@ -15,26 +15,26 @@
         %li.header-bottom__left__list__category
           %h2.header-bottom__left__list__category_field
             = link_to do
-              = fa_icon 'list-ul', class: "icon-red"
+              = icon 'fas', 'list-ul', class: "icon-red"
               %span カテゴリーから探す
         %li
           %h2
             = link_to "#" do
-              = fa_icon 'tag', class: "icon-red"
+              = icon 'fas', 'tag', class: "icon-red"
               %span ブランドから探す
     .header-bottom__right
       %ul
         %li
           = link_to "#" do
-            = fa_icon 'heart', class: "icon-gray"
+            = icon 'fas','heart', class: "icon-gray"
             %span いいね一覧
         %li
           = link_to "#" do
-            = fa_icon 'bell', class: "icon-gray"
+            = icon 'fas', 'bell', class: "icon-gray"
             %span お知らせ
         %li
           = link_to "#" do
-            = fa_icon 'check', class: "icon-gray"
+            = icon 'fas', 'check', class: "icon-gray"
             %span やることリスト
         %li
           = link_to "#" do
