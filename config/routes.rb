@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :items, only: :show do
     member do
       get 'buy'
+      post 'pay'
+      get 'checkout'
     end
   end
 end
