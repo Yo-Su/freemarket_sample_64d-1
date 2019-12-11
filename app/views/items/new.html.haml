@@ -1,3 +1,5 @@
+-# ここから下はサーバー側のフォーム登録の動作確認のためのテスト用のviewになります。
+-# LGTM後に正しいファイルとマージします。
 .contents
   .container
     = form_with(model: @item, url: items_path, method: :post, local: true) do |form|
@@ -15,27 +17,4 @@
       = form.select :status, ['売り切れ', '売り切れ']
       = form.select :delivery_type, ['らくらくメルカリ便', 'らくらくメルカリ便']
       = form.select :buyer_id, [['1', '1'], ['1', '1']]
-      
-      
-
       = form.submit "SEND"
-
-      -# = form.select :category_id,  [['メンズ', 'メンズ'], ['レディース', 'レディース']] 
-
-      
-    
-      
-      
-      -# = form.select :size, [['S', 'S'], ['M', 'M']]
-      -# = form.select :to_delivery_area, [['沖縄', '沖縄'], ['北海道', '北海道']]
-      -# = form.select :status, ['売り切れ', '売り切れ']
-      -# = form.select :delivery_type, ['らくらくメルカリ便', 'らくらくメルカリ便']
-      -# = form.select :buyer_id, [['1', '1'], ['1', '1']]
-      -# = form.select :user_id, [['2', '2'], ['3', '3']]
-      -# = form.select :brand_id, [['4', '4'], ['3', '3']]
-      -# = form.select :category_id,  [['5', '5'], ['6', '6']] 
-      
-      
-      
-      
-  
