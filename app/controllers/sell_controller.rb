@@ -1,12 +1,8 @@
 class SellController < ApplicationController
-  before_action :create_items_instance, only:[:index, :new,:show,:destroy]
+  before_action :create_items_instance, only:[:index, :destroy]
 
   def index
     
-  end
-
-  def new
-    @item_image = @item.images.build
   end
 end
 
