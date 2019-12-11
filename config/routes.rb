@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     end
   end
   resources :items, only: :show
+  resources :card, only: [:index, :create, :new, :destroy]
 end
