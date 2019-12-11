@@ -2,9 +2,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "users";
-@import "./items";
+@import "items";
 @import "sidebar";
-
-.test {
-  background-color: green;
-}
+@import 'header';
+@import 'sell-btn';
+@import 'main';
+@import "footer";
+@import "./reset";
+@import "sell";

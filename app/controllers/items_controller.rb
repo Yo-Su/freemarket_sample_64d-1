@@ -11,6 +11,11 @@ class ItemsController < ApplicationController
     @item.save
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @image = Image.includes(:item)
+  end
+
   private
   def item_params
     params.require(:item).permit(
