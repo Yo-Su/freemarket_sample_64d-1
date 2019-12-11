@@ -14,7 +14,7 @@
       = form.text_field :price, placeholder: "価格" , rows: "10"
       = form.select :size, [['S', 'S'], ['M', 'M']]
       = form.select :to_delivery_area, [['沖縄', '沖縄'], ['北海道', '北海道']]
-      = form.select :status, ['売り切れ', '売り切れ']
+      = form.select :status, [['売り切れ', '売り切れ']]
       = form.select :delivery_type, ['らくらくメルカリ便', 'らくらくメルカリ便']
       = form.select :buyer_id, [['1', '1'], ['1', '1']]
       = form.submit "SEND"
