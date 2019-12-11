@@ -417,16 +417,28 @@
             color: #fff;
             font-size: 14px;
             font-weight: bold;
-            // 購入できない場合
-            cursor: not-allowed;
-            background-color: #888;
-            // 購入できる場合
-            // cursor: pointer;
-            // background-color: #ea352d;
+            cursor: pointer;
+            background-color: #ea352d;
           }
         }
       }
     }
   }
   // =商品購入ページここまで============================
+
+  // =商品購入完了ページここから=========================
+  .done-content {
+    height: 800px;
+    padding-top: 100px;
+
+    &__area {
+      background-color: #fff;
+      width: 600px;
+      height: 80px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+  // =商品購入完了ページここまで=========================
 }
