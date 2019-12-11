@@ -72,12 +72,13 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'fog-aws'
-gem 'carrierwave'
-gem 'mini_magick'
-
 gem 'ancestry'
 gem 'devise'
 gem 'haml-rails'
 gem "font-awesome-sass"
 gem 'erb2haml'
+gem 'carrierwave'
+gem 'dropzonejs-rails', '~> 0.7.3'
+gem 'font-awesome-rails'
+gem 'fog-aws'
+gem 'mini_magick'
