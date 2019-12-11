@@ -5,9 +5,9 @@
     .content__item-data
       .content__item-data__photo
         .content__item-data__photo__main-image
-          = image_tag @image.first.url, size: "300x300", alt: "ユーザー投稿写真"
+          = image_tag @images.first.url, size: "300x300", alt: "ユーザー投稿写真"
         .content__item-data__photo__sub-image
-          - @image.each do |image|
+          - @images.each do |image|
             = image_tag image.url, size: "60x60", alt: "ユーザー投稿写真"
       .content__item-data__table
         %table
@@ -68,7 +68,7 @@
         %span.content__price__fee
           = "送料込み"
     .content__buy-btn
-      = link_to "購入画面に進む", "", class: "content__buy-btn__submit"
+      = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
     .content__note
       この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
     .content__item-description
