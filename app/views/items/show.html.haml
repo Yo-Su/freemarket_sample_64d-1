@@ -1,0 +1,104 @@
+.wrapper
+  .content
+    .content__top
+      = @item.name
+    .content__item-data
+      .content__item-data__photo
+        .content__item-data__photo__main-image
+          = image_tag @image.first.url, size: "300x300", alt: "ユーザー投稿写真"
+        .content__item-data__photo__sub-image
+          - @image.each do |image|
+            = image_tag image.url, size: "60x60", alt: "ユーザー投稿写真"
+      .content__item-data__table
+        %table
+          %tr.content__item-data__table__user-line
+            %td.content__item-data__table__td= "出品者"
+            %td
+              .content__item-data__table__user-line__user-name
+                = link_to @item.user_id, ""
+              .content__item-data__table__user-line__evaluate
+                .content__item-data__table__user-line__evaluate__good
+                  = icon 'fas', 'laugh', class: 'icon'
+                  = "16"
+                .content__item-data__table__user-line__evaluate__normal
+                  = icon 'fas', 'meh', class: 'icon'
+                  = "1"
+                .content__item-data__table__user-line__evaluate__bad
+                  = icon 'fas', 'frown', class: 'icon'
+                  = "0"
+          %tr.content__item-data__table__category
+            %td.content__item-data__table__td= "カテゴリー"
+            %td
+              .content__item-data__table__category__big
+                = link_to "メンズ", ""
+              .content__item-data__table__category__middle
+                = link_to "" do
+                  = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__middle__icon'
+                  =  "靴"
+              .content__item-data__table__category__small
+                = link_to  "" do
+                  = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__small__icon'
+                  = "ドレス/ビジネス"
+          %tr.content__item-data__table__brand
+            %td.content__item-data__table__td= "ブランド"
+            %td= @item.try(:brand)
+          %tr.content__item-data__table__size
+            %td.content__item-data__table__td= "商品のサイズ"
+            %td= @item.try(:size)
+          %tr.content__item-data__table__status
+            %td.content__item-data__table__td= "商品の状態"
+            %td= @item.grade
+          %tr.content__item-data__table__cost
+            %td.content__item-data__table__td= "配送料の負担"
+            %td= @item.transfer_fee
+          %tr.content__item-data__table__type
+            %td.content__item-data__table__td= "配送の方法"
+            %td= @item.delivery_type
+          %tr.content__item-data__table__area
+            %td.content__item-data__table__td= "配送元地域"
+            %td= link_to @item.from_delivery_area, ""
+          %tr.content__item-data__table__day
+            %td.content__item-data__table__td= "発送日の目安"
+            %td= @item.delivery_date
+    .content__price
+      .content__price__price
+        = "¥#{@item.price.to_s(:delimited)}"
+        %span.content__price__tax
+          = "(税込) "
+        %span.content__price__fee
+          = "送料込み"
+    .content__buy-btn
+      = link_to "購入画面に進む", "", class: "content__buy-btn__submit"
+    .content__note
+      この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+    .content__item-description
+      = @item.describe
+    .content__button-area
+      .content__button-area__box
+        %label.content__button-area__box__good
+          = icon 'far', 'heart', class: 'icon'
+          いいね!
+          = "0"
+        %label.content__button-area__box__report
+          = icon 'far', 'flag', class: 'icon'
+          不適切な商品の報告
+      = link_to "", class: "content__button-area__safety" do
+        = icon 'fas', 'lock', class: 'icon'
+        あんしん・あんぜんへの取り組み
+
+-# ToDoリスト商品詳細ページ コメントページ/リンク/アイコン欄実装用クラス定義のみ
+  -# .message
+  -#   .message__note
+  -#   .message__textarea
+  -#   .message__submit-btn
+  -# .navi
+  -#   .navi__left-box
+  -#   .navi__right-box
+  -# .social-media
+  -#   .social-media__box
+  -# .related-item
+  -#   .related-item__user-item
+  -#   .related-item__category-item
+  -# .modal
+  -# .bottom
+  -#   .bottom__box

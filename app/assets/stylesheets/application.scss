@@ -1,5 +1,13 @@
+@import "font-awesome-sprockets";
 @import "font-awesome";
-@import "reset";
+@import "./reset";
+@import "users";
+@import "items";
+@import "sidebar";
+@import 'header';
+@import 'sell-btn';
+@import 'main';
+@import "footer";
 @import "items";
 @import "step1";
 @import "step2";
@@ -10,3 +18,6 @@
 body{
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
+
+
+
