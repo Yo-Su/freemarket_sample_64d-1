@@ -6,11 +6,12 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  resources :items, only: :show do
+  resources :items, only: [:index, :show] do
     member do
       get 'buy'
     end
   end
+
   resources :signup, only: :create do
     collection do
       get 'step1'
@@ -21,4 +22,7 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
+
+  resources :sell, only: [:index, :new, :create]
+
 end
