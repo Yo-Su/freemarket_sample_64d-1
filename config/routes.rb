@@ -6,5 +6,9 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  resources :items, only: :show
+  resources :items, only: :show do
+    member do
+      get 'buy'
+    end
+  end
 end

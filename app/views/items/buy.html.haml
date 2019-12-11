@@ -1,0 +1,46 @@
+.wrapper
+  .buy-content
+    .buy-area
+      .buy-area__title
+        購入内容の確認
+      .buy-area__item-area
+        .buy-area__item-area__inner
+          .buy-area__item-area__inner__image
+            = image_tag 'show-item01.jpg', size: "80x80", alt: "ユーザー投稿写真"
+          .buy-area__item-area__inner__describe-area
+            .buy-area__item-area__inner__describe-area__title
+              = "高コスパゲーミングpc　Rx480　8GB (大抵のゲームは快適動作可能)"
+            .buy-area__item-area__inner__describe-area__price-area
+              .buy-area__item-area__inner__describe-area__price-area__price
+                = "¥46,000"
+              .buy-area__item-area__inner__describe-area__price-area__tax
+                （税込）送料込み
+      .buy-area__buy-form
+        .buy-area__buy-form__price-area
+          .buy-area__buy-form__price-area__label
+            支払い金額
+          .buy-area__buy-form__price-area__price
+            = "¥46,000"
+        -# ポイント機能は後回しにする
+        -# .buy-area__buy-form__point-area
+        -#   = check_box_tag :buy_form_point
+        -#   = label_tag :buy_form_point, "ポイントを使用 (所持ポイント: P0)", class: "buy-area__buy-form__point-area__point"
+        .buy-area__buy-form__chash-area
+          .buy-area__buy-form__chash-area__title
+            支払い方法
+          .buy-area__buy-form__chash-area__card-area
+            = link_to  "" do
+              = icon 'fas', 'plus-circle', class: 'buy-area__buy-form__chash-area__card-area__icon'
+              .buy-area__buy-form__chash-area__card-area__notice= "登録してください"
+        .buy-area__buy-form__deribary-area
+          .buy-area__buy-form__deribary-area__title-area
+            .buy-area__buy-form__deribary-area__title-area__title
+              配送先
+            .buy-area__buy-form__deribary-area__title-area__change
+              = link_to "変更する", ""
+          .buy-area__buy-form__deribary-area__adress
+            〒123-4567
+            北海道 札幌市 123-abc
+            山田 太郎
+        .buy-area__buy-form__submit
+          %input{type: "submit", value: "購入する", class: "buy-area__buy-form__submit__btn"}
