@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   def item_buy_params
     # current_user.idの代わり、ログイン機能実装後に入れ替える
     test_id = 2
-    params.permit(:id).merge(buyer_id: test_id, status: "購入中")
+    params.permit(:id).merge(buyer_id: test_id, status: 1)
   end
 
   def item_params
