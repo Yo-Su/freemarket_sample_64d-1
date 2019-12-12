@@ -27,20 +27,20 @@
         .form-group
           %label{for: "prefecture"} 都道府県
           %span.form-arbitrary 任意
-          .select-wrap
+          .form-group__form
             =icon 'fas','angle-down'
         .form-group
           %label{for: "city"} 市区町村
           %span.form-arbitrary 任意
-          .select-wrap
+          .form-group__form
         .form-group
           %label{for: "address1_label"} 番地
           %span.form-arbitrary 任意
-          .select-wrap
+          .form-group__form
         .form-group
           %label{for: "address2_label"} 建物名
           %span.form-arbitrary 任意
-          .select-wrap
+          .form-group__form
         = submit_tag "変更する",class: 'btn-default'
         .form-group.text-right
           = link_to 'https://www.mercari.com/jp/help_center/article/423/', target: "_blank" do
