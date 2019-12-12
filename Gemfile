@@ -79,7 +79,6 @@ gem "font-awesome-sass"
 gem 'erb2haml'
 gem 'carrierwave'
 gem 'dropzonejs-rails', '~> 0.7.3'
-gem 'font-awesome-rails'
 gem 'fog-aws'
 gem 'mini_magick'
 
