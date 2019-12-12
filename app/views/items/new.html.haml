@@ -1,0 +1,20 @@
+-# ここから下はサーバー側のフォーム登録の動作確認のためのテスト用のviewになります。
+-# LGTM後に正しいファイルとマージします。
+.contents
+  .container
+    = form_with(model: @item, url: items_path, method: :post, local: true) do |form|
+      %h3
+        商品の情報を入力
+      = form.text_field :name, placeholder: "商品名" , rows: "10"
+      = form.text_area :describe, placeholder: "商品の説明" , rows: "10"
+      = form.select :grade, [['新品','新品'], ['未使用', '未使用']]
+      = form.select :from_delivery_area, [['東京', '東京'], ['大阪', '大阪']] 
+      = form.select :delivery_date, [['1日', '１日'], ['2日', '2日']] 
+      = form.select :transfer_fee, [['送料込み', '送料込み'], ['着払い', '着払い']]
+      = form.text_field :price, placeholder: "価格" , rows: "10"
+      = form.select :size, [['S', 'S'], ['M', 'M']]
+      = form.select :to_delivery_area, [['沖縄', '沖縄'], ['北海道', '北海道']]
+      = form.select :status, [['売り切れ', '売り切れ']]
+      = form.select :delivery_type, ['らくらくメルカリ便', 'らくらくメルカリ便']
+      = form.select :buyer_id, [['1', '1'], ['1', '1']]
+      = form.submit "SEND"

@@ -1,10 +1,12 @@
 class Item < ApplicationRecord
+  has_many    :images    ,dependent: :destroy
+  has_many    :messages  ,dependent: :destroy
+  has_many    :likes     ,dependent: :destroy
+  belongs_to  :user
+  belongs_to  :brand
+  belongs_to  :category
 
-  belongs_to :user
-  has_many   :images,dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  has_many :comments 
-
   validates :name, presence: true
   validates :describe, presence: true
   validates :category, presence: true
@@ -14,7 +16,7 @@ class Item < ApplicationRecord
   validates :delivery_type, presence: true
   validates :transfer_fee, presence: true
   validates :delivery_date, presence: true
-
+  
   enum status: { 新品、未使用: 1, 未使用に近い: 2, 目立った傷や汚れなし: 3, やや傷や汚れあり: 4, 傷や汚れあり: 5, 全体的に状態が悪い: 6}, _prefix: true
   enum transfer_fee: { "送料込み(出品者負担)": 1, "着払い(購入者負担)": 2}, _prefix: true
   enum delivery_type: { "未定": 1, "らくらくメルカリ便": 2, "ゆうメール": 3, "レターパック": 4, "普通郵便(定形、定形外)": 5, "クロネコヤマト": 6, "ゆうパック": 7, "クリックポスト": 8, "ゆうパケット": 9}, _prefix: true
