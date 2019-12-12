@@ -424,6 +424,21 @@
       }
     }
   }
+  #payjp_checkout_box input[type=button] {
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ea352d;
+  }
   // =商品購入ページここまで============================
 
   // =商品購入完了ページここから=========================

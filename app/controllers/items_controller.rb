@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
   before_action :get_item, only: [:show, :buy, :pay]
+
+  require 'payjp'
+  Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+
   def index
   end
 
@@ -11,7 +15,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
     else
-      redirect_to root_path   
+      redirect_to root_path
     end
   end
 
@@ -24,6 +28,13 @@ class ItemsController < ApplicationController
   end
 
   def pay
+    require 'payjp'
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp::Charge.create(
+      amount: 300, # 決済する値段
+      card: params['payjp-token'],
+      currency: 'jpy'
+    )
     if @item.update(item_buy_params)
       redirect_to checkout_item_path
     else

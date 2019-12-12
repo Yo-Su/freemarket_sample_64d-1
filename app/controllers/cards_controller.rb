@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-
+  # Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PUBLIC_KEY)
   def index
   end
 
