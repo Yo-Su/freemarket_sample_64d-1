@@ -60,13 +60,13 @@
               生年月日
             .first-main__content__box__group__tag__form-require
               必須
-          = f.select :birth_year, ["--"], {}, class: "first-main__content__box__group__select"
+          = f.select :birth_year, ["--"], {}, {class: "first-main__content__box__group__select", id: "select_birth_year"}
           %span
             年
-          = f.select :birth_month, ["--"], {}, class: "first-main__content__box__group__select"
+          = f.select :birth_month, ["--"], {}, {class: "first-main__content__box__group__select", id: "select_birth_month"}
           %span
             月
-          = f.select :birth_day, ["--"], {}, class: "first-main__content__box__group__select"
+          = f.select :birth_day, ["--"], {}, {class: "first-main__content__box__group__select", id: "select_birth_day"}
           %span
             日
           .first-main__content__box__group__message3
