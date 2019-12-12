@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   end
   resources :signup, only: :create do
     collection do
-      get 'step1'
-      get 'step2'
-      get 'step3'
-      get 'step4'
-      get 'step5' # ここで、入力の全てが終了する
-      get 'done' # 登録完了後のページ
+      get 'member_info'
+      get 'phone_info'
+      get 'sms_confirmation'
+      get 'address_info'
+      get 'credit_info' # ここで、入力の全てが終了する
+      get 'complete' # 登録完了後のページ
     end
   end
 end

@@ -6,7 +6,7 @@
     .third-main__content
       .third-main__content__title
         電話番号認証
-      = form_with model: @user, url: step4_signup_index_path, method: :get, local: true,html: {class: 'third-main__content__box'} do |f|
+      = form_with model: @user, url: address_info_signup_index_path, method: :get, local: true,html: {class: 'third-main__content__box'} do |f|
         .third-main__content__box__group
           .third-main__content__box__group__name
             認証番号
@@ -27,7 +27,7 @@
           %p.third-main__content__box__group3__message4
             認証番号を再送することもできます。もう一度電話番号を入力して下さい。
           %p.third-main__content__box__group3__message5
-            = link_to step2_signup_index_path,class: "third-main__content__box__group3__message5__link" do
+            = link_to phone_info_signup_index_path,class: "third-main__content__box__group3__message5__link" do
               電話番号を再度入力する
           %p.third-main__content__box__group3__message6
             %span

@@ -1,10 +1,10 @@
 class SignupController < ApplicationController
 
-  def step1
+  def member_info
     @user = User.new # 新規インスタンス作成
   end
 
-  def step2
+  def phone_info
     # step1で入力された値をsessionに保存
     if params[:user]
       session[:nick_name] = user_params[:nick_name]
@@ -21,7 +21,7 @@ class SignupController < ApplicationController
     end
   end
 
-  def step3
+  def sms_confirmation
     
     # step2で入力された値をsessionに保存
     if params[:user]
@@ -30,11 +30,11 @@ class SignupController < ApplicationController
     end
   end
 
-  def step4
+  def address_info
     @address = Address.new
   end
 
-  def step5
+  def credit_info
     if params[:address]
       session[:last_name] = address_params[:last_name]
       session[:first_name] = address_params[:first_name]
@@ -68,11 +68,11 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to done_signup_index_path
     else
-      render action: :done
+      render action: :complete
     end
   end
 
-  def done
+  def complete
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 

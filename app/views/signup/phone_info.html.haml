@@ -5,7 +5,7 @@
     .second-main__content
       .second-main__content__title
         電話番号の確認
-      = form_with model: @user, url: step3_signup_index_path, method: :get, local: true, html: {class: 'second-main__content__box'} do |f|
+      = form_with model: @user, url: sms_confirmation_signup_index_path, method: :get, local: true, html: {class: 'second-main__content__box'} do |f|
         .second-main__content__box__group
           .second-main__content__box__group__name
             携帯電話の番号

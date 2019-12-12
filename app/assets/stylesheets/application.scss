@@ -8,12 +8,12 @@
 @import 'sell-btn';
 @import 'main';
 @import "footer";
-@import "step1";
-@import "step2";
-@import "step3";
-@import "step4";
-@import "step5";
-@import "done";
+@import "member_info";
+@import "phone_info";
+@import "sms_confirmation";
+@import "address_info";
+@import "credit_info";
+@import "complete";
 body{
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
