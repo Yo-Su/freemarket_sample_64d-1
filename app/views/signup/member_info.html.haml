@@ -1,0 +1,86 @@
+.signup-container
+  = render partial: 'header'
+
+
+  .first-main
+    .first-main__content
+      .first-main__content__title
+        会員情報入力
+      = form_with model: @user, url: phone_info_signup_index_path, method: :get, local: true, html: {class: 'first-main__content__box'} do |f|
+        .first-main__content__box__group
+          .first-main__content__box__group__tag
+            .first-main__content__box__group__tag-name
+              ニックネーム
+            .first-main__content__box__group__tag__form-require
+              必須
+          = f.text_field :nick_name, placeholder: '例) メルカリ太郎', class: "first-main__content__box__group__form"
+        .first-main__content__box__group#margin_top
+          .first-main__content__box__group__tag
+            .first-main__content__box__group__tag-name
+              メールアドレス
+            .first-main__content__box__group__tag__form-require
+              必須
+          = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: "first-main__content__box__group__form"
+        .first-main__content__box__group#margin_top
+          .first-main__content__box__group__tag
+            .first-main__content__box__group__tag-name
+              パスワード
+            .first-main__content__box__group__tag__form-require
+              必須
+          = f.password_field :password, placeholder: '7文字以上の半角英数字', class: "first-main__content__box__group__form"
+          %p.first-main__content__box__group__message1
+            *英字と数字の両方を含めて設定してください
+          %label.first-main__content__box__group__checkbox
+            %input{:checked => "checked", :type => "checkbox"}/
+            パスワードを表示する
+          .first-main__content__box__group__text
+            .first-main__content__box__group__text__title
+              本人確認
+            .first-main__content__box__group__text__message2
+              安心・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客様に公開されることはありません。
+        .first-main__content__box__group#margin_top
+          .first-main__content__box__group__tag
+            .first-main__content__box__group__tag-name
+              お名前(全角)
+            .first-main__content__box__group__tag__form-require
+              必須
+          = f.text_field :last_name, placeholder: '例) 山田', class: "first-main__content__box__group__form1"
+          = f.text_field :first_name, placeholder: '例）彩', class: "first-main__content__box__group__form2"
+        .first-main__content__box__group#margin_top
+          .first-main__content__box__group__tag
+            .first-main__content__box__group__tag-name
+              お名前カナ(全角)
+            .first-main__content__box__group__tag__form-require
+              必須
+          = f.text_field :last_name_kana, placeholder: '例) ヤマダ', class: "first-main__content__box__group__form1"
+          = f.text_field :first_name_kana, placeholder: '例) アヤ', class: "first-main__content__box__group__form2"
+        .first-main__content__box__group#margin_top
+          .first-main__content__box__group__tag
+            .first-main__content__box__group__tag-name
+              生年月日
+            .first-main__content__box__group__tag__form-require
+              必須
+          = f.select :birth_year, ["--"], {}, class: "first-main__content__box__group__select"
+          %span
+            年
+          = f.select :birth_month, ["--"], {}, class: "first-main__content__box__group__select"
+          %span
+            月
+          = f.select :birth_day, ["--"], {}, class: "first-main__content__box__group__select"
+          %span
+            日
+          .first-main__content__box__group__message3
+            *本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
+          %p.first-main__content__box__group__message4
+            「次へ進む」のボタンを押すことにより、
+            = link_to 'https://www.mercari.com/jp/tos_list/', class: "first-main__content__box__group__message4__link" do
+              利用規約
+            に同意したものとみなします
+          = f.submit value: "次へ進む", class: "first-main__content__box__group__submit"
+          .first-main__content__box__group__message5
+            = link_to 'https://www.mercari.com/jp/help_center/article/423/',class: "first-main__content__box__group__message5__link" do
+              本人情報の登録について
+              = icon "fas", "chevron-right"
+
+
+  = render partial: 'footer'

@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(version: 2019_12_11_102707) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "post_number", null: false
+    t.string "prefecture", null: false
+    t.string "municipality", null: false
+    t.string "block", null: false
+    t.string "building"
+    t.integer "phone_number"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
     t.integer "item_id", null: false
@@ -55,8 +71,15 @@ ActiveRecord::Schema.define(version: 2019_12_11_102707) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nick_name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.date "birthday", null: false
+    t.integer "phone_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
