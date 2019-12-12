@@ -1,0 +1,181 @@
+
+
+.signup-container{
+  background-color: #f5f5f5;
+
+
+  .signup-header{
+    height: 128px;
+    text-align: center;
+    a{
+      margin-right: 8px;
+      img{
+        width: 185px;
+        height: 49px;
+        margin-top: 40px;
+      }
+    }
+  }
+
+
+  .first-main{
+    &__content{
+      background-color: white;
+      width: 700px;
+      margin: 0 auto;
+      &__title{
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 32px;
+        border-bottom: 1px solid #f5f5f5;
+      }
+      &__box{
+        display: flex;
+        flex-direction: column;
+        padding: 40px 40px 64px;
+        max-width: 343px;
+        margin: 0 auto;
+        #margin_top{
+          margin-top: 24px;
+        }
+        &__group{
+          &__tag{
+            display: flex;
+            &-name{
+              font-size: 14px;
+              font-weight: 600;
+            }
+            &__form-require{
+              background-color: #ea352d;
+              color: #ffffff;
+              font-size: 12px;
+              margin-left: 8px;
+              padding: 0 4px;
+              height: 20px;
+            }
+          }
+          &__form{
+            width: 309px;
+            height: 30px;
+            margin-top: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px 16px 8px;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__message1{
+            margin-top: 8px;
+            line-height: 1.5;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 16px;
+          }
+          &__checkbox{
+            cursor: pointer;
+            input{
+              transform: scale(1.5);
+            }
+          }
+          &__form1{
+            height: 30px;
+            width: calc(50% - 41px);
+            margin: 8px 8px 0 0;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+          }
+          &__form2{
+            height: 30px;
+            width: calc(50% - 41px);
+            margin-top: 8px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+          }
+          &__text{
+            margin-top: 32px;
+            &__title{
+              font-size: 16px;
+              font-weight: bold;
+            }
+            &__message2{
+              font-size: 14px;
+              margin-top: 8px;
+            }
+          }
+          &__message3{
+            margin-top: 8px;
+            font-size: 14px;
+            color: #888;
+          }
+          &__select{
+            padding: 0 10px;
+            height: 46px;
+            width: 76px;
+            background-color: white;
+          }
+          &__submit{
+            height: 48px;
+            width: 100%;
+            background-color:  #ea352d;
+            color: #ffffff;
+            margin-top: 32px;
+            margin-bottom: 40px;
+            cursor: pointer;
+          }
+          &__message4{
+            color: #333333;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 40px;
+            &__link{
+              text-decoration: none;
+              color: #0099e8;
+            }
+            a:hover{
+              text-decoration: underline;
+              opacity: .7;
+            }
+          }
+          &__message5{
+            text-align: right;
+            &__link{
+              color: #0099e8;
+              text-decoration: none;
+              font-size: 14px;
+            }
+            &__link:hover{
+              text-decoration: underline;
+              opacity: .7;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .signup-footer{
+    height: 140px;
+    text-align: center;
+    margin: 0 429px;
+    padding: 40px 0;
+    ul{
+      li{
+        font-size: 12px;
+      }
+      list-style: none;
+      img{
+        width: 80px;
+        height: 65px;
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,20 @@
+.signup-container
+  = render partial: 'header'
+
+  .done-main
+    .done-main__content
+      .done-main__content__title
+        会員登録完了
+      .done-main__content__box
+        .done-main__content__box__group
+          .done-main__content__box__group__text
+            ありがとうございます。<br>会員登録が完了しました。
+
+        .done-main__content__box__group
+          %button.done-main__content__box__group__button
+            商品に戻る
+            = link_to "", root_path, class: "done-main__content__box__group__button__link"
+      .done-main__content__image
+        写真
+
+  = render partial: 'footer'
