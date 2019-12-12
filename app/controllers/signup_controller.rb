@@ -36,10 +36,10 @@ class SignupController < ApplicationController
 
   def credit_info
     if params[:address]
-      session[:adress_last_name] = address_params[:last_name]
-      session[:adress_first_name] = address_params[:first_name]
-      session[:adress_last_name_kana] = address_params[:last_name_kana]
-      session[:adress_first_name_kana] = address_params[:first_name_kana]
+      session[:address_last_name] = address_params[:last_name]
+      session[:address_first_name] = address_params[:first_name]
+      session[:address_last_name_kana] = address_params[:last_name_kana]
+      session[:address_first_name_kana] = address_params[:first_name_kana]
       session[:post_number] = address_params[:post_number]
       session[:prefecture] = address_params[:prefecture]
       session[:municipality] = address_params[:municipality]
