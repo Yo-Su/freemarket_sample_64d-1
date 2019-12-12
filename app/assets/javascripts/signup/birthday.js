@@ -67,7 +67,7 @@ $(function(){
           value: birth_day[i].var,
           text: birth_day[i].txt
         }).appendTo('#select_birth_day');
-      };
-    };
+      }
+    }
   });
 });
