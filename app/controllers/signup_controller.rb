@@ -66,9 +66,9 @@ class SignupController < ApplicationController
     if @user.save
     # ログインするための情報を保管
       session[:id] = @user.id
-      redirect_to done_signup_index_path
+      redirect_to complete_signup_index_path
     else
-      render action: :complete
+      render action: :member_info
     end
   end
 
