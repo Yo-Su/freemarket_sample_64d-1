@@ -28,5 +28,5 @@ Rails.application.routes.draw do
   resources :sell, only: [:index, :new, :create]
   resources :card, only: [:index, :create, :new, :destroy]
   resources :imeges, only: [:new, :create]
-  resources :mypages, only: [:index,:update,:show,:edit]
+  resources :mypages, only: [:index,:update]
 end
