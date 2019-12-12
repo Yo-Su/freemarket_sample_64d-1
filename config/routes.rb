@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :sell, only: [:index, :new, :create]
+  resources :card, only: [:index, :create, :new, :destroy]
   resources :imeges, only: [:new, :create]
+
 end

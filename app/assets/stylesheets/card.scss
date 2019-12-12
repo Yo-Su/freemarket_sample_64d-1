@@ -1,0 +1,146 @@
+.main{
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0px;
+  .main-box{
+    width: 700px;
+    float: right;
+    .card-main{
+      background: #fff;
+      .contents-add-input{
+        h2{
+          font-size: 24px;
+          padding: 8px 24px;
+          border-bottom: 1px solid #f5f5f5;
+          text-align: center;
+          line-height: 1.4;
+          font-weight: bold;
+        }
+        .add-bottom{
+          margin: 0 auto;
+          max-width: 343px;
+          .add-bottom-form{
+            padding: 24px 16px 40px;
+            .form-group{
+              margin: 24px 0 0;
+              label{
+                font-weight: 600;
+              }
+              span{
+                background: #ea352d;
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+              }  
+              .number{
+                width: 100%;
+                margin: 8px 0 0;
+                height: 48px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              .card-list{
+                ul{
+                  margin: 8px 0 0;
+                  font-size: 0;
+                  display:flex;
+                  li{
+                    margin: 0 0 0 8px;
+                  }
+                }
+              }
+              .select-wrap{
+                display: flex;
+                .select-wrap-half{
+                  display: inline-block;
+                  width: 45%;
+                  margin: 8px 0 0;
+                  position: relative;
+                  background: #fff;
+                  select{
+                    -webkit-appearance: none;
+                    width: calc(100% - 38px);
+                    position: relative;
+                    z-index: 2;
+                    height: 48px;
+                    padding: 0 16px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: 0;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    cursor: pointer;
+                  }
+                  .drop-icon{
+                    top:5px;
+                    right: 50px;
+                    position: absolute;
+                    z-index: 10;
+                    color: #888;
+                    font-size: 35px;
+                  }
+                  p{
+                    display:inline;
+                    font-size: 14px;
+                  }
+                }
+              }
+              .input-default{
+                width: 100%;
+                margin: 8px 0 0;
+                height: 48px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              .signup-seqcode{
+                text-align: right;
+                font-size: 14px;
+                margin: 8px 0 0;
+                .signup-seqcode-text{
+                  display: inline-block;
+                  width: 14px;
+                  height: 14px;
+                  border-radius: 50%;
+                  background: #0099e8;
+                  color: #fff;
+                  line-height: 14px;
+                  font-size: 12px;
+                  text-align: center;
+                }
+                p{
+                  color: #0099e8;
+                  display:inline;
+                }
+              }
+            }
+            .add-btn{
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              width: 100%;
+              margin: 8px 0 0;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            .card-details-container{
+              width: 100%;
+              height: 113px;
+            }
+          }
+        }
+      }
+    }  
+  }  
+} 
