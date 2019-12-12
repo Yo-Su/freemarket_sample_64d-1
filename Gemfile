@@ -81,4 +81,3 @@ gem 'carrierwave'
 gem 'dropzonejs-rails', '~> 0.7.3'
 gem 'fog-aws'
 gem 'mini_magick'
-
