@@ -27,8 +27,6 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nick_name
-    validates :last_name
-    validates :first_name
     validates :birthday
     validates :phone_number
   end
