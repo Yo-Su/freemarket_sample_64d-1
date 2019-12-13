@@ -1,7 +1,7 @@
 .header
   .header-top
     %h1
-      = link_to "#" do
+      = link_to root_path do
         %img{src: "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3135490372", width: "150px"}
     .fuzzy_search
       = form_tag("#",method: :get) do
@@ -37,6 +37,6 @@
             = icon 'fas', 'check', class: "icon-gray"
             %span やることリスト
         %li
-          = link_to "#" do
+          = link_to user_path(1) do
             .header-bottom__right--image 
             %span マイページ
