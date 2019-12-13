@@ -62,21 +62,6 @@ class SignupController < ApplicationController
     end
   end
 
-  # def credit_info
-  #   if params[:address]
-  #     session[:address_last_name] = address_params[:last_name]
-  #     session[:address_first_name] = address_params[:first_name]
-  #     session[:address_last_name_kana] = address_params[:last_name_kana]
-  #     session[:address_first_name_kana] = address_params[:first_name_kana]
-  #     session[:post_number] = address_params[:post_number]
-  #     session[:prefecture] = address_params[:prefecture]
-  #     session[:municipality] = address_params[:municipality]
-  #     session[:block] = address_params[:block]
-  #     session[:building] = address_params[:building]
-  #     session[:address_phone_number] = address_params[:phone_number]
-  #   end
-  # end
-
   def complete
     sign_in User.find(session[:id]) unless user_signed_in?
   end
