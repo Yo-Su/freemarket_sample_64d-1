@@ -9,6 +9,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+#下記の記載は動作確認用のため本実装の際は削除する
+# @item.user_id = 1
+# @item.brand_id = 1
+# @item.category_id = 1
+    @item.user_id = 1
+    @item.brand_id = 1
+    @item.category_id = 1
     if @item.save
     else
       redirect_to root_path   
@@ -66,5 +73,4 @@ class ItemsController < ApplicationController
   end
     
 end
-
 
