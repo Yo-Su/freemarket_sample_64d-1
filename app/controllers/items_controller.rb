@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :get_item, only: [:show, :buy, :pay]
 
   require 'payjp'
-  Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
 
   def index
   end
@@ -25,21 +24,34 @@ class ItemsController < ApplicationController
 
   def buy
     @image = Image.includes(:item).first
+    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
+    @card = Card.find_by(user_id: 1)
   end
 
   def pay
-    require 'payjp'
+    # クレジットカード決済===================================================================
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-    Payjp::Charge.create(
-      amount: 300, # 決済する値段
-      card: params['payjp-token'],
-      currency: 'jpy'
-    )
+    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
+    card = Card.where(user_id: 1).first
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    if Payjp::Charge.create(
+        amount: @item.price,
+        customer: card.customer_id,
+        currency: 'jpy'
+      )
+    else
+      # 決済に失敗したらトップページに移動する
+      redirect_to root_path
+    end
+    # クレジットカード決済 ここまで============================================================
+
+    # 商品情報更新(出品状態変更・購入者ID追加)===================================================
     if @item.update(item_buy_params)
       redirect_to checkout_item_path
     else
       redirect_to root_path
     end
+    # 商品情報更新 ここまで===================================================================
   end
 
   def checkout
@@ -75,7 +87,6 @@ class ItemsController < ApplicationController
       :category_id
     )
   end
-    
 end
 
 
