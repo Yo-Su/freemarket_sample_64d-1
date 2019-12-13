@@ -27,11 +27,24 @@
         -#   = label_tag :buy_form_point, "ポイントを使用 (所持ポイント: P0)", class: "buy-area__buy-form__point-area__point"
         .buy-area__buy-form__chash-area
           .buy-area__buy-form__chash-area__title
-            支払い方法
+            .buy-area__buy-form__chash-area__title__name
+              支払い方法
+            .buy-area__buy-form__chash-area__title__link
+              - if @card
+                = link_to "変更する", new_card_path
           .buy-area__buy-form__chash-area__card-area
-            = link_to  "" do
-              = icon 'fas', 'plus-circle', class: 'buy-area__buy-form__chash-area__card-area__icon'
-              .buy-area__buy-form__chash-area__card-area__notice= "登録してください"
+            - if @card
+              クレジットカード
+              %br
+              = @card.card_number
+              %br
+              = "有効期限#{sprintf("%02d", @card.exp_month)}/#{@card.exp_year % 100}"
+              %br
+              =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?82960919", size: "49x20",alt:"visa"
+            - else
+              = link_to  new_card_path do
+                = icon 'fas', 'plus-circle', class: 'buy-area__buy-form__chash-area__card-area__icon'
+                .buy-area__buy-form__chash-area__card-area__notice= "登録してください"
         .buy-area__buy-form__deribary-area
           .buy-area__buy-form__deribary-area__title-area
             .buy-area__buy-form__deribary-area__title-area__title
@@ -43,9 +56,9 @@
             北海道 札幌市 123-abc
             山田 太郎
         .buy-area__buy-form__submit
-          -# %input{type: "submit", value: "購入する", class: "buy-area__buy-form__submit__btn"}
-          -# = form_with url: pay_item_path, method: "post"  do |f|
-          -#   = f.submit '購入する', class: "buy-area__buy-form__submit__btn"
-          = form_with url: pay_item_path, class: "buy-area__buy-form__submit__btn", value: "購入する" do |f|
-            %script.payjp-button{ data: { key: "#{Rails.application.credentials.dig(:payjp, :PAYJP_KEY)}", text: "購入する"}, class: "buy-area__buy-form__submit__btn", src: "https://checkout.pay.jp", type: "text/javascript"}
-            
+          - if @card
+            = form_with url: pay_item_path, method: "post"  do |f|
+              = f.submit '購入する', class: "buy-area__buy-form__submit__btn"
+          - else
+            %input{type: "button", value: "購入する", class: "buy-area__buy-form__submit__unclick-btn"}
+
