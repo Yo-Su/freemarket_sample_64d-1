@@ -63,16 +63,16 @@ ActiveRecord::Schema.define(version: 2019_12_12_045204) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "status", null: false
+    t.integer "status", null: false
     t.string "name", null: false
-    t.string "from_delivery_area", null: false
+    t.integer "from_delivery_area", null: false
     t.string "to_delivery_area"
     t.integer "price", null: false
-    t.string "delivery_date", null: false
+    t.integer "delivery_date", null: false
     t.string "size"
     t.string "grade", null: false
-    t.string "transfer_fee", null: false
-    t.string "delivery_type", null: false
+    t.integer "transfer_fee", null: false
+    t.integer "delivery_type", null: false
     t.text "describe", null: false
     t.integer "buyer_id"
     t.integer "user_id", null: false
@@ -101,4 +101,5 @@ ActiveRecord::Schema.define(version: 2019_12_12_045204) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
 end

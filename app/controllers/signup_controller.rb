@@ -36,16 +36,16 @@ class SignupController < ApplicationController
 
   def credit_info
     if params[:address]
-      session[:last_name] = address_params[:last_name]
-      session[:first_name] = address_params[:first_name]
-      session[:last_name_kana] = address_params[:last_name_kana]
-      session[:first_name_kana] = address_params[:first_name_kana]
+      session[:address_last_name] = address_params[:last_name]
+      session[:address_first_name] = address_params[:first_name]
+      session[:address_last_name_kana] = address_params[:last_name_kana]
+      session[:address_first_name_kana] = address_params[:first_name_kana]
       session[:post_number] = address_params[:post_number]
       session[:prefecture] = address_params[:prefecture]
       session[:municipality] = address_params[:municipality]
       session[:block] = address_params[:block]
       session[:building] = address_params[:building]
-      session[:phone_number] = address_params[:phone_number]
+      session[:address_phone_number] = address_params[:phone_number]
     end
   end
 
@@ -59,16 +59,14 @@ class SignupController < ApplicationController
       last_name_kana: session[:last_name_kana], 
       first_name_kana: session[:first_name_kana],
       phone_number: session[:phone_number],
-      birthday: "2019-12-03"
-      #セレクトボックス 実装後に下を使う
-      # birthday: "#{session[:birth_year]}-#{session[:birth_month]}-#{session[:birth_day]}"
+      birthday: "#{session[:birth_year]}-#{session[:birth_month]}-#{session[:birth_day]}"
     )
     if @user.save
     # ログインするための情報を保管
       session[:id] = @user.id
       redirect_to complete_signup_index_path
     else
-      render action: :member_info
+      redirect_to root_path
     end
   end
 

@@ -1,0 +1,17 @@
+= render "./shared/header"
+.main-contents
+  = render "./users/sidebar"
+  
+  .content
+    .head
+      プロフィール
+    .form
+      = form_with(model: @item, url: items_path, method: :post, local: true) do |form|
+        .icon
+          = image_tag "https://www.pakutaso.com/shared/img/thumb/HIRA86_nezuminoomocyapuranpuran_TP_V.jpg", alt: "プロフィール画像", class: "icon__img", height: "60px",width: "60px"
+          = form.text_field :nick_name ,class: "icon__name", placeholder: "例)AYA☆セール中" 
+        .content
+          = form.text_area :message,class: "content__message", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪" 
+          = form.submit "変更する", class: "content__btn"
+= render "./shared/footer"
+= render "./shared/sell-btn"

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "items#index"
-  resources :users, only: :show do
+  resources :users, only: [:show, :edit, :update] do
     collection do
       get 'logout'
     end
   end
-  resources :items, only: [:index, :show,:new, :create] do
+  resources :items, only: [:index, :show, :new, :create] do
     member do
       get 'buy'
       post 'pay'
@@ -28,5 +28,5 @@ Rails.application.routes.draw do
   resources :sell, only: [:index, :new, :create]
   resources :cards, only: [:index, :create, :new, :destroy]
   resources :imeges, only: [:new, :create]
-
+  resources :mypages, only: [:index,:update]
 end
