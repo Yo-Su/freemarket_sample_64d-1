@@ -33,7 +33,6 @@ class ItemsController < ApplicationController
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
     card = Card.where(user_id: 1).first
-    customer = Payjp::Customer.retrieve(card.customer_id)
     if Payjp::Charge.create(
         amount: @item.price,
         customer: card.customer_id,
