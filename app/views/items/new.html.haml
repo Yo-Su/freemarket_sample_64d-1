@@ -3,6 +3,8 @@
 .contents
   .container
     = form_with(model: @item, url: items_path, method: :post, local: true) do |form|
+      =link_to root_path, class: "" do
+        TOPページへ
       %h3
         商品の情報を入力
       = form.text_field :name, placeholder: "商品名" , rows: "10"
