@@ -41,7 +41,7 @@
                   = "ドレス/ビジネス"
           %tr.content__item-data__table__brand
             %td.content__item-data__table__td= "ブランド"
-            %td= @item.try(:brand)
+            %td= @item.try(:brand).try(:name)
           %tr.content__item-data__table__size
             %td.content__item-data__table__td= "商品のサイズ"
             %td= @item.try(:size)
