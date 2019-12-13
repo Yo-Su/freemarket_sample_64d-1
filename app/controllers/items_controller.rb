@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to controller: :items, action: :index
+    redirect_to items_path
   end
 
   def buy
