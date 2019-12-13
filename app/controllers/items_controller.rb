@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay]
   def index
   end
@@ -17,6 +18,19 @@ class ItemsController < ApplicationController
 
   def show
     @images = Image.includes(:item)
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+  end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to controller: :items, action: :index
   end
 
   def buy

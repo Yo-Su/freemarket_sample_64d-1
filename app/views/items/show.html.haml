@@ -1,4 +1,5 @@
 .wrapper
+  =render 'shared/header'
   .content
     .content__top
       = @item.name
@@ -41,7 +42,7 @@
                   = "ドレス/ビジネス"
           %tr.content__item-data__table__brand
             %td.content__item-data__table__td= "ブランド"
-            %td= @item.try(:brand)
+            %td= @item.try(:brand).try(:name)
           %tr.content__item-data__table__size
             %td.content__item-data__table__td= "商品のサイズ"
             %td= @item.try(:size)
@@ -67,10 +68,18 @@
           = "(税込) "
         %span.content__price__fee
           = "送料込み"
-    .content__buy-btn
-      = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
-    .content__note
-      この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+    -if user_signed_in?
+      = link_to edit_item_path(@item) do
+        .content__edit-btn 商品の編集
+        .content__btn-text or
+        .content__stop-btn 出品を一旦停止する
+      = link_to item_path(@item), method: :delete do
+        .content__stop-btn この商品を削除する
+    -else 
+      .content__buy-btn
+        = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
+      .content__note
+        この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
     .content__item-description
       = @item.describe
     .content__button-area
@@ -85,7 +94,6 @@
       = link_to "", class: "content__button-area__safety" do
         = icon 'fas', 'lock', class: 'icon'
         あんしん・あんぜんへの取り組み
-
 -# ToDoリスト商品詳細ページ コメントページ/リンク/アイコン欄実装用クラス定義のみ
   -# .message
   -#   .message__note
