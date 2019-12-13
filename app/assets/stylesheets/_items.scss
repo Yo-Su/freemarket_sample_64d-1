@@ -400,6 +400,12 @@
           &__title {
             font-size: 14px;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+
+            &__link {
+              font-weight: normal;
+            }
           }
 
           &__card-area {
@@ -448,6 +454,21 @@
             font-weight: bold;
             cursor: pointer;
             background-color: #ea352d;
+          }
+          &__unclick-btn {
+            background: none;
+            border: none;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 50px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: not-allowed;
+            background-color: #888;
           }
         }
       }

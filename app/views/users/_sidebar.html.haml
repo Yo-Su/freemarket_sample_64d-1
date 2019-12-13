@@ -18,7 +18,7 @@
           いいね！一覧
           = icon('fas', 'chevron-right',  class: "nav__list__menu__item--icon")
       .nav__list__menu
-        = link_to "",class: "nav__list__menu__item" do
+        = link_to new_item_path,class: "nav__list__menu__item" do
           出品する
           = icon('fas', 'chevron-right',  class: "nav__list__menu__item--icon")
       .nav__list__menu
@@ -70,7 +70,7 @@
     .nav__head 設定
     .nav__list
       .nav__list__menu
-        = link_to "",class: "nav__list__menu__item" do
+        = link_to edit_user_path(1),class: "nav__list__menu__item" do
           プロフィール
           = icon('fas', 'chevron-right',  class: "nav__list__menu__item--icon")
       .nav__list__menu
@@ -86,7 +86,7 @@
           メール/パスワード
           = icon('fas', 'chevron-right',  class: "nav__list__menu__item--icon")
       .nav__list__menu
-        = link_to "",class: "nav__list__menu__item" do
+        = link_to  mypages_path, class: "nav__list__menu__item" do
           本人情報
           = icon('fas', 'chevron-right',  class: "nav__list__menu__item--icon")
       .nav__list__menu
