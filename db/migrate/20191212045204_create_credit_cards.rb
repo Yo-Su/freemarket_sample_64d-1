@@ -6,6 +6,8 @@ class CreateCreditCards < ActiveRecord::Migration[5.2]
       t.integer :exp_month,   null: false # 有効期限：年
       t.integer :exp_year,    null: false # 有効期限：月
       t.integer :user_id,     null: false # カード所有者
+      t.string :customer_id,  null: false # payjpに登録するユーザー情報
+      t.string :card_id,      null: false # payjpに登録するカード情報
       t.timestamps
     end
   end

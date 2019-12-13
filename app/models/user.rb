@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attr_accessor :birth_year, :birth_month, :birth_day
 
+  has_many :credit_card_infos, dependent: :destroy
+
+  # ユーザー登録用
   before_save { self.email = email.downcase }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
