@@ -103,7 +103,7 @@
 |delivery_date|date|null: false|
 |size|string|null: false|
 |grade|string|null: false|
-|transfer_fee|integer|null: false|
+|transfer_fee|string|null: false|
 |delivery_type|string|null: false|
 |describe|string|null: false|
 |buyer_id|integer|null: false|

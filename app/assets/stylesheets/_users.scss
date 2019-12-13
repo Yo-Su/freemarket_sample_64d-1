@@ -6,7 +6,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.main {
+.main-contents {
   display: flex;
   margin: 40px auto 0;
   width: 1020px;
@@ -139,7 +139,7 @@ body {
       width: 700px;
       margin: 40px 0 0;
       background: #fff;
-      .head {
+      &__head {
         background: #fafafa;
         font-size: 16px;
         line-height: 72px;

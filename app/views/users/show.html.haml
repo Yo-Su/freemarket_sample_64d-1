@@ -1,5 +1,5 @@
-
-.main
+= render "./shared/header"
+.main-contents
   = render "sidebar"
 
   .content
@@ -69,7 +69,7 @@
             一覧を見る
 
     .bought-items
-      .head 購入した商品
+      .bought-items__head 購入した商品
       .tabs
         =link_to "", class: "now-traiding" do
           取引中
@@ -79,3 +79,6 @@
         .item-list__now-traiding
           取引中の商品がありません
         .item-list__past-traiding
+
+= render "./shared/footer"
+= render "./shared/sell-btn"

@@ -1,0 +1,50 @@
+= render "./shared/header"
+.main-contents
+  = render "/users/sidebar"
+  .left-content
+  .right-identity-information
+    %section.right-container
+      %h2.right-container__head 本人情報の登録
+      .right-container__inner
+        .form-group__first
+          %p
+            お客さまの本人情報をご登録ください。
+            %br
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.text-right
+            = link_to 'https://www.mercari.com/jp/help_center/article/495/', target: "_blank" do
+              本人確認書類のアップロードについて
+            = icon 'fas','chevron-right'
+        .form-group
+          %label お名前
+        .form-group
+          %label お名前カナ
+        .form-group
+          %label{for: "birthday"} 生年月日
+        .form-group
+          %label{for: "zip_code"} 郵便番号
+          %span.form-arbitrary 任意
+        .form-group
+          %label{for: "prefecture"} 都道府県
+          %span.form-arbitrary 任意
+          .form-group__form
+            =icon 'fas','angle-down'
+        .form-group
+          %label{for: "city"} 市区町村
+          %span.form-arbitrary 任意
+          .form-group__form
+        .form-group
+          %label{for: "address1_label"} 番地
+          %span.form-arbitrary 任意
+          .form-group__form
+        .form-group
+          %label{for: "address2_label"} 建物名
+          %span.form-arbitrary 任意
+          .form-group__form
+        = submit_tag "変更する",class: 'btn-default'
+        .form-group.text-right
+          = link_to 'https://www.mercari.com/jp/help_center/article/423/', target: "_blank" do
+            本人確認書類の登録について
+            =icon 'fas','chevron-right'
+= render "shared/sell-btn"
+= render "shared/footer"
