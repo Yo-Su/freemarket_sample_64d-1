@@ -176,8 +176,8 @@
       white-space: pre-wrap;
     }
     &__edit-btn{
-      background: #ea352d;
-      border: 1px solid #ea352d;
+      background: $edit_btn;
+      border: 1px solid $edit_btn;
       color: #fff;
       display: block;
       width: 100%;
@@ -192,10 +192,9 @@
       font-size: 16px;
     }
 
-    $stop-btn-color: #aaa;
     &__stop-btn{
-      background: $stop-btn-color;
-      border: 1px solid $stop-btn-color;
+      background: $stop_btn;
+      border: 1px solid $stop_btn;
       color: #fff;
       margin: 16px 0 16px 0;
       display: block;
