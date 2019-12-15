@@ -30,25 +30,6 @@ class SignupController < ApplicationController
     end
   end
 
-  def address_info
-    @address = Address.new
-  end
-
-  def credit_info
-    if params[:address]
-      session[:address_last_name] = address_params[:last_name]
-      session[:address_first_name] = address_params[:first_name]
-      session[:address_last_name_kana] = address_params[:last_name_kana]
-      session[:address_first_name_kana] = address_params[:first_name_kana]
-      session[:post_number] = address_params[:post_number]
-      session[:prefecture] = address_params[:prefecture]
-      session[:municipality] = address_params[:municipality]
-      session[:block] = address_params[:block]
-      session[:building] = address_params[:building]
-      session[:address_phone_number] = address_params[:phone_number]
-    end
-  end
-
   def create
     @user = User.new(
       nick_name: session[:nick_name], # sessionに保存された値をインスタンスに渡す
@@ -64,9 +45,20 @@ class SignupController < ApplicationController
     if @user.save
     # ログインするための情報を保管
       session[:id] = @user.id
-      redirect_to complete_signup_index_path
+      redirect_to address_info_signup_index_path
     else
-      redirect_to root_path
+      redirect_to member_info_signup_index_path
+    end
+  end
+
+  def address_info
+    @address = Address.new
+  end
+
+  def credit_info
+    @address = Address.new(address_params)
+    unless @address.save
+      render action: :address_info
     end
   end
 
@@ -106,7 +98,7 @@ class SignupController < ApplicationController
       :block,
       :building,
       :phone_number
-    )
+    ).merge(user_id: current_user.id)
   end
 
 end

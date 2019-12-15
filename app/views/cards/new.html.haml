@@ -1,0 +1,64 @@
+= render "./shared/header"
+.main
+  .main-box
+    .card-main
+      .contents-add-input
+        = form_with(model: @card, url: cards_path, method: :post, local: true) do |f|
+          .add-head
+          %h2
+            クレジットカード情報入力
+          .add-bottom
+            .add-bottom-form
+              .form-group
+                %label
+                  カード番号
+                %span
+                  必須
+                .name-first
+                  = f.text_field :card_number, class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+                .card-list
+                  %ul
+                    %li
+                    =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?82960919", size: "49x20",alt:"visa"
+                    %li
+                    =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?82960919", size: "34x20",alt:"master"
+                    %li
+                    =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?82960919", size: "30x20",alt:"saison"
+                    %li
+                    =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?82960919", size: "21x20",alt:"visa"
+                    %li
+                    =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?82960919", size: "32x20",alt:"dinersclub"
+                    %li
+                    =image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?82960919", size: "32x20",alt:"discover"
+              .form-group
+                %label
+                  有効期限
+                  %span
+                    必須
+                .select-wrap
+                  .select-wrap-half
+                    = f.select :exp_month, Card.months.keys
+                    = icon 'fas', 'angle-down', class: 'drop-icon'
+                    %p
+                      月
+                  .select-wrap-half
+                    = f.select :exp_year, Card.years.keys
+                    = icon 'fas', 'angle-down', class: 'drop-icon'
+                    %p
+                      年
+              .form-group
+                %label
+                  セキュリティコード
+                %span
+                  必須
+                .name-first
+                  = f.text_field :pin_number, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号" ,maxlength: "4", id: "cvc"
+                .signup-seqcode
+                  .signup-seqcode-text
+                    ?
+                  %p
+                    カード背面の番号とは？
+              .next-button
+                #card_token
+                = f.submit "追加する", id: "token_submit",class: 'add-btn'
+= render "shared/footer"
