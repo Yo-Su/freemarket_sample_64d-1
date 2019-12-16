@@ -12,7 +12,7 @@ $(function() {
     var file = $(this).prop('files')[0];
     var reader = new FileReader();
     inputs.push($(this));
-    var img = $('<div class= "img_view"><img></div>');
+    var img = $(<div class= "img_view"><img></div>);
     reader.onload = function(e) {
       var btn_wrapper = $('<div class="upload-image__prev--btn"><div class="edit-btn">編集</div><div class="delete-btn">削除</div></div>');
       img.append(btn_wrapper);
