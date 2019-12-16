@@ -6,10 +6,16 @@
     .content__item-data
       .content__item-data__photo
         .content__item-data__photo__main-image
-          = image_tag @images.first.url, size: "300x300", alt: "ユーザー投稿写真"
+          - @images.each_with_index do |pickupimage, i|
+            - if i == 0
+              .content__item-data__photo__main-image__pickupimage
+                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真"
+            - else
+              .content__item-data__photo__main-image__pickupimage.image-hidden
+                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真"
         .content__item-data__photo__sub-image
-          - @images.each do |image|
-            = image_tag image.url, size: "60x60", alt: "ユーザー投稿写真"
+          - @images.each do |itemimage|
+            = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真"
       .content__item-data__table
         %table
           %tr.content__item-data__table__user-line

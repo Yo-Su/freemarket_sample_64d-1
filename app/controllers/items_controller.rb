@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
+  # before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
   
   require 'payjp'
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @images = Image.includes(:item)
+    @images = Itemimage.includes(:item).where(item_id: params[:id])
   end
 
   def edit
