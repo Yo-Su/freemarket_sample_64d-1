@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    image = Itemimage.new(image_params)
+    # image = Itemimage.new(image_params)
     item = Item.new(item_params)
     #下記の記載は動作確認用のため本実装の際は削除する
     item.status = 1
@@ -23,12 +23,15 @@ class ItemsController < ApplicationController
     item.category_id = 1
 
     if item.save
-      image.item_id = item.id
-      if image.save
-        # 出品完了ページがあるのでそちらに飛ぶ
+      image_params.to_unsafe_h.reverse_each do |key, value|
+        if Itemimage.create(value.merge(item_id: item.id))
+          # 出品完了ページがあるのでそちらに飛ぶ
+        else
+          redirect_to root_path
+        end
       end
     else
-      redirect_to root_path   
+      redirect_to root_path
     end
   end
 
@@ -117,7 +120,9 @@ class ItemsController < ApplicationController
   end
 
   def image_params
-    params.require(:item).permit(:image).merge(item_id: 1)
+    # params.require(:item).permit(:image).merge(item_id: 1)
+    # params.require(:product).require(:images_attributes).require(:"0").permit(:image).merge(item_id: 1)
+    params.require(:product).require(:images_attributes)
   end
 end
 
