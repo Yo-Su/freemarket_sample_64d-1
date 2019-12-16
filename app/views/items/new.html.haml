@@ -1,22 +1,165 @@
--# ここから下はサーバー側のフォーム登録の動作確認のためのテスト用のviewになります。
--# LGTM後に正しいファイルとマージします。
-.contents
-  .container
-    = form_with(model: @item, url: items_path, method: :post, local: true) do |form|
-      =link_to root_path, class: "" do
-        TOPページへ
-      %h3
-        商品の情報を入力
-      = form.text_field :name, placeholder: "商品名" , rows: "10"
-      = form.text_area :describe, placeholder: "商品の説明" , rows: "10"
-      = form.select :grade, [['新品','新品'], ['未使用', '未使用']]
-      = form.select :from_delivery_area, [['東京都', '東京都'], ['大阪府', '大阪府']] 
-      = form.select :delivery_date, ['1~2日で発送', '1~2日で発送']
-      = form.select :transfer_fee, [['送料込み(出品者負担)', '送料込み(出品者負担)'], ['送料込み(出品者負担)', '送料込み(出品者負担)']]
-      = form.text_field :price, placeholder: "価格" , rows: "10"
-      = form.select :size, [['S', 'S'], ['M', 'M']]
-      = form.select :to_delivery_area, [['沖縄県', '沖縄県'], ['北海道', '北海道']]
-      = form.select :status, ['未使用に近い', '未使用に近い']
-      = form.select :delivery_type, ['らくらくメルカリ便', 'らくらくメルカリ便']
-      = form.select :buyer_id, [['1', '1'], ['1', '1']]
-      = form.submit "SEND"
+.item-exhibit
+  = render "./shared/simple_header"
+  .item-exhibit-main
+    %h2
+      商品の情報の入力
+    = form_for @item do |f|
+      = render 'layouts/error_messages', model: f.object
+      .sell-upload-box
+        %h3
+          出品画像
+          %span
+            必須
+        %p
+          最大5枚までアップロードできます
+        .sellbox-form__upload--drop#click-btn
+          .sellbox-form__upload--drop--post
+            = f.fields_for :image do |image|
+              .dropzone-container
+                #preview
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image__btn" do
+                    .input_area
+                      = image.file_field :image, id: "upload-image__btn", class: "upload-image", 'data-image': 0, type: "file", name: "item[images_attributes][0][image]"
+                      %p
+                        ドラッグアンドドロップ
+                        %br
+                        またはクリックしてファイルをアップロード 
+      .sell-content
+        .form-group
+          %label
+            商品名
+            %span
+              必須
+          %div
+            = f.text_field :name, id: "input-default",  placeholder: "商品名（必須 40文字まで)"
+        .form-group
+          %label
+            商品の説明
+            %span
+              必須
+          = f.text_area :describe, class: "items-new-form-area__default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+      .sell-content.clearfix
+        %h3
+          商品の詳細
+        .sell-form-box
+          .form-group
+            %label
+              カテゴリー
+              %span
+                必須
+            %div
+              .select-wrap
+                %i.fa.fa-angle-down
+                //TODO:カテゴリーテーブル実装後に、カテゴリをselectで表示する機能を追加（以下の1行を修正する）
+                %select.k_ir_section__inner--form3-right-select-category#category_parent
+              //TODO:javascriptで「$(document).on('change', '#category_parent', function(){・・・」のようにクラスを削除・追加する
+              .display_none.select-wrap
+                %i.fa.fa-angle-down
+                %select.k_ir_section__inner--form3-right-select-category#category_children
+              //TODO:javascriptで「$(document).on('change', '#category_children', function(){・・・」のようにクラスを削除・追加する
+              .display_none.select-wrap
+                %i.fa.fa-angle-down
+                %select.k_ir_section__inner--form3-right-select-category#category_grandchildren
+              
+
+          .form-group
+            %label
+              商品の状態
+              %span
+                必須
+            %div
+              .select-wrap
+                %i.fa.fa-angle-down
+                = f.select :status, Item.statuses.keys,{prompt: '---'}
+      .sell-content.clearfix
+        %h3
+          配送について
+        = link_to "?", 'https://www.mercari.com/jp/help_center/article/68/', class:"round-icon" 
+        .sell-form-box
+          .form-group
+            %label
+              配送料の負担
+              %span
+                必須
+            %div
+              .select-wrap
+                %i.fa.fa-angle-down
+                = f.select :transfer_fee, Item.transfer_fees.keys,{prompt: '---'}
+          .form-group
+            %label
+              配送の方法
+              %span
+                必須
+            %div
+              .select-wrap
+                %i.fa.fa-angle-down
+                = f.select :delivery_type, Item.delivery_types.keys,{prompt: '---'}
+          .form-group
+            %label
+              発送元の地域
+              %span
+                必須
+            %div
+              .select-wrap
+                %i.fa.fa-angle-down
+                = f.select :from_delivery_area, Item.from_delivery_areas.keys,{prompt: '---'}
+          .form-group
+            %label
+              発送までの日数
+              %span
+                必須
+            %div
+              .select-wrap
+                %i.fa.fa-angle-down
+                = f.select :delivery_date, Item.delivery_dates.keys,{prompt: '---'}
+      .sell-content.clearfix
+        %h3
+          販売価格(300〜9,999,999)
+        = link_to "?", 'https://www.mercari.com/jp/help_center/article/64/', class:"round-icon" 
+        .sell-form-box
+          %ul
+            %li.price-group
+              .clear-fix
+                .sell-price-title
+                  %label
+                    価格
+                    %span
+                      必須
+                .sell-price-input
+                  %p
+                    ¥
+                  %div
+                    = f.number_field :price, min:300, max:9999999, class: "input-default", id: "sell-price", placeholder: "例）300", value: ""
+            %li.price-group.border
+              .clear-fix
+                .sell-price-title
+                  販売手数料(10%)
+                .sell-price-input
+                  .right
+                    #mercari_fee
+            %li.price-group.border
+              .clear-fix
+                .sell-price-title.bold
+                  販売利益
+                .sell-price-input
+                  .right
+                    #seller_gain
+      .sell-content.exhibit-btn
+        %div
+          %p
+            = link_to "禁止されている出品", 'https://www.mercari.com/jp/help_center/getting_started/prohibited_items/', class:"link-blue" 
+            、
+            = link_to "行為", 'https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/', class:"link-blue" 
+            を必ずご確認ください。
+          %p
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            = link_to "偽ブランドの販売", 'https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/', class:"link-blue" 
+            は犯罪であり処罰される可能性があります。
+          %p
+            また、出品をもちまして
+            = link_to "加盟店規約", 'https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/', class:"link-blue" 
+            に同意したことになります。
+        = f.submit "出品する", class:"button",id:"item_button"
+        =link_to "もどる", root_path,class:"back-btn"
+  = render "./shared/simple_footer"
