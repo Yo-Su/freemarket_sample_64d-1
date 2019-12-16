@@ -175,6 +175,35 @@
       font-size: 18px;
       white-space: pre-wrap;
     }
+    &__edit-btn{
+      background: $edit_btn;
+      border: 1px solid $edit_btn;
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    &__btn-text{
+      text-align: center;
+      font-size: 16px;
+    }
+
+    &__stop-btn{
+      background: $stop_btn;
+      border: 1px solid $stop_btn;
+      color: #fff;
+      margin: 16px 0 16px 0;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+    }
 
     &__button-area {
       margin-top: 16px;

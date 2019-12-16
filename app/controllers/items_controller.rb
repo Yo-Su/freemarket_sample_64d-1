@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :get_item, only: [:show, :buy, :pay]
-
+  before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
+  before_action :get_item, only: [:show, :buy, :pay, :destroy]
+  
   require 'payjp'
-
+  
   def index
     @images = Image.includes(:item)
   end
@@ -12,22 +13,42 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-#下記の記載は動作確認用のため本実装の際は削除する
-# @item.user_id = 1
-# @item.brand_id = 1
-# @item.category_id = 1
-    @item.user_id = 1
-    @item.brand_id = 1
-    @item.category_id = 1
-    if @item.save
+    image = Itemimage.new(image_params)
+    item = Item.new(item_params)
+    #下記の記載は動作確認用のため本実装の際は削除する
+    item.status = 1
+    item.grade = 1
+    item.user_id = 1
+    item.brand_id = 1
+    item.category_id = 1
+
+    if item.save
+      image.item_id = item.id
+      if image.save
+        # 出品完了ページがあるのでそちらに飛ぶ
+      end
     else
-      redirect_to root_path
+      redirect_to root_path   
     end
   end
 
   def show
     @images = Image.includes(:item)
+  end
+
+  def edit
+  end
+
+  def update
+  end
+  
+  def destroy
+    @item.destroy
+    if @item.user_id == current_user.id
+      redirect_to items_path,notice: '商品を削除しました'
+    else
+      redirect_to root_path
+    end
   end
 
   def buy
@@ -73,7 +94,7 @@ class ItemsController < ApplicationController
   def item_buy_params
     # current_user.idの代わり、ログイン機能実装後に入れ替える
     test_id = 2
-    params.permit(:id).merge(buyer_id: test_id, status: 1)
+    params.permit(:id).merge(buyer_id: test_id, status: "購入中")
   end
 
   def item_params
@@ -94,5 +115,10 @@ class ItemsController < ApplicationController
       :category_id
     )
   end
+
+  def image_params
+    params.require(:item).permit(:image).merge(item_id: 1)
+  end
 end
+
 
