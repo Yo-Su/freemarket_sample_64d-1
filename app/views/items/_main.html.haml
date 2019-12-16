@@ -26,9 +26,12 @@
               =link_to "", id:"",class: "more" do
                 もっと見る >
         .item-images
-          =link_to "", class: "item-images__link" do
-            - @images.each do |image|
+          - @images.last(10).reverse.each do |image|
+            =link_to item_path(image.item.id), class: "item-images__link" do
               .item-images__link__contents
+                .item-images__link__contents__container
+                  .item-images__link__contents__container__price
+                    = number_to_currency(image.item.price, unit: "¥ ", precision: 0)
                 =image_tag image.url, alt:"商品写真",class:"item-images__link__contents__photo"
                 .item-images__link__contents__names
-                  商品名
+                  = image.item.name
