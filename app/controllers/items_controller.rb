@@ -12,19 +12,19 @@ class ItemsController < ApplicationController
 
   def create
     image = Itemimage.new(image_params)
-    # binding.pry
-    if image.save
-      # redirect_to root_path
-    else
-      redirect_to cards_path
-    end
-    @item = Item.new(item_params)
+    item = Item.new(item_params)
     #下記の記載は動作確認用のため本実装の際は削除する
-    @item.grade = 1
-    @item.user_id = 1
-    @item.brand_id = 1
-    @item.category_id = 1
-    if @item.save
+    item.status = 1
+    item.grade = 1
+    item.user_id = 1
+    item.brand_id = 1
+    item.category_id = 1
+
+    if item.save
+      image.item_id = item.id
+      if image.save
+        # 出品完了ページがあるのでそちらに飛ぶ
+      end
     else
       redirect_to root_path
     end
