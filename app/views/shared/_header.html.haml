@@ -24,25 +24,29 @@
               %span ブランドから探す
     .header-bottom__right
       %ul
-        %li
-          = link_to "#" do
-            = icon 'fas','heart', class: "icon-gray"
-            %span いいね一覧
-        %li
-          = link_to "#" do
-            = icon 'fas', 'bell', class: "icon-gray"
-            %span お知らせ
-        %li
-          = link_to "#" do
-            = icon 'fas', 'check', class: "icon-gray"
-            %span やることリスト
-        %li
-          = link_to user_path(1) do
-            .header-bottom__right--image 
-            %span マイページ
-            
-        -# スプリングレビュー後に下記を削除
-        %li
-          = link_to member_info_signup_index_path do
-            .header-bottom__right--image 
-            %span sign up
+        - if user_signed_in?
+          %li
+            = link_to "#" do
+              = icon 'fas','heart', class: "icon-gray"
+              %span いいね一覧
+          %li
+            = link_to "#" do
+              = icon 'fas', 'bell', class: "icon-gray"
+              %span お知らせ
+          %li
+            = link_to "#" do
+              = icon 'fas', 'check', class: "icon-gray"
+              %span やることリスト
+          %li
+            = link_to user_path(1) do
+              %span マイページ
+        - else
+          -# スプリングレビュー後に下記を削除
+          %li
+            %button
+              = link_to "新規会員登録", member_info_signup_index_path,class: "header-bottom__right__link1"
+          %li
+            %button
+              = link_to "ログイン", member_info_signup_index_path,class: "header-bottom__right__link2"
+              
+              
