@@ -1,6 +1,6 @@
 .top-main
   =image_tag("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg",height: "390",width: "100%",class:"header-image",alt: "")
-  .main
+  .main-topic
     .main-header
       .famous-categories
         人気のカテゴリー
@@ -20,10 +20,15 @@
     .items
       .item-review
         .ladies-new
-          .content
+          .ladies-new__content
             レディース新着アイテム
             %li
               =link_to "", id:"",class: "more" do
                 もっと見る >
         .item-images
-          .item-images__review
+          =link_to "", class: "item-images__link" do
+            - @images.each do |image|
+              .item-images__link__contents
+                =image_tag image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+                .item-images__link__contents__names
+                  商品名
