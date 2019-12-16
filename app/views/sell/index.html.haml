@@ -11,17 +11,20 @@
           %span
             必須
         %p
-          最大10枚までアップロードできます
+          最大5枚までアップロードできます
         .sellbox-form__upload--drop#click-btn
           .sellbox-form__upload--drop--post
             = f.fields_for :image do |image|
-              %ul.image-preview
-              .form
-                .form__head
-                  %p ドラッグアンドドロップ
-                  %p またはクリックしてファイルをアップロード
-                //TODO:ドラッグアンドドロップの実装
-              = f.file_field :image
+              .dropzone-container
+                #preview
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image__btn" do
+                    .input_area
+                      = image.file_field :image, id: "upload-image__btn", class: "upload-image", 'data-image': 0, type: "file", name: "product[images_attributes][0][image]"
+                      %p
+                        ドラッグアンドドロップ
+                        %br
+                        またはクリックしてファイルをアップロード 
       .sell-content
         .form-group
           %label
@@ -58,8 +61,6 @@
               .display_none.select-wrap
                 %i.fa.fa-angle-down
                 %select.k_ir_section__inner--form3-right-select-category#category_grandchildren
-              
-
           .form-group
             %label
               商品の状態
@@ -134,7 +135,6 @@
                   販売手数料(10%)
                 .sell-price-input
                   .right
-                    //TODO:販売手数料を自動入力させる（js）
                     #mercari_fee
             %li.price-group.border
               .clear-fix
@@ -142,7 +142,6 @@
                   販売利益
                 .sell-price-input
                   .right
-                    //TODO:販売利益を自動入力させる（js）
                     #seller_gain
       .sell-content.exhibit-btn
         %div
