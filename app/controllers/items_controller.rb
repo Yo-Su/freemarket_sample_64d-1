@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
+  
+  require 'payjp'
+  
   def index
   end
 
@@ -9,8 +12,20 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
+    image = Itemimage.new(image_params)
+    item = Item.new(item_params)
+    #下記の記載は動作確認用のため本実装の際は削除する
+    item.status = 1
+    item.grade = 1
+    item.user_id = 1
+    item.brand_id = 1
+    item.category_id = 1
+
+    if item.save
+      image.item_id = item.id
+      if image.save
+        # 出品完了ページがあるのでそちらに飛ぶ
+      end
     else
       redirect_to root_path   
     end
@@ -37,14 +52,33 @@ class ItemsController < ApplicationController
 
   def buy
     @image = Image.includes(:item).first
+    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
+    @card = Card.find_by(user_id: 1)
   end
 
   def pay
+    # クレジットカード決済===================================================================
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
+    card = Card.where(user_id: 1).first
+    if Payjp::Charge.create(
+        amount: @item.price,
+        customer: card.customer_id,
+        currency: 'jpy'
+      )
+    else
+      # 決済に失敗したらトップページに移動する
+      redirect_to root_path
+    end
+    # クレジットカード決済 ここまで============================================================
+
+    # 商品情報更新(出品状態変更・購入者ID追加)===================================================
     if @item.update(item_buy_params)
       redirect_to checkout_item_path
     else
       redirect_to root_path
     end
+    # 商品情報更新 ここまで===================================================================
   end
 
   def checkout
@@ -80,7 +114,10 @@ class ItemsController < ApplicationController
       :category_id
     )
   end
-    
+
+  def image_params
+    params.require(:item).permit(:image).merge(item_id: 1)
+  end
 end
 
 
