@@ -41,12 +41,17 @@
         .image-hidden {
           display: none;
         }
+        .image-opacity {
+          opacity: 0.4;
+        }
 
         &__sub-images {
           background-color: #f5f5f5;
           width: 300px;
           display: flex;
           flex-wrap: wrap;
+          opacity: 1;
+
         }
       }
 
