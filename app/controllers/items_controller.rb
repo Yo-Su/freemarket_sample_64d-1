@@ -11,11 +11,16 @@ class ItemsController < ApplicationController
   end
 
   def create
+    image = Itemimage.new(image_params)
+    # binding.pry
+    if image.save
+      # redirect_to root_path
+    else
+      redirect_to cards_path
+    end
     @item = Item.new(item_params)
-#下記の記載は動作確認用のため本実装の際は削除する
-# @item.user_id = 1
-# @item.brand_id = 1
-# @item.category_id = 1
+    #下記の記載は動作確認用のため本実装の際は削除する
+    @item.grade = 1
     @item.user_id = 1
     @item.brand_id = 1
     @item.category_id = 1
@@ -92,6 +97,10 @@ class ItemsController < ApplicationController
       :brand_id,
       :category_id
     )
+  end
+
+  def image_params
+    params.require(:item).permit(:image).merge(item_id: 1)
   end
 end
 
