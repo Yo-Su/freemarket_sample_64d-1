@@ -44,7 +44,7 @@ class SignupController < ApplicationController
     )
     if @user.save
     # ログインするための情報を保管
-      session[:id] = @user.id
+      sign_in User.find(@user.id) unless user_signed_in?
       redirect_to address_info_signup_index_path
     else
       redirect_to member_info_signup_index_path
@@ -63,13 +63,12 @@ class SignupController < ApplicationController
   end
 
   def complete
-    sign_in User.find(session[:id]) unless user_signed_in?
+
   end
 
   private
   # 許可するキーを設定します
   def user_params
-    if params[:user]
       params.require(:user).permit(
         :nick_name,
         :email,
@@ -83,7 +82,6 @@ class SignupController < ApplicationController
         :birth_day,
         :phone_number
       )
-    end
   end
 
   def address_params
