@@ -9,13 +9,14 @@
           - @images.each_with_index do |pickupimage, i|
             - if i == 0
               .content__item-data__photo__main-image__pickupimage
-                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真"
+                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
             - else
               .content__item-data__photo__main-image__pickupimage.image-hidden
-                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真"
-        .content__item-data__photo__sub-image
+                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
+        .content__item-data__photo__sub-images
           - @images.each do |itemimage|
-            = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真"
+            .content__item-data__photo__sub-images__sub-image
+              = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真", data: {sub_image_id: itemimage.id}
       .content__item-data__table
         %table
           %tr.content__item-data__table__user-line
