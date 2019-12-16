@@ -36,7 +36,7 @@
               都道府県
             .fourth-main__content__box__group__tag__form-require
               必須
-          = f.select :prefecture, ["北海道"], {}, class: "fourth-main__content__box__group__select"
+          = f.select :prefecture, Item.from_delivery_areas.keys,{prompt: "北海道"}, class: "fourth-main__content__box__group__select"
         .fourth-main__content__box__group#margin_top
           .fourth-main__content__box__group__tag
             .fourth-main__content__box__group__tag-name

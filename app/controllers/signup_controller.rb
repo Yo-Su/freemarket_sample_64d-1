@@ -30,25 +30,6 @@ class SignupController < ApplicationController
     end
   end
 
-  def address_info
-    @address = Address.new
-  end
-
-  def credit_info
-    if params[:address]
-      session[:address_last_name] = address_params[:last_name]
-      session[:address_first_name] = address_params[:first_name]
-      session[:address_last_name_kana] = address_params[:last_name_kana]
-      session[:address_first_name_kana] = address_params[:first_name_kana]
-      session[:post_number] = address_params[:post_number]
-      session[:prefecture] = address_params[:prefecture]
-      session[:municipality] = address_params[:municipality]
-      session[:block] = address_params[:block]
-      session[:building] = address_params[:building]
-      session[:address_phone_number] = address_params[:phone_number]
-    end
-  end
-
   def create
     @user = User.new(
       nick_name: session[:nick_name], # sessionに保存された値をインスタンスに渡す
@@ -63,21 +44,31 @@ class SignupController < ApplicationController
     )
     if @user.save
     # ログインするための情報を保管
-      session[:id] = @user.id
-      redirect_to complete_signup_index_path
+      sign_in User.find(@user.id) unless user_signed_in?
+      redirect_to address_info_signup_index_path
     else
-      redirect_to root_path
+      redirect_to member_info_signup_index_path
+    end
+  end
+
+  def address_info
+    @address = Address.new
+  end
+
+  def credit_info
+    @address = Address.new(address_params)
+    unless @address.save
+      render action: :address_info
     end
   end
 
   def complete
-    sign_in User.find(session[:id]) unless user_signed_in?
+
   end
 
   private
   # 許可するキーを設定します
   def user_params
-    if params[:user]
       params.require(:user).permit(
         :nick_name,
         :email,
@@ -91,7 +82,6 @@ class SignupController < ApplicationController
         :birth_day,
         :phone_number
       )
-    end
   end
 
   def address_params
@@ -106,7 +96,7 @@ class SignupController < ApplicationController
       :block,
       :building,
       :phone_number
-    )
+    ).merge(user_id: current_user.id)
   end
 
 end
