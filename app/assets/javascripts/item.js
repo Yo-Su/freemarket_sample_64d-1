@@ -9,7 +9,6 @@ $(function(){
     let pickupImage = $(`[data-image-id="${pickupImageId}"]`).parent()
     // 全部の画像を非表示にする
     pickupImages.each(function(index, element){
-      console.log(element)
       $(element).addClass("image-hidden")
     })
     // ピックアップしたい画像を表示する(非表示クラスを除去する)
