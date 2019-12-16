@@ -4,8 +4,8 @@ $(function(){
   $('.content__item-data__photo__sub-images__sub-image').on('mouseover', function(e){
     e.preventDefault();
     // 商品の画像一覧（ピックアップ画像、サブ画像）
-    const pickupImages = $('.content__item-data__photo__main-image__pickupimage')
-    const pickupSubImages = $('.content__item-data__photo__sub-images__sub-image')
+    let pickupImages = $('.content__item-data__photo__main-image__pickupimage')
+    let pickupSubImages = $('.content__item-data__photo__sub-images__sub-image')
     // 選択した(ピックアップしたい)画像のID
     let pickupImageId = $(this).children().attr("data-sub-image-id")
     // 詮索されたピックアップ画像、サブ画像
