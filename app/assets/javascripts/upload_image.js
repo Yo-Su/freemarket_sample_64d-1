@@ -33,7 +33,7 @@ $(function() {
         $(".dropzone-area").attr('id', 'nothing');
       }
     // 新しいインプットの表示
-    var new_image = $(`<input id="upload-image__btn" class="upload-image" data-image= ${images.length} type="file" name="product[images_attributes][${images.length}][image]">`);
+    var new_image = $(`<input id="upload-image__btn" class="upload-image" data-image= ${images.length} type="file" name="item[images_attributes][${images.length}][image]">`);
     input_area.prepend(new_image);
   });
 
