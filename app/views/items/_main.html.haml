@@ -29,7 +29,7 @@
               =link_to "", id:"",class: "more" do
                 もっと見る >
         .item-images
-          - @images.last(10).reverse.each do |image|
+          - @images.reverse.each do |image|
             =link_to item_path(image.item.id), class: "item-images__link" do
               .item-images__link__contents
                 .item-images__link__contents__container
