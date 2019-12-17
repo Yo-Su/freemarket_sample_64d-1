@@ -52,12 +52,10 @@
               .select-wrap
                 %i.fa.fa-angle-down
                 //TODO:カテゴリーテーブル実装後に、カテゴリをselectで表示する機能を追加（以下の1行を修正する）
-                %select.k_ir_section__inner--form3-right-select-category#category_parent
-              //TODO:javascriptで「$(document).on('change', '#category_parent', function(){・・・」のようにクラスを削除・追加する
+                = f.collection_select :category, @parent_category, :id, :name, {prompt: '---'}, class: "k_ir_section__inner--form3-right-select-category", id: "category_parent"
               .display_none.select-wrap
                 %i.fa.fa-angle-down
                 %select.k_ir_section__inner--form3-right-select-category#category_children
-              //TODO:javascriptで「$(document).on('change', '#category_children', function(){・・・」のようにクラスを削除・追加する
               .display_none.select-wrap
                 %i.fa.fa-angle-down
                 %select.k_ir_section__inner--form3-right-select-category#category_grandchildren
