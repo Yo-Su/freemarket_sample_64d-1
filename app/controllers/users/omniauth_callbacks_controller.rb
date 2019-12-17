@@ -17,7 +17,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session[:nick_name] = info[:user][:nick_name]
       session[:email] = info[:user][:email]
-      session[:password_confirmation] = SecureRandom.alphanumeric(30)
+      session[:password] = SecureRandom.alphanumeric(30)
 
       #SnsCredentialが登録されていない場合
       if SnsCredential.find_by(uid: info[:sns][:uid], provider: info[:sns][:provider]).nil?

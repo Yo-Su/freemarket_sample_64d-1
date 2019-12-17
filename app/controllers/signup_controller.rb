@@ -2,11 +2,11 @@ class SignupController < ApplicationController
 
   def member_info
     # SNS認証のとメールアドレス登録で場合分け
-    @user = if session[:password_confirmation]
+    @user = if session[:password]
       User.new(
         nick_name: session[:nick_name],
         email: session[:email],
-        password_confirmation: session[:password_confirmation]
+        password: session[:password]
       )
     else
       User.new
@@ -18,7 +18,7 @@ class SignupController < ApplicationController
     if params[:user]
       session[:nick_name] = user_params[:nick_name]
       session[:email] = user_params[:email]
-      session[:password] = user_params[:password]
+      session[:password] ||= user_params[:password]
       session[:last_name] = user_params[:last_name]
       session[:first_name] = user_params[:first_name]
       session[:last_name_kana] = user_params[:last_name_kana]

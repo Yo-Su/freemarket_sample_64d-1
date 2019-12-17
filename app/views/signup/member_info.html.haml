@@ -22,17 +22,18 @@
               必須
           = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: "first-main__content__box__group__form"
         .first-main__content__box__group#margin_top
-          .first-main__content__box__group__tag
-            .first-main__content__box__group__tag-name
-              パスワード
-            .first-main__content__box__group__tag__form-require
-              必須
-          = f.password_field :password, placeholder: '7文字以上の半角英数字', class: "first-main__content__box__group__form"
-          %p.first-main__content__box__group__message1
-            *英字と数字の両方を含めて設定してください
-          %label.first-main__content__box__group__checkbox
-            %input{:checked => "checked", :type => "checkbox"}/
-            パスワードを表示する
+          - unless session[:password]
+            .first-main__content__box__group__tag
+              .first-main__content__box__group__tag-name
+                パスワード
+              .first-main__content__box__group__tag__form-require
+                必須
+            = f.password_field :password, placeholder: '7文字以上の半角英数字', class: "first-main__content__box__group__form"
+            %p.first-main__content__box__group__message1
+              *英字と数字の両方を含めて設定してください
+            %label.first-main__content__box__group__checkbox
+              %input{:checked => "checked", :type => "checkbox"}/
+              パスワードを表示する
           .first-main__content__box__group__text
             .first-main__content__box__group__text__title
               本人確認
