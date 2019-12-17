@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       post 'pay'
       get 'checkout'
     end
+    collection do
+      get 'list'
+    end
   end
 
   resources :signup, only: :create do
