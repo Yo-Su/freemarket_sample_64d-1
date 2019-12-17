@@ -1,6 +1,14 @@
-= link_to new_item_path do
-  .sell-btn
-    .sell-btn__name
-      出品
-    %i.sell-btn__icon
-      = icon 'fas', 'camera'
+- if user_signed_in?
+  = link_to new_item_path do
+    .sell-btn
+      .sell-btn__name
+        出品
+      %i.sell-btn__icon
+        = icon 'fas', 'camera'
+- else
+  = link_to new_user_session_path do
+    .sell-btn
+      .sell-btn__name
+        出品
+      %i.sell-btn__icon
+        = icon 'fas', 'camera'
