@@ -75,7 +75,7 @@ class User < ApplicationRecord
       # userが登録されていない場合
       else
         user = User.new(
-        nickname: auth.info.name,
+        nick_name: auth.info.name,
         email: auth.info.email,
         )
         sns = SnsCredential.new(
