@@ -1,0 +1,23 @@
+.signup-container
+  = render partial: 'signup/header'
+
+
+  .login-main
+    .login-main__content
+      .login-main__content__head
+        .login-main__content__head__text アカウントをお持ちでない方はこちら
+        %button.login-main__content__head__button1
+          = link_to "新規会員登録", member_info_signup_index_path, class: "login-main__content__head__button1__registration"
+      = form_with model: @user, url: phone_info_signup_index_path, method: :get, local: true, html: {class: 'login-main__content__box'} do |f|
+        .login-main__content__box__group#margin_top
+          = f.email_field :email, placeholder: 'メールアドレス', class: "login-main__content__box__group__form"
+        .login-main__content__box__group#margin_top
+          = f.password_field :password, placeholder: 'パスワード', class: "login-main__content__box__group__form"
+          
+          
+          = f.submit value: "ログイン", class: "login-main__content__box__group__submit"
+          .login-main__content__box__group__forgot
+            = link_to "パスワードをお忘れの方", 'https://www.mercari.com/jp/help_center/article/423/',class: "login-main__content__box__group__forgot__link"
+
+
+  = render partial: 'signup/footer'

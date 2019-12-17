@@ -1,0 +1,99 @@
+.signup-main{
+  margin-bottom: 172px;
+
+  &__content{
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    &__title{
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 32px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &__box{
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 40px 64px;
+      max-width: 343px;
+      margin: 0 auto;
+      #margin_top{
+        margin-top: 24px;
+      }
+      &__group{
+        &__button1{
+          line-height: 48px;
+          width: 100%;
+          background-color:  #ea352d;
+          margin-top: 32px;
+          border-radius: 4px;
+          &__mail{
+            display: block;
+            text-decoration: none;
+            position: relative;
+            &__icon{
+              position: absolute;
+              top: 15px;
+              left: 16px;
+              font-size: 20px;
+              color: #ffffff;
+            }
+            &__text{
+              color: #ffffff;
+              font-size: 14px;
+            }
+          }
+        }
+        &__button2{
+          line-height: 48px;
+          width: 100%;
+          background: #385185;
+          margin-top: 16px;
+          border-radius: 4px;
+          &__facebook{
+            display: block;
+            text-decoration: none;
+            position: relative;
+            &__icon{
+              position: absolute;
+              top: 7px;
+              left: 16px;
+              font-size: 30px;
+              color: #ffffff;
+            }
+            &__text{
+              color: #ffffff;
+              font-size: 14px;
+            }
+          }
+        }
+        &__button3{
+          line-height: 48px;
+          width: 100%;
+          background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+          margin-top: 16px;
+          border-radius: 4px;
+          &__google{
+            display: block;
+            text-decoration: none;
+            position: relative;
+            &__icon{
+              position: absolute;
+              top: 14px;
+              left: 16px;
+              font-size: 20px;
+              color: red;
+            }
+            &__text{
+              color: #333;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

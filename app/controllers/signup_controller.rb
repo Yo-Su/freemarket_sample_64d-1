@@ -1,5 +1,8 @@
 class SignupController < ApplicationController
 
+  def index
+  end
+
   def member_info
     @user = User.new # 新規インスタンス作成
   end
@@ -63,7 +66,6 @@ class SignupController < ApplicationController
   end
 
   def complete
-
   end
 
   private
