@@ -87,6 +87,8 @@ class ItemsController < ApplicationController
   def checkout
   end
 
+  def list
+  end
 
   private
   def get_item

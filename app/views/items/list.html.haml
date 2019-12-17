@@ -1,0 +1,26 @@
+= render "shared/header"
+.main-contents
+  = render "users/sidebar"
+  .container
+    .container__content
+      .list-items
+        .list-items__head 出品した商品
+        .list-items__tabs
+          =link_to "", class: "list-items__tabs__putting-up" do
+            出品中
+          =link_to "", class: "list-items__tabs__traiding" do
+            取引中
+          =link_to "", class: "list-items__tabs__past-traiding" do
+            売却済み
+        .list-items__tab-content
+          .list-items__tab-content__now-traiding
+            出品中の商品がありません
+    .container__pager
+      = link_to "", class: "container__pager__box-right" do
+        .container__pager__box-right--icon
+          = icon('fas', 'chevron-right',  class: "container__pager__box-right--icon__right")
+      = link_to "", class: "container__pager__box-left" do
+        .container__pager__box-left--icon
+          = icon('fas', 'chevron-left',  class: "container__pager__box-left--icon__left")
+= render "shared/footer"
+= render "shared/sell-btn"

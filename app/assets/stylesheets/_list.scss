@@ -1,0 +1,117 @@
+.main-contents {
+  display: flex;
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  .container {
+    width: 700px;
+    height: 466px;
+    &__content {
+      height: 382px;
+      width: 700px;
+      .list-items {
+        color: #333;
+        font-weight: bold;
+        height: 382px;
+        width: 700px;
+        background: #fff;
+        &__head {
+          background: #fafafa;
+          font-size: 16px;
+          line-height: 72px;
+          padding: 0 16px;
+        }
+        &__tabs {
+          font-weight: bold;
+          background: #eee;
+          display: flex;
+          &__putting-up {
+            background: #fff;
+            width: 33%;
+            text-align: center;
+            border-top: 2px solid #ea352d;
+            font-size: 16px;
+            line-height: 72px;
+            color: #333;
+            text-decoration: none;
+            display: block;
+          }
+          &__traiding {
+            width: 33%;
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+            text-decoration: none;
+            display: block;
+          }
+          &__past-traiding {
+            width: 33%;
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+            text-decoration: none;
+            display: block;
+          }
+        }
+        &__tab-content {
+          &__now-traiding {
+            height: 16px;
+            padding: 160px 0 60px 0;
+            text-align: center;
+            color: #cccccc;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    &__pager {
+      margin: 40px 0 0;
+      height: 44px;
+      width: 700px;
+      position: relative;
+      text-align: center;
+      &__box-right {
+        right: 0;
+        position: absolute;
+        top: 0;
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        &--icon {
+          color: #333;
+          text-decoration: none;
+          &__right {
+            font-size: 16px;
+            line-height: 42px;
+          }
+        }
+      }
+      &__box-left {
+        left: 0;
+        position: absolute;
+        top: 0;
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        &--icon {
+          color: #333;
+          text-decoration: none;
+          &__left {
+            font-size: 16px;
+            line-height: 42px;
+          }
+        }
+      }
+    }
+  }
+}
