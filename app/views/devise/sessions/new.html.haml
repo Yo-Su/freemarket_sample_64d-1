@@ -7,11 +7,20 @@
       .login-main__content__head
         .login-main__content__head__text アカウントをお持ちでない方はこちら
         %button.login-main__content__head__button1
-          = link_to "新規会員登録", member_info_signup_index_path, class: "login-main__content__head__button1__registration"
-      = form_with model: @user, url: phone_info_signup_index_path, method: :get, local: true, html: {class: 'login-main__content__box'} do |f|
-        .login-main__content__box__group#margin_top
-          = f.email_field :email, placeholder: 'メールアドレス', class: "login-main__content__box__group__form"
-        .login-main__content__box__group#margin_top
+          = link_to "新規会員登録", signup_index_path, class: "login-main__content__head__button1__registration"
+      .login-main__content__buttons
+        %button.login-main__content__buttons__button2
+          = link_to member_info_signup_index_path, class: "login-main__content__buttons__button2__facebook" do
+            = icon 'fab', "facebook-square", class: "login-main__content__buttons__button2__facebook__icon"
+            %span.login-main__content__buttons__button2__facebook__text Facebookでログイン
+        %button.login-main__content__buttons__button3
+          = link_to member_info_signup_index_path, class: "login-main__content__buttons__button3__google" do
+            = icon 'fab', "google", class: "login-main__content__buttons__button3__google__icon"
+            %span.login-main__content__buttons__button3__google__text Googleでログイン
+      = form_with model: @user, url: user_session_path, method: :podt, local: true, html: {class: 'login-main__content__box'} do |f|
+        .login-main__content__box__group
+          = f.email_field :email, placeholder: 'メールアドレス', class: "login-main__content__box__group__form", id: "margin-bottom"
+        .login-main__content__box__group
           = f.password_field :password, placeholder: 'パスワード', class: "login-main__content__box__group__form"
           
           
