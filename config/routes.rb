@@ -33,7 +33,10 @@ Rails.application.routes.draw do
   resources :imeges, only: [:new, :create]
   resources :mypages, only: [:index,:update]
 
-  get '/set_children_category',to: 'categories#set_children_category'
-  get '/set_grandchild_category',to: 'categories#set_grandchild_category'
-  
+  resources :categories do
+    collection do
+      get 'set_children_category'
+      get 'set_grandchild_category'
+    end
+  end
 end

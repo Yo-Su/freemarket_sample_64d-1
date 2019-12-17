@@ -7,7 +7,7 @@ $(function(){
     $('#category_grandchild').parent().addClass('display_none')
     $.ajax({
       type: 'GET',
-      url: '/set_children_category',
+      url: '/categories/set_children_category',
       data: {parent_id: parent_id},
       dataType: 'json'
     })
@@ -30,7 +30,7 @@ $(function(){
     $('#category_grandchildren').parent().removeClass('display_none')
     $.ajax({
       type: 'GET',
-      url: '/set_grandchild_category',
+      url: '/categories/set_grandchild_category',
       data: {children_id: children_id},
       dataType: 'json'
     })
