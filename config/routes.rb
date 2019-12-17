@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :signup, only: :create do
+  resources :signup, only: [:index, :create] do
     collection do
       get 'member_info'
       get 'phone_info'
