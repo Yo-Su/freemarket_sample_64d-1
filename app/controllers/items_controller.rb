@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def index
     @images = Image.includes(:item).last(10)
+    delete_session
   end
 
   def new
@@ -122,6 +123,22 @@ class ItemsController < ApplicationController
 
   def image_params
     params.require(:item).require(:images_attributes)
+  end
+
+  # ユーザー登録を途中で抜けた場合のsessionを削除
+  def delete_session
+    session.delete(:nick_name)
+    session.delete(:email)
+    session.delete(:password)
+    session.delete(:last_name)
+    session.delete(:first_name)
+    session.delete(:last_name_kana)
+    session.delete(:first_name_kana)
+    session.delete(:birth_year)
+    session.delete(:birth_month)
+    session.delete(:birth_day)
+    session.delete(:pid)
+    session.delete(:provider)
   end
 end
 

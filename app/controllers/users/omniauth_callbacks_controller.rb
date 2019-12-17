@@ -1,30 +1,35 @@
-# frozen_string_literal: true
-
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  def google_oauth2
+    callback_for(:google)
+  end
 
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
+  # callbackメソッド(google)
+  def callback_for(provider)
+    info = User.find_oauth(request.env["omniauth.auth"])
+    @user = User.where(nick_name: info[:user][:nick_name]).or(User.where(email: info[:user][:email])).first || info[:user]
 
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+    # DBに保存されている場合はログインしてトップページへ
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication
+      # set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+    # 保存されていなければsessionに情報渡す
+    else
+      session[:nick_name] = info[:user][:nick_name]
+      session[:email] = info[:user][:email]
+      session[:password] = SecureRandom.alphanumeric(30)
 
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+      #SnsCredentialが登録されていない場合
+      if SnsCredential.find_by(uid: info[:sns][:uid], provider: info[:sns][:provider]).nil?
+        session[:uid] = info[:sns][:uid]
+        session[:provider] = info[:sns][:provider]
+      end
+      #登録フォームのviewにリダイレクトさせる
+      redirect_to member_info_signup_index_path
+    end
+  end
 
-  # protected
-
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  def failure
+    redirect_to root_path
+  end
 end
