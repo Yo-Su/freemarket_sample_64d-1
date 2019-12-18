@@ -88,6 +88,7 @@ class ItemsController < ApplicationController
   end
 
   def list
+    @items = Item.where(status: 1 )
   end
 
   private
@@ -103,7 +104,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(
-      :status,
+      :grade,
       :name,
       :from_delivery_area,
       :to_delivery_area,

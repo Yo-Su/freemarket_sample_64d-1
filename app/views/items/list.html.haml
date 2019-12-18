@@ -9,12 +9,13 @@
           =link_to "出品中","#", class: "list-items__tabs__putting-up"
           =link_to "取引中","#",class: "list-items__tabs__traiding"
           =link_to "売却済み","#", class: "list-items__tabs__past-traiding"
-
+      - @items.reverse.each do |item|
         .list-items__body
           =link_to "", class: "list-items__body__list" do
             = image_tag "/logo_red.svg", alt: "", class: "list-items__body__list__img"
             .list-items__body__list__item
-              .list-items__body__list__item__text 最大P3,000もらえる《買うシカないキャンペーン》開催中！
+              .list-items__body__list__item__text
+                = item.name
               = icon('far', 'heart',  class: "list-items__body__list__item--icon")
               %span 2
               = icon('far', 'comment-alt',  class: "list-items__body__list__item--icon")
@@ -22,8 +23,8 @@
               .list-items__body__list__item__status
                 出品中
             = icon('fas', 'chevron-right',  class: "list-items__body__list--icon")
-          -# .list-items__tab-content__now-traiding
-          -#   出品中の商品がありません
+            -# .list-items__tab-content__now-traiding
+            -#   出品中の商品がありません
     .container__pager
       = link_to "", class: "container__pager__box-right" do
         .container__pager__box-right--icon
