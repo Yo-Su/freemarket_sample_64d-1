@@ -1,0 +1,13 @@
+= link_to item_path(item.id) do
+  .items__container__box
+    %figure
+      = image_tag @image.url, class:'items__container__box-item_phot'
+    .items__container__box__item_body
+      %h3
+        = item.name
+      .items__container__box__item_body__info
+        .items__container__box__item_body__info-price 
+          = "¥#{item.price.to_s(:delimited)}"
+        .items__container__box__item_body__info-like
+          %i.far.fa-heart
+            %span 68 
