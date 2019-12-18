@@ -145,7 +145,6 @@ class ItemsController < ApplicationController
   end
 
   def set_request_from
-    # @request_from = session[:request_from] if session[:request_from]
     # 現在のURLを保存しておく
     session[:request_from] = request.original_url
   end
