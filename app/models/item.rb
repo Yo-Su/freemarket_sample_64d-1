@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_many    :images    ,dependent: :destroy
+  has_many    :itemimages, dependent: :destroy
   belongs_to  :user
   belongs_to  :brand
   belongs_to  :category

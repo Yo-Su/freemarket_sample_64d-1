@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
   # before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
+  before_action :set_request_from, only: [:buy]
 
   require 'payjp'
 
   def index
-    @images = Image.includes(:item).last(10)
+    @items = Item.last(10)
     delete_session
   end
 
@@ -56,9 +57,10 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @image = Image.includes(:item).first
+    @image = Itemimage.includes(:item).first
     # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
     @card = Card.find_by(user_id: 1)
+    @address = Address.find_by(user_id: current_user.id) if user_signed_in?
   end
 
   def pay
@@ -140,6 +142,12 @@ class ItemsController < ApplicationController
     session.delete(:birth_day)
     session.delete(:pid)
     session.delete(:provider)
+    session.delete(:request_from)
+  end
+
+  def set_request_from
+    # 現在のURLを保存しておく
+    session[:request_from] = request.original_url
   end
 end
 
