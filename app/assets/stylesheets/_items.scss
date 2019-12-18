@@ -160,13 +160,15 @@
       &__edit-btn{
         background: $edit_btn;
         border: 1px solid $edit_btn;
-        color: #fff;
         display: block;
         width: 100%;
         line-height: 48px;
-        font-size: 14px;
         cursor: pointer;
         text-align: center;
+        a{
+          color: #fff;
+          font-size: 14px;
+        }  
       }
 
       &__btn-text{
@@ -395,25 +397,22 @@
       height: 1500px;
       margin: 0 auto;
 
-      &__user-item{
+      &__user{
         font-size: 22px;
         margin: 24px 0px 16px;
         font-weight: bold;
 
-        .items__container{
-          width: 700px;
-          display: flex;
-          
-          &__box{
-            width: 185px;
-            display: flex;
-            flex-direction: column;
+        &-item{
+          width: 620px;
+          position: relative;
+          float: left;
+          &__container{
             background-color: #fff;
             margin: 0 20px 20px 0;
             float:left;
             justify-content: space-between;
     
-            &-item_phot{
+            .item_phot{
               width: 185px;
               height: 220px;
             }
@@ -451,13 +450,63 @@
             }  
           }        
         }
-    }  
-
-      &__category-item{
+      } 
+      &__category{
         font-size: 22px;
         font-weight: bold;
-        margin: 24px 0px 16px; 
-      }  
+        width: 620px;
+        position: relative;
+        float: left;
+
+        &-item{
+          width: 620px;
+          position: relative;
+          float: left;
+          &__container{
+            background-color: #fff;
+            margin: 0 20px 20px 0;
+            float:left;
+            justify-content: space-between;
+    
+            .item_phot{
+              width: 185px;
+              height: 220px;
+            }
+      
+            &__item_body{
+              padding:15px;
+              line-height: 1.5;
+              bottom: 0;
+              color: #333;
+      
+              &__info{
+                display: flex;
+                flex-direction:row;
+                justify-content: space-between;
+                line-height: normal;
+                align-items: center;
+                margin: 8px 0 0;
+                
+                &-price{
+                  font-weight: bold;
+                  font-size: 16px;
+                }
+                
+                &-like{
+                  color: #ccc;
+                  font-size: 17px;
+                }
+                span{
+                  font-size: 15px;
+                  font-weight: normal;
+                  padding-left:5px;
+                  color: #333;
+                }
+              }
+            }  
+          }        
+        }
+      }        
     }  
 
     .modal {
@@ -472,7 +521,7 @@
       padding: 16px 0;
     }
     // =商品詳細ページここまで============================
-
+  }
     // =商品購入ページここから============================
     .buy-content {
       background-color: #f5f5f5;
@@ -658,5 +707,4 @@
       }
     }
     // =商品購入完了ページここまで=========================
-  }
-}  
+} 

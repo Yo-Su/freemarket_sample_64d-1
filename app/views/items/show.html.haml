@@ -81,10 +81,10 @@
           %span.content-box__price__fee
             = "送料込み"
       -if user_signed_in? && @item.user_id == current_user.id
-        = link_to edit_item_path(@item) do
-          .content-box__edit-btn 商品の編集
-          %p.content-box__btn-text or
-          .content-box__stop-btn 出品を一旦停止する
+        .content-box__edit-btn
+          =link_to "商品の編集", edit_item_path
+        .content-box__btn-text or
+        .content-box__stop-btn 出品を一旦停止する
         = link_to item_path(@item), method: :delete do
           .content-box__stop-btn この商品を削除する
       - else
@@ -133,21 +133,45 @@
         %li
           = link_to "#", target: "_blank", class: "share-btn" do
             = icon 'fab', 'pinterest-square'
+
     .related-item
-      .related-item__user-item
+      .related-item__user
         = link_to "###" do
           = "#{@item.user.nick_name}さんのその他の出品"
-        .related-item__container
+        .related-item__user-item
           - @items.each do |item|
-            = render partial:"user_items", locals: { item: item }   
-      .related-item__category-item
+            .related-item__user-item__container           
+              = link_to item_path(item.id) do
+                %figure
+                  = image_tag @itemimages.image.url, class:'item_phot'
+                .related-item__user-item__container__item_body
+                  %h3
+                    = item.name
+                  .related-item__user-item__container__item_body__info
+                    .related-item__user-item__container__item_body__info-price 
+                      = "¥#{item.price.to_s(:delimited)}"
+                    .related-item__user-item__container__item_body__info-like
+                      %i.far.fa-heart
+                        %span 68 
+            
+      .related-item__category
         = link_to "###" do
           = "#{@item.brand.name}その他の出品"
-        .related-item__container
-          - @items.each do |item|  
-            = render partial:"category_items", locals: { item: item }
-      -#   - @items.each do |item|
-      -#     = render partial:"user_items", locals: { item: item }   
+        .related-item__category
+          - @items.each do |item|
+            .related-item__category-item__container           
+              = link_to item_path(item.id) do
+                %figure
+                  = image_tag @itemimages.image.url, class:'item_phot'
+                .related-item__category-item__container__item_body
+                  %h3
+                    = item.name
+                  .related-item__category-item__container__item_body__info
+                    .related-item__category-item__container__item_body__info-price 
+                      = "¥#{item.price.to_s(:delimited)}"
+                    .related-item__category-item__container__item_body__info-like
+                      %i.far.fa-heart
+                        %span 68 
     -# 下記パンくずリスト時に実装のためコメントアウト
     -# .modal
     -# .bottom
