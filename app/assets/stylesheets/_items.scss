@@ -277,7 +277,6 @@
     .message {
       background-color: #fff;
       height: 214px;
-      margin: 0px auto;
       display: block;
       padding: 24px 40px 40px;
       margin: 24px 0 24px 0;
@@ -316,7 +315,6 @@
     .navi {
       margin: 0 auto;
       width: 620px;
-      display: flex;
       color: #0099e8;
       display: inline-block;
       padding: 32px 0 24px;
@@ -341,8 +339,6 @@
       padding: 32px 0 24px;
       width: 620px;
 
-      &__box{
-      }  
       &-box{
         margin: 16px 0 0;
         text-align: center;
@@ -362,7 +358,6 @@
             .fa-facebook-square {
               color: #fff;
               background: #385185;
-              font-size: 26px;
               height: 44px;
               width: 44px;
               border-radius: 4px;
@@ -372,7 +367,6 @@
             .fa-twitter-square {
               color: #fff;
               background: #5d9dc9;
-              font-size: 24px;
               height: 44px;
               width: 44px;
               border-radius: 4px;
@@ -382,7 +376,6 @@
             .fa-pinterest-square {
               color: #fff;
               background: #aa262a;
-              font-size: 20px;
               height: 44px;
               width: 44px;
               border-radius: 4px;
