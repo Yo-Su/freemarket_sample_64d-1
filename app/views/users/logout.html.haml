@@ -1,7 +1,7 @@
-.main
+= render "./shared/header"
+.main-contents
   = render "sidebar"
-
-  .content
-    .logout
-      .logout__area
-        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout__area__btn"
+  -# .content
+  .logout
+    .logout__area
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout__area__btn"
