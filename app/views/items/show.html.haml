@@ -86,7 +86,7 @@
         .content__stop-btn 出品を一旦停止する
       = link_to item_path(@item), method: :delete do
         .content__stop-btn この商品を削除する
-    -else 
+    -else
       .content__buy-btn
         = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
       .content__note

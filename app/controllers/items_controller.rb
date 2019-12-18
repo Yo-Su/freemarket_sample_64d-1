@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
   end
 
   def list
-    @items = Item.where(status: 1 )
+    @items = Item.where("status < ?",3)
   end
 
   private
