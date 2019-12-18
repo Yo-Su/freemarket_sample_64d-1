@@ -1,123 +1,141 @@
 .wrapper
   =render 'shared/header'
-  .content
-    .content__top
-      = @item.name
-    .content__item-data
-      .content__item-data__photo
-        .content__item-data__photo__main-image
-          - @images.each_with_index do |pickupimage, i|
-            - if i == 0
-              .content__item-data__photo__main-image__pickupimage
-                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
-            - else
-              .content__item-data__photo__main-image__pickupimage.image-hidden
-                = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
-        .content__item-data__photo__sub-images
-          - @images.each_with_index do |itemimage, i|
-            - if i == 0
-              .content__item-data__photo__sub-images__sub-image
-                = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真", data: {sub_image_id: itemimage.id}
-            - else
-              .content__item-data__photo__sub-images__sub-image.image-opacity
-                = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真", data: {sub_image_id: itemimage.id}
-      .content__item-data__table
-        %table
-          %tr.content__item-data__table__user-line
-            %td.content__item-data__table__td= "出品者"
-            %td
-              .content__item-data__table__user-line__user-name
-                = link_to @item.user_id, ""
-              .content__item-data__table__user-line__evaluate
-                .content__item-data__table__user-line__evaluate__good
-                  = icon 'fas', 'laugh', class: 'icon'
-                  = "16"
-                .content__item-data__table__user-line__evaluate__normal
-                  = icon 'fas', 'meh', class: 'icon'
-                  = "1"
-                .content__item-data__table__user-line__evaluate__bad
-                  = icon 'fas', 'frown', class: 'icon'
-                  = "0"
-          %tr.content__item-data__table__category
-            %td.content__item-data__table__td= "カテゴリー"
-            %td
-              .content__item-data__table__category__big
-                = link_to "メンズ", ""
-              .content__item-data__table__category__middle
-                = link_to "" do
-                  = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__middle__icon'
-                  =  "靴"
-              .content__item-data__table__category__small
-                = link_to  "" do
-                  = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__small__icon'
-                  = "ドレス/ビジネス"
-          %tr.content__item-data__table__brand
-            %td.content__item-data__table__td= "ブランド"
-            %td= @item.try(:brand).try(:name)
-          %tr.content__item-data__table__size
-            %td.content__item-data__table__td= "商品のサイズ"
-            %td= @item.try(:size)
-          %tr.content__item-data__table__status
-            %td.content__item-data__table__td= "商品の状態"
-            %td= @item.grade
-          %tr.content__item-data__table__cost
-            %td.content__item-data__table__td= "配送料の負担"
-            %td= @item.transfer_fee
-          %tr.content__item-data__table__type
-            %td.content__item-data__table__td= "配送の方法"
-            %td= @item.delivery_type
-          %tr.content__item-data__table__area
-            %td.content__item-data__table__td= "配送元地域"
-            %td= link_to @item.from_delivery_area, ""
-          %tr.content__item-data__table__day
-            %td.content__item-data__table__td= "発送日の目安"
-            %td= @item.delivery_date
-    .content__price
-      .content__price__price
-        = "¥#{@item.price.to_s(:delimited)}"
-        %span.content__price__tax
-          = "(税込) "
-        %span.content__price__fee
-          = "送料込み"
-    -if user_signed_in?
-      = link_to edit_item_path(@item) do
-        .content__edit-btn 商品の編集
-        .content__btn-text or
-        .content__stop-btn 出品を一旦停止する
-      = link_to item_path(@item), method: :delete do
-        .content__stop-btn この商品を削除する
-    -else 
-      .content__buy-btn
-        = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
-      .content__note
-        この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
-    .content__item-description
-      = @item.describe
-    .content__button-area
-      .content__button-area__box
-        %label.content__button-area__box__good
-          = icon 'far', 'heart', class: 'icon'
-          いいね!
-          = "0"
-        %label.content__button-area__box__report
-          = icon 'far', 'flag', class: 'icon'
-          不適切な商品の報告
-      = link_to "", class: "content__button-area__safety" do
-        = icon 'fas', 'lock', class: 'icon'
-        あんしん・あんぜんへの取り組み
--# ToDoリスト商品詳細ページ コメントページ/リンク/アイコン欄実装用クラス定義のみ
-  -# .message
-  -#   .message__note
-  -#   .message__textarea
-  -#   .message__submit-btn
-  -# .navi
-  -#   .navi__left-box
-  -#   .navi__right-box
-  -# .social-media
-  -#   .social-media__box
-  -# .related-item
-  -#   .related-item__user-item
-  -#   .related-item__category-item
-  -# .modal
-  -# .bottom
-  -#   .bottom__box
+  .content-box-clearfix
+    .content-box
+      .content-box__top
+        = @item.name
+      .content-box__item-data
+        .content-box__item-data__photo
+          .content-box__item-data__photo__main-image
+            - @images.each_with_index do |pickupimage, i|
+              - if i == 0
+                .content-box__item-data__photo__main-image__pickupimage
+                  = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
+              - else
+                .content-box__item-data__photo__main-image__pickupimage.image-hidden
+                  = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
+          .content-box__item-data__photo__sub-images
+            - @images.each_with_index do |itemimage, i|
+              - if i == 0
+                .content-box__item-data__photo__sub-images__sub-image
+                  = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真", data: {sub_image_id: itemimage.id}
+              - else
+                .content-box__item-data__photo__sub-images__sub-image.image-opacity
+                  = image_tag itemimage.image.url, size: "60x60", alt: "ユーザー投稿写真", data: {sub_image_id: itemimage.id}
+        .content-box__item-data__table
+          %table
+            %tr.content-boxt__item-data__table__user-line
+              %td.content-box__item-data__table__td= "出品者"
+              %td
+                .content-box__item-data__table__user-line__user-name
+                  = link_to @item.user_id, ""
+                .content-box__item-data__table__user-line__evaluate
+                  .content-box__item-data__table__user-line__evaluate__good
+                    = icon 'fas', 'laugh', class: 'icon'
+                    = "16"
+                  .content-box__item-data__table__user-line__evaluate__normal
+                    = icon 'fas', 'meh', class: 'icon'
+                    = "1"
+                  .content-box__item-data__table__user-line__evaluate__bad
+                    = icon 'fas', 'frown', class: 'icon'
+                    = "0"
+            %tr.content-box__item-data__table__category
+              %td.content-box__item-data__table__td= "カテゴリー"
+              %td
+                .content-box__item-data__table__category__big
+                  = link_to "メンズ", ""
+                .content-box__item-data__table__category__middle
+                  = link_to "" do
+                    = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__middle__icon'
+                    =  "靴"
+                .content-box__item-data__table__category__small
+                  = link_to  "" do
+                    = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__small__icon'
+                    = "ドレス/ビジネス"
+            %tr.content-box__item-data__table__brand
+              %td.content-box__item-data__table__td= "ブランド"
+              %td= @item.try(:brand).try(:name)
+            %tr.content-box__item-data__table__size
+              %td.content-box__item-data__table__td= "商品のサイズ"
+              %td= @item.try(:size)
+            %tr.content-box__item-data__table__status
+              %td.content-box__item-data__table__td= "商品の状態"
+              %td= @item.grade
+            %tr.content-box__item-data__table__cost
+              %td.content-box__item-data__table__td= "配送料の負担"
+              %td= @item.transfer_fee
+            %tr.content-box__item-data__table__type
+              %td.content-box__item-data__table__td= "配送の方法"
+              %td= @item.delivery_type
+            %tr.content-box__item-data__table__area
+              %td.content-box__item-data__table__td= "配送元地域"
+              %td= link_to @item.from_delivery_area, ""
+            %tr.content-box__item-data__table__day
+              %td.content-box__item-data__table__td= "発送日の目安"
+              %td= @item.delivery_date
+      .content-box__price
+        .content-box__price__price
+          = "¥#{@item.price.to_s(:delimited)}"
+          %span.content-box__price__tax
+            = "(税込) "
+          %span.content-box__price__fee
+            = "送料込み"
+      -if user_signed_in? && @item.user_id == current_user.id
+        = link_to edit_item_path(@item) do
+          .content-box__edit-btn 商品の編集
+          .content-box__btn-text or
+          .content-box__stop-btn 出品を一旦停止する
+        = link_to item_path(@item), method: :delete do
+          .content-box__stop-btn この商品を削除する
+      - else 
+        .content-box__buy-btn
+          = link_to "購入画面に進む", buy_item_path, class: "content__buy-btn__submit"
+        .ccontent-box__note
+          この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。  
+        .content-box__item-description
+          = @item.describe
+        .content-box__button-area
+          .content-box__button-area__box
+            %label.content-box__button-area__box__good
+              = icon 'far', 'heart', class: 'icon'
+              いいね!
+              = "0"
+            %label.content-box__button-area__box__report
+              = icon 'far', 'flag', class: 'icon'
+              不適切な商品の報告
+          = link_to "", class: "content-box__button-area__safety" do
+            = icon 'fas', 'lock', class: 'icon'
+            あんしん・あんぜんへの取り組み
+    .message
+      .message__note
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .message__textarea
+        = text_field_tag 'text','', class:'message-form'
+      .message__submit-btn
+        = submit_tag "コメントする",class:'message-submit-btn'
+    .navi
+      .navi__left-box
+        = icon 'fas', 'chevron-left'
+        = link_to "前の商品へ", "#"
+      .navi__right-box
+        = link_to "次の商品へ", "#"
+        = icon 'fas', 'chevron-right'
+    .social-media
+      .social-media__box
+      %ul.social-media-box
+        %li
+          = link_to "#", target: "_blank", class: "share-btn" do
+            = icon 'fab', 'facebook-square'
+        %li
+          = link_to "#", target: "_blank", class: "share-btn" do
+            = icon 'fab', 'twitter-square'
+        %li
+          = link_to "#", target: "_blank", class: "share-btn" do
+            = icon 'fab', 'pinterest-square'
+    -# .related-item
+    -#   .related-item__user-item
+    -#   .related-item__category-item
+    -# .modal
+    -# .bottom
+    -#   .bottom__box
+  =render 'shared/footer'  

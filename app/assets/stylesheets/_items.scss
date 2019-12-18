@@ -10,151 +10,183 @@
     text-decoration: none;
     color: #0099e8;
   }
-
-  .content {
-    background-color: #fff;
+  .content-box-clearfix{
     width: 620px;
     margin: 40px auto 0;
-    padding: 24px 40px 40px;
+    padding: 0 0 40px;
 
-    &__top {
-      font-size: 24px;
-      text-align: center;
-      word-wrap: break-word;
-      line-height: 1.4;
-      font-weight: bold;
-    }
-
-    &__item-data {
-      margin: 16px 0 0;
-      display: flex;
-
-      &__photo {
-        position: relative;
-
-        img {
-          padding: 0;
-          margin: 0;
-          display: block;
-        }
-
-        .image-hidden {
-          display: none;
-        }
-        .image-opacity {
-          opacity: 0.4;
-        }
-
-        &__sub-images {
-          background-color: #f5f5f5;
-          width: 300px;
-          display: flex;
-          flex-wrap: wrap;
-          opacity: 1;
-
-        }
+    .content-box {
+      background-color: #fff;
+      padding: 24px 40px 40px;
+      &__top {
+        font-size: 24px;
+        text-align: center;
+        word-wrap: break-word;
+        line-height: 1.4;
+        font-weight: bold;
       }
 
-      &__table {
-        max-width: 300px;
-        height: 420px;
-        margin: 0 auto;
-        font-size: 14px;
+      &__item-data {
+        margin: 16px 0 0;
+        display: flex;
 
-        td {
-          border-collapse: collapse;
-          border: 1px solid #f5f5f5;
-        }
+        &__photo {
+          position: relative;
 
-        &__td {
-          background-color: #fafafa;
-        }
-
-        &__user-line {
-          height: 65px;
-          &__user-name {
+          img {
+            padding: 0;
             margin: 0;
+            display: block;
           }
-          &__evaluate {
-            font-size: 14px;
+
+          .image-hidden {
+            display: none;
+          }
+          .image-opacity {
+            opacity: 0.4;
+          }
+
+          &__sub-images {
+            background-color: #f5f5f5;
+            width: 300px;
             display: flex;
-            &__good {
-              padding-right: 20px;
-              .fas{
-                font-size: 16px;
-                color: #FC5485;
+            flex-wrap: wrap;
+            opacity: 1;
+
+          }
+        }
+
+        &__table {
+          max-width: 300px;
+          height: 420px;
+          margin: 0 auto;
+          font-size: 14px;
+
+          td {
+            border-collapse: collapse;
+            border: 1px solid #f5f5f5;
+          }
+
+          &__td {
+            background-color: #fafafa;
+          }
+
+          &__user-line {
+            height: 65px;
+            &__user-name {
+              margin: 0;
+            }
+            &__evaluate {
+              font-size: 14px;
+              display: flex;
+              &__good {
+                padding-right: 20px;
+                .fas{
+                  font-size: 16px;
+                  color: #FC5485;
+                }
+              }
+              &__normal {
+                padding-right: 20px;
+                .fas{
+                  font-size: 16px;
+                  color: #FFA647;
+                }
+              }
+              &__bad {
+                padding-right: 20px;
+                .fas{
+                  font-size: 16px;
+                  color: #51B7D6;
+                }
               }
             }
-            &__normal {
-              padding-right: 20px;
-              .fas{
-                font-size: 16px;
-                color: #FFA647;
+          }
+
+          &__category {
+            height: 65px;
+
+            &__middle {
+              &__icon {
+                color: #51B7D6;
               }
             }
-            &__bad {
-              padding-right: 20px;
-              .fas{
-                font-size: 16px;
+            &__small {
+              &__icon {
                 color: #51B7D6;
               }
             }
           }
-        }
-
-        &__category {
-          height: 65px;
-
-          &__middle {
-            &__icon {
-              color: #51B7D6;
-            }
+          &__brand {
+            height: 40px;
           }
-          &__small {
-            &__icon {
-              color: #51B7D6;
-            }
+          &__size {
+            height: 40px;
           }
-        }
-        &__brand {
-          height: 40px;
-        }
-        &__size {
-          height: 40px;
-        }
-        &__status {
-          height: 40px;
-        }
-        &__cost {
-          height: 40px;
-        }
-        &__type {
-          height: 40px;
-        }
-        &__area {
-          height: 40px;
-        }
-        &__day {
-          height: 40px;
+          &__status {
+            height: 40px;
+          }
+          &__cost {
+            height: 40px;
+          }
+          &__type {
+            height: 40px;
+          }
+          &__area {
+            height: 40px;
+          }
+          &__day {
+            height: 40px;
+          }
         }
       }
-    }
-
-    &__price {
-      margin: 24px 0 0;
-      text-align: center;
 
       &__price {
-        margin: 0 16px 0 0;
-        font-size: 50px;
+        margin: 24px 0 0;
+        text-align: center;
+        display: block;
+
+        &__price {
+          margin: 0 16px 0 0;
+          font-size: 50px;
+        }
+        &__tax {
+          font-size: 10px;
+        }
+        &__fee {
+          font-size: 16px;
+        }
       }
-      &__tax {
-        font-size: 10px;
+      &__edit-btn{
+        background: $edit_btn;
+        border: 1px solid $edit_btn;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
       }
-      &__fee {
+
+      &__btn-text{
+        text-align: center;
         font-size: 16px;
+        color: black;
       }
-    }
+
+      &__stop-btn{
+        background: $stop_btn;
+        border: 1px solid $stop_btn;
+        color: #fff;
+        margin: 16px 0 16px 0;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
+      }
 
     &__buy-btn {
       text-align: center;
@@ -183,35 +215,6 @@
       padding: 32px 0 0;
       font-size: 18px;
       white-space: pre-wrap;
-    }
-    &__edit-btn{
-      background: $edit_btn;
-      border: 1px solid $edit_btn;
-      color: #fff;
-      display: block;
-      width: 100%;
-      line-height: 48px;
-      font-size: 14px;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    &__btn-text{
-      text-align: center;
-      font-size: 16px;
-    }
-
-    &__stop-btn{
-      background: $stop_btn;
-      border: 1px solid $stop_btn;
-      color: #fff;
-      margin: 16px 0 16px 0;
-      display: block;
-      width: 100%;
-      line-height: 48px;
-      font-size: 14px;
-      cursor: pointer;
-      text-align: center;
     }
 
     &__button-area {
@@ -270,234 +273,331 @@
         }
       }
     }
-
-  }
-  .message {
-    background-color: #139;
-    width: 652px;
-    height: 214px;
-    margin: 8px auto;
-    padding: 24px;
-  }
-
-  .navi {
-    background-color: #410;
-    width: 700px;
-    height: 14px;
-    margin: 24px auto 0;
-  }
-
-  .social-media {
-    background-color: #9a2;
-    width: 700px;
-    height: 82px;
-    margin: 24px auto;
-    padding: 32px 0 24px;
-  }
-
-  .related-item {
-    background-color: #2d3;
-    width: 700px;
-    height: 1500px;
-    margin: 0 auto;
-  }
-
-  .modal {
-    padding: 20px 0;
-  }
-
-  .bottom {
-    background-color: #2cc;
-    width: 1020px;
-    height: 16px;
-    margin: 0 auto;
-    padding: 16px 0;
-  }
-  // =商品詳細ページここまで============================
-
-  // =商品購入ページここから============================
-  .buy-content {
-    background-color: #f5f5f5;
-    width: 700px;
-    height: 765px;
-    margin: 100px auto 0;
-
-    .buy-area {
+  }    
+    .message {
       background-color: #fff;
-      height: 100%;
-      width: 100%;
+      height: 214px;
+      margin: 0px auto;
+      display: block;
+      padding: 24px 40px 40px;
+      margin: 24px 0 24px 0;
+      &__note{
+        padding: 8px;
+        font-size: 14px;
+        background: #fff6de;
+      }
+      &-form{
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 104px;
 
-      &__title {
-        font-size: 22px;
-        text-align: center;
-        padding: 32px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 8px 0 0;
       }
 
-      &__item-area {
-        padding: 32px 16px;
+      &-submit-btn{
+        width: 100%;
+        margin: 8px 0 0;
+        text-align: center;
+        background: $stop_btn;
+        border: 1px solid $stop_btn;
+        color: #fff;
+        display: block;
+        line-height: 48px;
+        cursor: pointer;
+      }
 
-        &__inner {
-          margin: 0 auto;
+    }
+
+    .navi {
+      margin: 0 auto;
+      width: 620px;
+      display: flex;
+      color: #0099e8;
+      display: inline-block;
+      padding: 32px 0 24px;
+
+      &__left-box{
+        text-decoration: none;
+        font-weight: 900;
+        float: left;
+      }
+
+      &__right-box{
+        text-decoration: none;
+        font-weight: 900;
+        float: right;
+      }
+
+    }
+
+    .social-media {
+      background: #fff;
+      margin: 24px auto;
+      padding: 32px 0 24px;
+      width: 620px;
+
+      &__box{
+      }  
+      &-box{
+        margin: 16px 0 0;
+        text-align: center;
+  
+        li{
+          display: inline-block;
+          margin: 0 8px 8px 0;
+          vertical-align: middle;
+          text-align: center;
+          
+          .share-btn{
+            width: 44px;
+            height: 44px;
+            border-radius: 4px;
+            line-height: 44px;
+          
+            .fa-facebook-square {
+              color: #fff;
+              background: #385185;
+              font-size: 26px;
+              height: 44px;
+              width: 44px;
+              border-radius: 4px;
+              line-height: 44px;
+              font-size: 24px;
+            }
+            .fa-twitter-square {
+              color: #fff;
+              background: #5d9dc9;
+              font-size: 24px;
+              height: 44px;
+              width: 44px;
+              border-radius: 4px;
+              line-height: 44px;
+              font-size: 24px;
+            }
+            .fa-pinterest-square {
+              color: #fff;
+              background: #aa262a;
+              font-size: 20px;
+              height: 44px;
+              width: 44px;
+              border-radius: 4px;
+              line-height: 44px;
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+
+    .related-item {
+      background-color: #2d3;
+      width: 700px;
+      height: 1500px;
+      margin: 0 auto;
+    }
+
+    .modal {
+      padding: 20px 0;
+    }
+
+    .bottom {
+      background-color: #2cc;
+      width: 1020px;
+      height: 16px;
+      margin: 0 auto;
+      padding: 16px 0;
+    }
+    // =商品詳細ページここまで============================
+
+    // =商品購入ページここから============================
+    .buy-content {
+      background-color: #f5f5f5;
+      width: 700px;
+      height: 765px;
+      margin: 100px auto 0;
+
+      .buy-area {
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+
+        &__title {
+          font-size: 22px;
+          text-align: center;
+          padding: 32px;
+        }
+
+        &__item-area {
+          padding: 32px 16px;
+
+          &__inner {
+            margin: 0 auto;
+            width: 340px;
+            height: 80px;
+            display: flex;
+
+            &__describe-area {
+              margin-left: 16px;
+
+              &__title {
+                font-size: 14px;
+                padding-bottom: 8px;
+              }
+
+              &__price-area {
+                display: flex;
+
+                &__price {
+                  font-size: 15px;
+                  font-weight: bold;
+                }
+
+                &__tax {
+                  font-size: 12px;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+        &__buy-form {
           width: 340px;
-          height: 80px;
-          display: flex;
+          margin: 0 auto;
+          padding: 32px 16px 48px;
 
-          &__describe-area {
-            margin-left: 16px;
+          &__price-area {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            &__label {
+              font-size: 18px;
+              font-weight: bold;
+              padding-top: 6px;
+            }
+
+            &__price {
+              font-size: 30px;
+            }
+          }
+
+          &__point-area {
+            height: 14px;
+            padding: 24px 0 32px;
+
+            #buy_form_point {
+              transform: scale(1.5);
+              display: inline-block;
+            }
+
+            &__point {
+              font-size: 14px;
+              padding-left: 10px;
+            }
+          }
+
+          &__chash-area {
+            padding: 32px 0;
 
             &__title {
               font-size: 14px;
-              padding-bottom: 8px;
+              font-weight: bold;
+              display: flex;
+              justify-content: space-between;
+
+              &__link {
+                font-weight: normal;
+              }
             }
 
-            &__price-area {
+            &__card-area {
+              font-size: 14px;
+
+              a {
+                display: flex;
+
+                .fa-plus-circle {
+                  padding-top: 2px;
+                }
+              }
+
+              &__notice {
+                margin-left: 5px;
+              }
+
+            }
+          }
+          &__deribary-area {
+            font-size: 14px;
+
+            &__title-area {
               display: flex;
+              justify-content: space-between;
+            }
 
-              &__price {
-                font-size: 15px;
-                font-weight: bold;
-              }
+            &__address {
+              white-space: pre-wrap;
+            }
+          }
+          &__submit {
+            padding-top: 32px;
 
-              &__tax {
-                font-size: 12px;
-                font-weight: bold;
-              }
+            &__btn {
+              background: none;
+              border: none;
+              outline: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              width: 100%;
+              height: 50px;
+              color: #fff;
+              font-size: 14px;
+              font-weight: bold;
+              cursor: pointer;
+              background-color: #ea352d;
+            }
+            &__unclick-btn {
+              background: none;
+              border: none;
+              outline: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              width: 100%;
+              height: 50px;
+              color: #fff;
+              font-size: 14px;
+              font-weight: bold;
+              cursor: not-allowed;
+              background-color: #888;
             }
           }
         }
       }
-      &__buy-form {
-        width: 340px;
+    }
+    // =商品購入ページここまで============================
+
+    // =商品購入完了ページここから=========================
+    .done-content {
+      height: 800px;
+      padding-top: 100px;
+
+      &__area {
+        background-color: #fff;
+        width: 600px;
+        height: 80px;
         margin: 0 auto;
-        padding: 32px 16px 48px;
-
-        &__price-area {
-          width: 100%;
-          height: 30px;
-          display: flex;
-          justify-content: space-between;
-
-          &__label {
-            font-size: 18px;
-            font-weight: bold;
-            padding-top: 6px;
-          }
-
-          &__price {
-            font-size: 30px;
-          }
-        }
-
-        &__point-area {
-          height: 14px;
-          padding: 24px 0 32px;
-
-          #buy_form_point {
-            transform: scale(1.5);
-            display: inline-block;
-          }
-
-          &__point {
-            font-size: 14px;
-            padding-left: 10px;
-          }
-        }
-
-        &__chash-area {
-          padding: 32px 0;
-
-          &__title {
-            font-size: 14px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-
-            &__link {
-              font-weight: normal;
-            }
-          }
-
-          &__card-area {
-            font-size: 14px;
-
-            a {
-              display: flex;
-
-              .fa-plus-circle {
-                padding-top: 2px;
-              }
-            }
-
-            &__notice {
-              margin-left: 5px;
-            }
-
-          }
-        }
-        &__deribary-area {
-          font-size: 14px;
-
-          &__title-area {
-            display: flex;
-            justify-content: space-between;
-          }
-
-          &__address {
-            white-space: pre-wrap;
-          }
-        }
-        &__submit {
-          padding-top: 32px;
-
-          &__btn {
-            background: none;
-            border: none;
-            outline: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 50px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: #ea352d;
-          }
-          &__unclick-btn {
-            background: none;
-            border: none;
-            outline: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 50px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: not-allowed;
-            background-color: #888;
-          }
-        }
+        text-align: center;
+        font-size: 24px;
       }
     }
+    // =商品購入完了ページここまで=========================
   }
-  // =商品購入ページここまで============================
-
-  // =商品購入完了ページここから=========================
-  .done-content {
-    height: 800px;
-    padding-top: 100px;
-
-    &__area {
-      background-color: #fff;
-      width: 600px;
-      height: 80px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 24px;
-    }
-  }
-  // =商品購入完了ページここまで=========================
-}
+}  
