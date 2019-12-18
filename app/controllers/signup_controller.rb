@@ -1,10 +1,20 @@
 class SignupController < ApplicationController
+  before_action :authenticate_user!, only:[:address_info, :credit_info]
 
   def index
   end
 
   def member_info
-    @user = User.new # 新規インスタンス作成
+    # SNS認証のとメールアドレス登録で場合分け
+    @user = if session[:password]
+      User.new(
+        nick_name: session[:nick_name],
+        email: session[:email],
+        password: session[:password]
+      )
+    else
+      User.new
+    end
   end
 
   def phone_info
@@ -12,7 +22,7 @@ class SignupController < ApplicationController
     if params[:user]
       session[:nick_name] = user_params[:nick_name]
       session[:email] = user_params[:email]
-      session[:password] = user_params[:password]
+      session[:password] ||= user_params[:password]
       session[:last_name] = user_params[:last_name]
       session[:first_name] = user_params[:first_name]
       session[:last_name_kana] = user_params[:last_name_kana]
@@ -25,7 +35,6 @@ class SignupController < ApplicationController
   end
 
   def sms_confirmation
-    
     # step2で入力された値をsessionに保存
     if params[:user]
       session[:phone_number] = user_params[:phone_number]
@@ -38,15 +47,21 @@ class SignupController < ApplicationController
       nick_name: session[:nick_name], # sessionに保存された値をインスタンスに渡す
       email: session[:email],
       password: session[:password],
-      last_name: session[:last_name], 
-      first_name: session[:first_name], 
-      last_name_kana: session[:last_name_kana], 
+      last_name: session[:last_name],
+      first_name: session[:first_name],
+      last_name_kana: session[:last_name_kana],
       first_name_kana: session[:first_name_kana],
       phone_number: session[:phone_number],
       birthday: "#{session[:birth_year]}-#{session[:birth_month]}-#{session[:birth_day]}"
     )
     if @user.save
-    # ログインするための情報を保管
+      #ユーザ登録と同時にsns_credentialも登録する
+      SnsCredential.create(
+        uid: session[:uid],
+        provider: session[:provider],
+        user_id: @user.id
+      )
+      # ログインするための情報を保管
       sign_in User.find(@user.id) unless user_signed_in?
       redirect_to address_info_signup_index_path
     else
@@ -55,14 +70,16 @@ class SignupController < ApplicationController
   end
 
   def address_info
-    @address = Address.new
+    @address = Address.find_or_initialize_by(user_id: current_user.id)
   end
 
   def credit_info
-    @address = Address.new(address_params)
-    unless @address.save
-      render action: :address_info
-    end
+    request_from = session[:request_from]
+    @address = Address.find_or_initialize_by(user_id: current_user.id)
+
+    render action: :address_info unless @address.update(address_params)
+
+    redirect_to request_from if request_from
   end
 
   def complete
@@ -100,5 +117,4 @@ class SignupController < ApplicationController
       :phone_number
     ).merge(user_id: current_user.id)
   end
-
 end

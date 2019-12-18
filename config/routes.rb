@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "items#index"
   resources :users, only: [:show, :edit, :update] do
     collection do
@@ -32,4 +32,11 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :create, :new, :destroy]
   resources :imeges, only: [:new, :create]
   resources :mypages, only: [:index,:update]
+
+  resources :categories, only:[:new] do
+    collection do
+      get 'set_children_category'
+      get 'set_grandchild_category'
+    end
+  end
 end
