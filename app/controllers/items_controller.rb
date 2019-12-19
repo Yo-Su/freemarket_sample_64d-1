@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
 
   def show
     @images = Itemimage.includes(:item).where(item_id: params[:id])
+    @itemimages = Itemimage.includes(:item).first
+    @items = Item.where(user_id: @item.user_id).order("rand()").limit(6).where.not(id: @item.id)
   end
 
   def edit
