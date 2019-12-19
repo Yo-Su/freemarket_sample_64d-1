@@ -28,7 +28,7 @@
               %td.content-box__item-data__table__td= "出品者"
               %td
                 .content-box__item-data__table__user-line__user-name
-                  = link_to @item.user_id, ""
+                  = link_to @item.user.nick_name, ""
                 .content-box__item-data__table__user-line__evaluate
                   .content-box__item-data__table__user-line__evaluate__good
                     = icon 'fas', 'laugh', class: 'icon'
@@ -91,7 +91,7 @@
         .content-box__buy-btn
           = link_to "購入画面に進む", buy_item_path, class: "content-box__buy-btn__submit"
         .ccontent-box__note
-          この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。  
+          この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
         .content-box__item-description
           = @item.describe
         .content-box__button-area
@@ -103,7 +103,7 @@
             %label.content-box__button-area__left-box__report
               = icon 'far', 'flag', class: 'icon'
               不適切な商品の報告
-          .content-box__button-area__right-box    
+          .content-box__button-area__right-box
             = link_to "", class: "content-box__button-area__right-box__safety" do
               = icon 'fas', 'lock', class: 'icon'
               あんしん・あんぜんへの取り組み
@@ -140,40 +140,40 @@
           = "#{@item.user.nick_name}さんのその他の出品"
         .related-item__user-item
           - @items.each do |item|
-            .related-item__user-item__container           
+            .related-item__user-item__container
               = link_to item_path(item.id) do
                 %figure
-                  = image_tag @itemimages.image.url, class:'item_phot'
+                  = image_tag item.itemimages.first.image.url, class:'item_phot'
                 .related-item__user-item__container__item_body
                   %h3
                     = item.name
                   .related-item__user-item__container__item_body__info
-                    .related-item__user-item__container__item_body__info-price 
+                    .related-item__user-item__container__item_body__info-price
                       = "¥#{item.price.to_s(:delimited)}"
                     .related-item__user-item__container__item_body__info-like
                       %i.far.fa-heart
-                        %span 68 
-            
+                        %span 68
+
       .related-item__category
         = link_to "###" do
-          = "#{@item.brand.name}その他の出品"
+          = "#{@item.brand.try(:name)}その他の出品"
         .related-item__category
           - @items.each do |item|
-            .related-item__category-item__container           
+            .related-item__category-item__container
               = link_to item_path(item.id) do
                 %figure
-                  = image_tag @itemimages.image.url, class:'item_phot'
+                  = image_tag item.itemimages.first.image.url, class:'item_phot'
                 .related-item__category-item__container__item_body
                   %h3
                     = item.name
                   .related-item__category-item__container__item_body__info
-                    .related-item__category-item__container__item_body__info-price 
+                    .related-item__category-item__container__item_body__info-price
                       = "¥#{item.price.to_s(:delimited)}"
                     .related-item__category-item__container__item_body__info-like
                       %i.far.fa-heart
-                        %span 68 
+                        %span 68
     -# 下記パンくずリスト時に実装のためコメントアウト
     -# .modal
     -# .bottom
     -#   .bottom__box
-  =render 'shared/footer' 
+  =render 'shared/footer'

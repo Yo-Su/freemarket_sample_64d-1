@@ -18,12 +18,13 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    #下記の記載は動作確認用のため本実装の際は削除する
+    # status:1 は"出品中"、出品時は必ず1になる
     item.status = 1
-    item.grade = 1
-    item.user_id = 1
-    item.brand_id = 1
-    item.category_id = 1
+    item.user_id = current_user.id
+    #下記の記載は動作確認用のため本実装の際は削除する
+    item.grade = 1 # 商品状態
+    item.brand_id = 1 # ブランドID
+    item.category_id = 1 # カテゴリーID
 
     if item.save
       image_params.to_unsafe_h.reverse_each do |key, value|
@@ -49,7 +50,7 @@ class ItemsController < ApplicationController
 
   def update
   end
-  
+
   def destroy
     @item.destroy
     if @item.user_id == current_user.id
@@ -100,6 +101,7 @@ class ItemsController < ApplicationController
   end
 
   def item_buy_params
+    # status: 4は”取引中”
     params.permit(:id).merge(buyer_id: current_user.id, status: 4)
   end
 
