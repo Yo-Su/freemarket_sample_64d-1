@@ -7,12 +7,10 @@
     width: 700px;
     height: 466px;
     &__content {
-      height: 382px;
       width: 700px;
       .list-items {
         color: #333;
         font-weight: bold;
-        height: 382px;
         width: 700px;
         background: #fff;
         &__head {
@@ -55,13 +53,41 @@
             display: block;
           }
         }
-        &__tab-content {
-          &__now-traiding {
-            height: 16px;
-            padding: 160px 0 60px 0;
-            text-align: center;
-            color: #cccccc;
-            font-size: 16px;
+        &__body {
+          border-bottom: 1px solid #eee;
+          font-size: 14px;
+          position: relative;
+          background-color: white;
+          height: 47px;
+          padding: 16px;
+          &__list {
+            text-decoration: none;
+            display: flex;
+            color: #333;
+            &__img {
+              z-index: 1;
+              width: 48px;
+              height: 48px;
+            }
+            &__item {
+              margin: 0 40px 0 20px;
+              &__status {
+                font-weight: bold;
+                margin: 8px 0 0 0;
+                padding: 2px 5px;
+                border-radius: 2px;
+                font-size: 12px;
+                text-align: center;
+                color: white;
+                background: #0099e8;
+                display: inline-block;
+              }
+            }
+            &--icon {
+              line-height: 47px;
+              position: absolute;
+              right: 16px;
+            }
           }
         }
       }
@@ -114,4 +140,16 @@
       }
     }
   }
+}
+.image-hidden{
+  display: none;
+}
+
+.list-items__now-traiding {
+  background-color: white;
+  height: 16px;
+  padding: 160px 0 60px 0;
+  text-align: center;
+  color: #cccccc;
+  font-size: 16px;
 }

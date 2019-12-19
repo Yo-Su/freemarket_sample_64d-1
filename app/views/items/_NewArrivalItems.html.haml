@@ -23,15 +23,15 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - @images.reverse.each do |image|
-        =link_to item_path(image.item.id), class: "item-images__link" do
+      - @items.reverse.each do |item|
+        =link_to item_path(item.id), class: "item-images__link" do
           .item-images__link__contents
             .item-images__link__contents__container
               .item-images__link__contents__container__price
-                = number_to_currency(image.item.price, unit: "¥ ", precision: 0)
-            =image_tag image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+                = number_to_currency(item.price, unit: "¥ ", precision: 0)
+            = image_tag item.itemimages.first.image.url, alt:"商品写真", class:"item-images__link__contents__photo"
             .item-images__link__contents__names
-              = image.item.name
+              = item.name
 .items-center
   .item-review
     .item-review__new
@@ -41,15 +41,15 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - @images.reverse.each do |image|
-        =link_to item_path(image.item.id), class: "item-images__link" do
+      - @items.reverse.each do |item|
+        =link_to item_path(item.id), class: "item-images__link" do
           .item-images__link__contents
             .item-images__link__contents__container
               .item-images__link__contents__container__price
-                = number_to_currency(image.item.price, unit: "¥ ", precision: 0)
-            =image_tag image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+                = number_to_currency(item.price, unit: "¥ ", precision: 0)
+            =image_tag item.itemimages.first.image.url, alt:"商品写真",class:"item-images__link__contents__photo"
             .item-images__link__contents__names
-              = image.item.name
+              = item.name
 .items-center
   .item-review
     .item-review__new
@@ -59,15 +59,15 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - @images.reverse.each do |image|
-        =link_to item_path(image.item.id), class: "item-images__link" do
+      - @items.reverse.each do |item|
+        =link_to item_path(item.id), class: "item-images__link" do
           .item-images__link__contents
             .item-images__link__contents__container
               .item-images__link__contents__container__price
-                = number_to_currency(image.item.price, unit: "¥ ", precision: 0)
-            =image_tag image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+                = number_to_currency(item.price, unit: "¥ ", precision: 0)
+            =image_tag item.itemimages.first.image.url, alt:"商品写真",class:"item-images__link__contents__photo"
             .item-images__link__contents__names
-              = image.item.name
+              = item.name
 .items-under
   .item-review
     .item-review__new
@@ -77,12 +77,12 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - @images.reverse.each do |image|
-        =link_to item_path(image.item.id), class: "item-images__link" do
+      - @items.reverse.each do |item|
+        =link_to item_path(item.id), class: "item-images__link" do
           .item-images__link__contents
             .item-images__link__contents__container
               .item-images__link__contents__container__price
-                = number_to_currency(image.item.price, unit: "¥ ", precision: 0)
-            =image_tag image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+                = number_to_currency(item.price, unit: "¥ ", precision: 0)
+            =image_tag item.itemimages.first.image.url, alt:"商品写真",class:"item-images__link__contents__photo"
             .item-images__link__contents__names
-              = image.item.name
+              = item.name

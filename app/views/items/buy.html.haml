@@ -6,7 +6,7 @@
       .buy-area__item-area
         .buy-area__item-area__inner
           .buy-area__item-area__inner__image
-            = image_tag @image.url, size: "80x80", alt: "ユーザー投稿写真"
+            = image_tag @image.image.url, size: "80x80", alt: "ユーザー投稿写真"
           .buy-area__item-area__inner__describe-area
             .buy-area__item-area__inner__describe-area__title
               = @item.name
@@ -50,11 +50,12 @@
             .buy-area__buy-form__deribary-area__title-area__title
               配送先
             .buy-area__buy-form__deribary-area__title-area__change
-              = link_to "変更する", ""
+              = link_to "変更する", address_info_signup_index_path, page_name: "a"
           .buy-area__buy-form__deribary-area__address
-            〒123-4567
-            北海道 札幌市 123-abc
-            山田 太郎
+            - if @address
+              = "〒#{@address.post_number / 10000}-#{@address.post_number % 10000}"
+              = "#{@address.prefecture} #{@address.municipality} #{@address.block} #{@address.try(:building)}"
+              = "#{@address.last_name} #{@address.first_name}"
         .buy-area__buy-form__submit
           - if @card
             = form_with url: pay_item_path, method: "post"  do |f|

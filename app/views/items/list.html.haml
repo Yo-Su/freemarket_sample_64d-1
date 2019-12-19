@@ -6,15 +6,31 @@
       .list-items
         .list-items__head 出品した商品
         .list-items__tabs
-          =link_to "", class: "list-items__tabs__putting-up" do
-            出品中
-          =link_to "", class: "list-items__tabs__traiding" do
-            取引中
-          =link_to "", class: "list-items__tabs__past-traiding" do
-            売却済み
-        .list-items__tab-content
-          .list-items__tab-content__now-traiding
-            出品中の商品がありません
+          =link_to "出品中","#", class: "list-items__tabs__putting-up"
+          =link_to "取引中","#",class: "list-items__tabs__traiding"
+          =link_to "売却済み","#", class: "list-items__tabs__past-traiding"
+      - if @items.count == 0
+        .list-items__now-traiding
+          出品中の商品がありません
+      - else
+        - @items.reverse.each do |item|
+          .list-items__body
+            =link_to item_path(item.id), class: "list-items__body__list" do
+              - item.images.each_with_index do |image,i|
+                - if i == 0
+                  = image_tag image.url, alt: "出品写真", class: "list-items__body__list__img"
+                - else
+                  = image_tag image.url, alt: "出品写真", class: "image-hidden"
+              .list-items__body__list__item
+                .list-items__body__list__item__text
+                  = item.name
+                = icon('far', 'heart',  class: "list-items__body__list__item--icon")
+                %span 2
+                = icon('far', 'comment-alt',  class: "list-items__body__list__item--icon")
+                %span 3
+                .list-items__body__list__item__status
+                  = item.status
+              = icon('fas', 'chevron-right',  class: "list-items__body__list--icon")
     .container__pager
       = link_to "", class: "container__pager__box-right" do
         .container__pager__box-right--icon

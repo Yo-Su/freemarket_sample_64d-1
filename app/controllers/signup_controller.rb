@@ -1,4 +1,5 @@
 class SignupController < ApplicationController
+  before_action :authenticate_user!, only:[:address_info, :credit_info]
 
   def index
   end
@@ -69,14 +70,16 @@ class SignupController < ApplicationController
   end
 
   def address_info
-    @address = Address.new
+    @address = Address.find_or_initialize_by(user_id: current_user.id)
   end
 
   def credit_info
-    @address = Address.new(address_params)
-    unless @address.save
-      render action: :address_info
-    end
+    request_from = session[:request_from]
+    @address = Address.find_or_initialize_by(user_id: current_user.id)
+
+    render action: :address_info unless @address.update(address_params)
+
+    redirect_to request_from if request_from
   end
 
   def complete
@@ -114,5 +117,4 @@ class SignupController < ApplicationController
       :phone_number
     ).merge(user_id: current_user.id)
   end
-
 end
