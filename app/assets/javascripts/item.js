@@ -1,11 +1,11 @@
 $(function(){
 
   //  商品詳細画面の画像を切り替える
-  $('.content__item-data__photo__sub-images__sub-image').on('mouseover', function(e){
+  $('.content-box__item-data__photo__sub-images__sub-image').on('mouseover', function(e){
     e.preventDefault();
     // 商品の画像一覧（ピックアップ画像、サブ画像）
-    var pickupImages = $('.content__item-data__photo__main-image__pickupimage')
-    var pickupSubImages = $('.content__item-data__photo__sub-images__sub-image')
+    var pickupImages = $('.content-box__item-data__photo__main-image__pickupimage')
+    var pickupSubImages = $('.content-box__item-data__photo__sub-images__sub-image')
     // 選択した(ピックアップしたい)画像のID
     var pickupImageId = $(this).children().attr("data-sub-image-id")
     // 詮索されたピックアップ画像、サブ画像

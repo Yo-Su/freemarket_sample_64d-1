@@ -1,0 +1,26 @@
+.signup-container
+  = render partial: 'signup/header'
+
+  .main
+    .main-area
+      .card-main
+        %h2
+          クレジットカード
+        .add-bottom
+          .add-bottom-form
+            .form-group
+              - if @card
+                %br
+                = card_number(@card)
+                %br
+                = "有効期限#{sprintf("%02d", @card.exp_month)}/#{@card.exp_year % 100}"
+                %br
+                = card_logo(@card)
+      .card-edit-area
+        .card-edit-area__button
+          .content-box__buy-btn
+            - if @card
+              = link_to "カードを削除する", card_path(@card.id), method: "delete", class: "content__buy-btn__submit"
+            - else
+              = link_to "カードを登録する", new_card_path, class: "content__buy-btn__submit"
+  = render partial: 'signup/footer'

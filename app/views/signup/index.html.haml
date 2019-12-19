@@ -16,7 +16,7 @@
               = icon 'fab', "facebook-square", class: "signup-main__content__box__group__button2__facebook__icon"
               %span.signup-main__content__box__group__button2__facebook__text Facebookで登録する
           %button.signup-main__content__box__group__button3
-            = link_to member_info_signup_index_path, class: "signup-main__content__box__group__button3__google" do
+            = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "signup-main__content__box__group__button3__google" do
               = icon 'fab', "google", class: "signup-main__content__box__group__button3__google__icon"
               %span.signup-main__content__box__group__button3__google__text Googleで登録する
 

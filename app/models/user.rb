@@ -7,7 +7,7 @@ class User < ApplicationRecord
   attr_accessor :birth_year, :birth_month, :birth_day
 
   has_many :addresses, dependent: :destroy
-  has_many :credit_card_infos, dependent: :destroy
+  has_many :cards, dependent: :destroy
   has_many :sns_credentials, dependent: :destroy
 
   # ユーザー登録用

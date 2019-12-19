@@ -16,8 +16,8 @@ FactoryBot.define do
     buyer_id              {"1"}
     user_id               {"1"}
     brand_id              {"1"}
-    images {[
-      FactoryBot.build(:image, item: nil)  #itemと同時にimage作成
+    itemimages {[
+      FactoryBot.build(:itemimage, item: nil)  #itemと同時にimage作成
     ]}
   end
 end

@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
+  before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
   before_action :set_request_from, only: [:buy]
+  before_action :set_card, only: [:buy, :pay]
 
   require 'payjp'
 
@@ -60,19 +61,15 @@ class ItemsController < ApplicationController
 
   def buy
     @image = Itemimage.includes(:item).first
-    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
-    @card = Card.find_by(user_id: 1)
     @address = Address.find_by(user_id: current_user.id) if user_signed_in?
   end
 
   def pay
     # クレジットカード決済===================================================================
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
-    card = Card.where(user_id: 1).first
     if Payjp::Charge.create(
         amount: @item.price,
-        customer: card.customer_id,
+        customer: @card.customer_id,
         currency: 'jpy'
       )
     else
@@ -103,20 +100,19 @@ class ItemsController < ApplicationController
   end
 
   def item_buy_params
-    # current_user.idの代わり、ログイン機能実装後に入れ替える
-    test_id = 2
-    params.permit(:id).merge(buyer_id: test_id, status: "購入中")
+    params.permit(:id).merge(buyer_id: current_user.id, status: 4)
   end
 
   def item_params
     params.require(:item).permit(
-      :grade,
+      :status,
       :name,
       :from_delivery_area,
       :to_delivery_area,
       :price,
       :delivery_date,
-      :size,:grade,
+      :size,
+      :grade,
       :transfer_fee,
       :delivery_type,
       :describe,
@@ -146,6 +142,10 @@ class ItemsController < ApplicationController
     session.delete(:pid)
     session.delete(:provider)
     session.delete(:request_from)
+  end
+
+  def set_card
+    @card = current_user.cards.first
   end
 
   def set_request_from
