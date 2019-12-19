@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
   before_action :set_request_from, only: [:buy]
-  before_action :set_card, only: [:buy]
+  before_action :set_card, only: [:buy, :pay]
 
   require 'payjp'
 
@@ -67,11 +67,9 @@ class ItemsController < ApplicationController
   def pay
     # クレジットカード決済===================================================================
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
-    card = Card.where(user_id: current_user.id).first
     if Payjp::Charge.create(
         amount: @item.price,
-        customer: card.customer_id,
+        customer: @card.customer_id,
         currency: 'jpy'
       )
     else

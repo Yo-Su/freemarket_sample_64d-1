@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_request_from, only: [:index]
-  before_action :set_card, only: [:index]
+  before_action :set_card, only: [:index, :destroy]
 
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
@@ -42,13 +42,12 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new"
     else
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      if customer.delete && card.delete
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      if customer.delete && @card.delete
         redirect_to cards_path
       else
         redirect_to root_path
