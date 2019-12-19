@@ -75,11 +75,11 @@ class SignupController < ApplicationController
 
   def credit_info
     request_from = session[:request_from]
+    session.delete(:request_from)
     @address = Address.find_or_initialize_by(user_id: current_user.id)
 
     render action: :address_info unless @address.update(address_params)
-
-    redirect_to request_from if request_from
+    redirect_to request_from ? request_from : new_card_path
   end
 
   def complete
