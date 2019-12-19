@@ -160,13 +160,15 @@
       &__edit-btn{
         background: $edit_btn;
         border: 1px solid $edit_btn;
-        color: #fff;
         display: block;
         width: 100%;
         line-height: 48px;
-        font-size: 14px;
         cursor: pointer;
         text-align: center;
+        a{
+          color: #fff;
+          font-size: 14px;
+        }  
       }
 
       &__btn-text{
@@ -188,21 +190,21 @@
         text-align: center;
       }
 
-    &__buy-btn {
-      text-align: center;
+      &__buy-btn {
+        text-align: center;
 
-      &__submit {
-        font-size: 24px;
-        line-height: 60px;
-        width: 100%;
-        margin-top: 16px;
-        display: block;
-        background: #ea352d;
-        color: #fff;
-        font-weight: 600;
-        cursor: pointer;
+        &__submit {
+          font-size: 24px;
+          line-height: 60px;
+          width: 100%;
+          margin-top: 16px;
+          display: block;
+          background: #ea352d;
+          color: #fff;
+          font-weight: 600;
+          cursor: pointer;
+        }
       }
-    }
 
     &__note {
       text-align: center;
@@ -223,10 +225,11 @@
       justify-content: space-between;
       vertical-align: middle;
 
-      &__box {
+      &__left-box{
+        float: left;
         &__good {
           display: inline-block;
-          font-size: 14px;
+          font-size: 12px;
           color: #333;
           border: 1px solid #f5f5f5;
           background-color: #f5f5f5;
@@ -243,8 +246,8 @@
 
         &__report {
           display: inline-block;
-          margin-left: 16px;
-          font-size: 14px;
+          margin-left: 8px;
+          font-size: 12px;
           color: #333;
           border: 1px solid #f5f5f5;
           background-color: #f5f5f5;
@@ -260,18 +263,20 @@
         }
       }
 
-      &__safety {
-        font-size: 14px;
-        border: 1px solid #f5f5f5;
-        background-color: #f5f5f5;
-        padding: 8px 16px;
-        border-radius: 40px;
+      &__right-box {
+        margin: 8px 0 0;
+        float: right;
+        &__safety {
+          font-size: 14px;
+          padding: 8px 16px;
+          border-radius: 40px;
 
-        .icon {
-          font-weight: 900;
-          content: "\f023";
+          .icon {
+            font-weight: 900;
+            content: "\f023";
+          }
         }
-      }
+      }  
     }
   }    
     .message {
@@ -388,11 +393,121 @@
     }
 
     .related-item {
-      background-color: #2d3;
-      width: 700px;
+      width: 620px;
       height: 1500px;
       margin: 0 auto;
-    }
+
+      &__user{
+        font-size: 22px;
+        margin: 24px 0px 16px;
+        font-weight: bold;
+
+        &-item{
+          width: 620px;
+          position: relative;
+          float: left;
+          &__container{
+            background-color: #fff;
+            margin: 0 20px 20px 0;
+            float:left;
+            justify-content: space-between;
+    
+            .item_phot{
+              width: 185px;
+              height: 220px;
+            }
+      
+            &__item_body{
+              padding:15px;
+              line-height: 1.5;
+              bottom: 0;
+              color: #333;
+      
+              &__info{
+                display: flex;
+                flex-direction:row;
+                justify-content: space-between;
+                line-height: normal;
+                align-items: center;
+                margin: 8px 0 0;
+                
+                &-price{
+                  font-weight: bold;
+                  font-size: 16px;
+                }
+                
+                &-like{
+                  color: #ccc;
+                  font-size: 17px;
+                }
+                span{
+                  font-size: 15px;
+                  font-weight: normal;
+                  padding-left:5px;
+                  color: #333;
+                }
+              }
+            }  
+          }        
+        }
+      } 
+      &__category{
+        font-size: 22px;
+        font-weight: bold;
+        width: 620px;
+        position: relative;
+        float: left;
+
+        &-item{
+          width: 620px;
+          position: relative;
+          float: left;
+          &__container{
+            background-color: #fff;
+            margin: 0 20px 20px 0;
+            float:left;
+            justify-content: space-between;
+    
+            .item_phot{
+              width: 185px;
+              height: 220px;
+            }
+      
+            &__item_body{
+              padding:15px;
+              line-height: 1.5;
+              bottom: 0;
+              color: #333;
+      
+              &__info{
+                display: flex;
+                flex-direction:row;
+                justify-content: space-between;
+                line-height: normal;
+                align-items: center;
+                margin: 8px 0 0;
+                
+                &-price{
+                  font-weight: bold;
+                  font-size: 16px;
+                }
+                
+                &-like{
+                  color: #ccc;
+                  font-size: 17px;
+                }
+                span{
+                  font-size: 15px;
+                  font-weight: normal;
+                  padding-left:5px;
+                  color: #333;
+                }
+              }
+            }  
+          }        
+        }
+      }        
+    }  
 
     .modal {
       padding: 20px 0;
@@ -594,4 +709,4 @@
       }
     }
     // =商品購入完了ページここまで=========================
-}  
+}
