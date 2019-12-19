@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
   before_action :set_request_from, only: [:buy]
+  before_action :set_card, only: [:buy]
 
   require 'payjp'
 
@@ -58,8 +59,6 @@ class ItemsController < ApplicationController
 
   def buy
     @image = Itemimage.includes(:item).first
-    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
-    @card = Card.find_by(user_id: current_user.id)
     @address = Address.find_by(user_id: current_user.id) if user_signed_in?
   end
 
@@ -101,7 +100,6 @@ class ItemsController < ApplicationController
   end
 
   def item_buy_params
-    # current_user.idの代わり、ログイン機能実装後に入れ替える
     params.permit(:id).merge(buyer_id: current_user.id, status: 4)
   end
 
@@ -144,6 +142,10 @@ class ItemsController < ApplicationController
     session.delete(:pid)
     session.delete(:provider)
     session.delete(:request_from)
+  end
+
+  def set_card
+    @card = current_user.cards.first
   end
 
   def set_request_from

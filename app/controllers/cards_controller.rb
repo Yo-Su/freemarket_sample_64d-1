@@ -1,12 +1,12 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_request_from, only: [:index]
+  before_action :set_card, only: [:index]
 
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
 
   def index
-    @card = Card.find_by(user_id: current_user.id)
   end
 
   def new
@@ -57,6 +57,10 @@ class CardsController < ApplicationController
   end
 
   private
+
+    def set_card
+      @card = current_user.cards.first
+    end
 
     def set_request_from
       # 現在のURLを保存しておく
