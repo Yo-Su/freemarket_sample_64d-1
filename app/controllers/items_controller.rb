@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
+  before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
   before_action :set_request_from, only: [:buy]
+  before_action :set_card, only: [:buy, :pay]
 
   require 'payjp'
 
@@ -17,12 +18,13 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    #下記の記載は動作確認用のため本実装の際は削除する
+    # status:1 は"出品中"、出品時は必ず1になる
     item.status = 1
-    item.grade = 1
-    item.user_id = 1
-    item.brand_id = 1
-    item.category_id = 1
+    item.user_id = current_user.id
+    #下記の記載は動作確認用のため本実装の際は削除する
+    item.grade = 1 # 商品状態
+    item.brand_id = 1 # ブランドID
+    item.category_id = 1 # カテゴリーID
 
     if item.save
       image_params.to_unsafe_h.reverse_each do |key, value|
@@ -39,14 +41,18 @@ class ItemsController < ApplicationController
 
   def show
     @images = Itemimage.includes(:item).where(item_id: params[:id])
+    @itemimages = Itemimage.includes(:item).first
+    @items = Item.where(user_id: @item.user_id).order("rand()").limit(6).where.not(id: @item.id)
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    redirect_to root_path
   end
-  
+
   def destroy
     @item.destroy
     if @item.user_id == current_user.id
@@ -58,19 +64,15 @@ class ItemsController < ApplicationController
 
   def buy
     @image = Itemimage.includes(:item).first
-    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
-    @card = Card.find_by(user_id: 1)
     @address = Address.find_by(user_id: current_user.id) if user_signed_in?
   end
 
   def pay
     # クレジットカード決済===================================================================
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
-    # ログインしているユーザーのカード情報を取得(ログイン機能が実装されていないため暫定で１を代入)
-    card = Card.where(user_id: 1).first
     if Payjp::Charge.create(
         amount: @item.price,
-        customer: card.customer_id,
+        customer: @card.customer_id,
         currency: 'jpy'
       )
     else
@@ -92,6 +94,7 @@ class ItemsController < ApplicationController
   end
 
   def list
+    @items = Item.where("status < ?",3)
   end
 
   private
@@ -100,9 +103,8 @@ class ItemsController < ApplicationController
   end
 
   def item_buy_params
-    # current_user.idの代わり、ログイン機能実装後に入れ替える
-    test_id = 2
-    params.permit(:id).merge(buyer_id: test_id, status: "購入中")
+    # status: 4は”取引中”
+    params.permit(:id).merge(buyer_id: current_user.id, status: 4)
   end
 
   def item_params
@@ -113,7 +115,8 @@ class ItemsController < ApplicationController
       :to_delivery_area,
       :price,
       :delivery_date,
-      :size,:grade,
+      :size,
+      :grade,
       :transfer_fee,
       :delivery_type,
       :describe,
@@ -143,6 +146,10 @@ class ItemsController < ApplicationController
     session.delete(:pid)
     session.delete(:provider)
     session.delete(:request_from)
+  end
+
+  def set_card
+    @card = current_user.cards.first
   end
 
   def set_request_from

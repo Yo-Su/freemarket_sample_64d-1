@@ -289,8 +289,8 @@ Devise.setup do |config|
   OmniAuth.config.logger = Rails.logger if Rails.env.development? # debug用
 
   config.omniauth :google_oauth2,
-                  Rails.application.credentials.google_oauth2[:key],
-                  Rails.application.credentials.google_oauth2[:secret]
+            Rails.application.credentials.google_oauth2[:key],
+            Rails.application.credentials.google_oauth2[:secret]
 
 
 
