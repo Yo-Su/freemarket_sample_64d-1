@@ -57,13 +57,13 @@ class CardsController < ApplicationController
 
   private
 
-    def set_card
-      @card = current_user.cards.first
-    end
+  def set_card
+    @card = current_user.cards.first
+  end
 
-    def set_request_from
-      # 現在のURLを保存しておく
-      session[:request_from] = request.original_url
-    end
+  def set_request_from
+    # 現在のURLを保存しておく
+    session[:request_from] = request.original_url
+  end
 
 end
