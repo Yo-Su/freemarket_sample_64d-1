@@ -83,7 +83,8 @@
       -if user_signed_in? && @item.user_id == current_user.id
         = link_to edit_item_path(@item) do
           .content-box__edit-btn 商品の編集
-          .content-box__btn-text or
+        .content-box__btn-text or
+        = link_to edit_item_path(@item) do
           .content-box__stop-btn 出品を一旦停止する
         = link_to item_path(@item), method: :delete do
           .content-box__stop-btn この商品を削除する
