@@ -1,23 +1,23 @@
 = render "./shared/header"
 = render "main"
 .main-topic
-  -# = render partial: "NewArrivalItems", locals: {category:"人気のカテゴリー",
-  -#                                           name1:"レディース",
-  -#                                           name2:"メンズ",
-  -#                                           name3:"家電・スマホ・カメラ",
-  -#                                           name4:"おもちゃ・ホビー・グッズ",
-  -#                                           new_arrival1:"レディース新着アイテム",
-  -#                                           new_arrival2:"メンズ新着アイテム",
-  -#                                           new_arrival3:"家電・スマホ・カメラ新着アイテム",
-  -#                                           new_arrival4:"おもちゃ・ホビー・グッズ新着アイテム"}
-  -# = render partial: "NewArrivalItems", locals: {category:"人気のブランド",
-  -#                                           name1:"シャネル",
-  -#                                           name2:"ルイヴィトン",
-  -#                                           name3:"シュプリーム",
-  -#                                           name4:"ナイキ",
-  -#                                           new_arrival1:"シャネル新着アイテム",
-  -#                                           new_arrival2:"ルイヴィトン新着アイテム",
-  -#                                           new_arrival3:"シュプリーム新着アイテム",
-  -#                                           new_arrival4:"ナイキ新着アイテム"}
+  = render partial: "NewArrivalItems", locals: {category:"人気のカテゴリー",
+                                            name1:"レディース",
+                                            name2:"メンズ",
+                                            name3:"家電・スマホ・カメラ",
+                                            name4:"おもちゃ・ホビー・グッズ",
+                                            new_arrival1:"レディース新着アイテム",
+                                            new_arrival2:"メンズ新着アイテム",
+                                            new_arrival3:"家電・スマホ・カメラ新着アイテム",
+                                            new_arrival4:"おもちゃ・ホビー・グッズ新着アイテム"}
+  = render partial: "NewArrivalItems", locals: {category:"人気のブランド",
+                                            name1:"シャネル",
+                                            name2:"ルイヴィトン",
+                                            name3:"シュプリーム",
+                                            name4:"ナイキ",
+                                            new_arrival1:"シャネル新着アイテム",
+                                            new_arrival2:"ルイヴィトン新着アイテム",
+                                            new_arrival3:"シュプリーム新着アイテム",
+                                            new_arrival4:"ナイキ新着アイテム"}
 = render "./shared/footer"
 = render "./shared/sell-btn"

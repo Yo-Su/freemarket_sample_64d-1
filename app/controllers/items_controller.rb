@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   require 'payjp'
 
   def index
-    # @items = Item.last(10)
+    @items = Item.last(10)
     delete_session
   end
 
