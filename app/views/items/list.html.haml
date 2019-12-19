@@ -16,11 +16,11 @@
         - @items.reverse.each do |item|
           .list-items__body
             =link_to item_path(item.id), class: "list-items__body__list" do
-              - item.images.each_with_index do |image,i|
+              - item.itemimages.each_with_index do |itemimage,i|
                 - if i == 0
-                  = image_tag image.url, alt: "出品写真", class: "list-items__body__list__img"
+                  = image_tag itemimage.image.url, alt: "出品写真", class: "list-items__body__list__img"
                 - else
-                  = image_tag image.url, alt: "出品写真", class: "image-hidden"
+                  = image_tag itemimage.image.url, alt: "出品写真", class: "image-hidden"
               .list-items__body__list__item
                 .list-items__body__list__item__text
                   = item.name

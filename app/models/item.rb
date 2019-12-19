@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :describe, presence: true
   validates :category, presence: true
   validates :price, presence: true
-  validates :status, presence: true
+  validates :grade, presence: true
   validates :from_delivery_area, presence: true
   validates :delivery_type, presence: true
   validates :transfer_fee, presence: true
