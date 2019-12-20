@@ -52,13 +52,13 @@
               .select-wrap
                 %i.fa.fa-angle-down
                 //TODO:カテゴリーテーブル実装後に、カテゴリをselectで表示する機能を追加（以下の1行を修正する）
-                -# = f.collection_select :category, @parent_category, :id, :name, {prompt: '---'}, class: "k_ir_section__inner--form3-right-select-category", id: "category_parent"
-              .display_none.select-wrap
+                = f.select :category, options_for_select(@parent_category.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.parent.parent.id), {}, {class: "k_ir_section__inner--form3-right-select-category", id: "category_parent"}
+              .select-wrap
                 %i.fa.fa-angle-down
-                %select.k_ir_section__inner--form3-right-select-category#category_children
-              .display_none.select-wrap
+                = f.select :category, options_for_select(@children_category.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.parent.id), {}, {class: "k_ir_section__inner--form3-right-select-category", id: "category_children"}
+              .select-wrap
                 %i.fa.fa-angle-down
-                %select.k_ir_section__inner--form3-right-select-category#category_grandchildren
+                = f.select :category_id, options_for_select(@grandchildren_category.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.id), {}, {class: "k_ir_section__inner--form3-right-select-category", id: 'category_grandchild'}
 
 
           .form-group
@@ -69,7 +69,7 @@
             %div
               .select-wrap
                 %i.fa.fa-angle-down
-                = f.select :grade,Item.grades.keys,{prompt: '---'}
+                = f.select :grade, Item.grades.keys,{prompt: '---'}
       .sell-content.clearfix
         %h3
           配送について
@@ -144,6 +144,20 @@
                   .right
                     #seller_gain
       .sell-content.exhibit-btn
+        %div
+          %p
+            = link_to "禁止されている出品", 'https://www.mercari.com/jp/help_center/getting_started/prohibited_items/', class:"link-blue" 
+            、
+            = link_to "行為", 'https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/', class:"link-blue" 
+            を必ずご確認ください。
+          %p
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            = link_to "偽ブランドの販売", 'https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/', class:"link-blue" 
+            は犯罪であり処罰される可能性があります。
+          %p
+            また、出品をもちまして
+            = link_to "加盟店規約", 'https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/', class:"link-blue" 
+            に同意したことになります。
         = f.submit "変更する", class:"button",id:"item_button"
         =link_to "キャンセル", item_path,class:"back-btn"
   = render "./shared/simple_footer"
