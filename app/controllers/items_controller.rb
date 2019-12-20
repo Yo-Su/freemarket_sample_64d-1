@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only:[:new,:create,:destroy,:edit,:update]
+  before_action :authenticate_user!, only:[:new, :create, :destroy, :edit, :update, :buy, :pay]
   before_action :get_item, only: [:show, :buy, :pay, :destroy]
   before_action :set_request_from, only: [:buy]
   before_action :set_card, only: [:buy, :pay]

@@ -15,7 +15,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # DBに保存されている場合はログインしてトップページへ
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
-      # set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     # 保存されていなければsessionに情報渡す
     else
       session[:nick_name] = info[:user][:nick_name]
