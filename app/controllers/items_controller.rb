@@ -47,10 +47,18 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @parent_category        = Category.where(ancestry: nil)
+    @children_category      = @item.category.parent.parent.children
+    @grandchildren_category = @item.category.parent.children
   end
 
   def update
-    redirect_to root_path
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy

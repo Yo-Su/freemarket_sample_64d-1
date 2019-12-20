@@ -43,15 +43,15 @@
               %td.content-box__item-data__table__td= "カテゴリー"
               %td
                 .content-box__item-data__table__category__big
-                  = link_to "メンズ", ""
+                  = link_to @item.category.parent.parent.name, ""
                 .content-box__item-data__table__category__middle
                   = link_to "" do
                     = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__middle__icon'
-                    =  "靴"
+                    =  @item.category.parent.name
                 .content-box__item-data__table__category__small
                   = link_to  "" do
                     = icon 'fas', 'chevron-right', class: 'content__item-data__table__category__small__icon'
-                    = "ドレス/ビジネス"
+                    = @item.category.name
             %tr.content-box__item-data__table__brand
               %td.content-box__item-data__table__td= "ブランド"
               %td= @item.try(:brand).try(:name)
@@ -81,8 +81,7 @@
           %span.content-box__price__fee
             = "送料込み"
       -if user_signed_in? && @item.user_id == current_user.id
-        .content-box__edit-btn
-          =link_to "商品の編集", edit_item_path
+        =link_to "商品の編集", edit_item_path, class: "content-box__edit-btn"
         .content-box__btn-text or
         .content-box__stop-btn 出品を一旦停止する
         = link_to item_path(@item), method: :delete do
