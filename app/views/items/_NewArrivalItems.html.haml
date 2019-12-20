@@ -23,8 +23,8 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - if @items
-        - @items.reverse.each do |item|
+      - if @ladies_items
+        - @ladies_items.reverse.each do |item|
           =link_to item_path(item.id), class: "item-images__link" do
             .item-images__link__contents
               .item-images__link__contents__container
@@ -42,8 +42,8 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - if @items
-        - @items.reverse.each do |item|
+      - if @mens_items
+        - @mens_items.reverse.each do |item|
           =link_to item_path(item.id), class: "item-images__link" do
             .item-images__link__contents
               .item-images__link__contents__container
@@ -61,8 +61,8 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - if @items
-        - @items.reverse.each do |item|
+      - if @electronics_items
+        - @electronics_items.reverse.each do |item|
           =link_to item_path(item.id), class: "item-images__link" do
             .item-images__link__contents
               .item-images__link__contents__container
@@ -80,8 +80,8 @@
           =link_to "", id:"",class: "more" do
             もっと見る >
     .item-images
-      - if @items
-        - @items.reverse.each do |item|
+      - if @toys_items
+        - @toys_items.reverse.each do |item|
           =link_to item_path(item.id), class: "item-images__link" do
             .item-images__link__contents
               .item-images__link__contents__container

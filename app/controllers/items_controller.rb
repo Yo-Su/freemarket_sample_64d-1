@@ -7,7 +7,10 @@ class ItemsController < ApplicationController
   require 'payjp'
 
   def index
-    @items = Item.last(10)
+    @ladies_items = Item.where(category: 160..339).last(10)
+    @mens_items = Item.where(category: 340..470).last(10)
+    @electronics_items = Item.where(category: 955..1029).last(10)
+    @toys_items = Item.where(category: 766..866).last(10)
     delete_session
   end
 
