@@ -21,8 +21,7 @@ class ItemsController < ApplicationController
     # status:1 は"出品中"、出品時は必ず1になる
     item.status = 1
     item.user_id = current_user.id
-    #下記の記載は動作確認用のため本実装の際は削除する
-    item.grade = 1 # 商品状態
+    # brandは未定義のため、一旦固定値
     item.brand_id = 1 # ブランドID
     if item.save
       image_params.to_unsafe_h.reverse_each do |key, value|
