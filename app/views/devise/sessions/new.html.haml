@@ -10,11 +10,11 @@
           = link_to "新規会員登録", signup_index_path, class: "login-main__content__head__button1__registration"
       .login-main__content__buttons
         %button.login-main__content__buttons__button2
-          = link_to member_info_signup_index_path, class: "login-main__content__buttons__button2__facebook" do
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class: "login-main__content__buttons__button2__facebook" do
             = icon 'fab', "facebook-square", class: "login-main__content__buttons__button2__facebook__icon"
             %span.login-main__content__buttons__button2__facebook__text Facebookでログイン
         %button.login-main__content__buttons__button3
-          = link_to member_info_signup_index_path, class: "login-main__content__buttons__button3__google" do
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "login-main__content__buttons__button3__google" do
             = icon 'fab', "google", class: "login-main__content__buttons__button3__google__icon"
             %span.login-main__content__buttons__button3__google__text Googleでログイン
       = form_with model: @user, url: user_session_path, method: :podt, local: true, html: {class: 'login-main__content__box'} do |f|

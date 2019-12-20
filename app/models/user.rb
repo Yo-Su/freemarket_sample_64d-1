@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[google_oauth2] # Google認証用に追加
+         :omniauthable, omniauth_providers: %i[google_oauth2 facebook] # Google認証,facebook認証用に追加
   attr_accessor :birth_year, :birth_month, :birth_day
 
   has_many :addresses, dependent: :destroy
