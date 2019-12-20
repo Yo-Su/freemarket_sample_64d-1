@@ -4,11 +4,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:google)
   end
 
-  # callbackメソッド(google)
+  def facebook
+    callback_for(:facebook)
+  end
+
+  # callbackメソッド(google, facebook)
   def callback_for(provider)
     info = User.find_oauth(request.env["omniauth.auth"])
-    @user = User.where(nick_name: info[:user][:nick_name]).or(User.where(email: info[:user][:email])).first || info[:user]
-
+    @user = User.where(email: info[:user][:email]).first || info[:user]
     # DBに保存されている場合はログインしてトップページへ
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication

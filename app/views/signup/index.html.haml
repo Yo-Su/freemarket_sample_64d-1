@@ -12,7 +12,7 @@
               = icon 'far', "envelope", class: "signup-main__content__box__group__button1__mail__icon"
               %span.signup-main__content__box__group__button1__mail__text メールアドレスで登録する
           %button.signup-main__content__box__group__button2
-            = link_to member_info_signup_index_path, class: "signup-main__content__box__group__button2__facebook" do
+            = link_to user_facebook_omniauth_authorize_path, method: :post, class: "signup-main__content__box__group__button2__facebook" do
               = icon 'fab', "facebook-square", class: "signup-main__content__box__group__button2__facebook__icon"
               %span.signup-main__content__box__group__button2__facebook__text Facebookで登録する
           %button.signup-main__content__box__group__button3
