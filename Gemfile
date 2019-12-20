@@ -89,3 +89,4 @@ gem 'jquery-rails'
 gem 'payjp'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
