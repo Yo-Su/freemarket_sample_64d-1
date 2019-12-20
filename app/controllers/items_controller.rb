@@ -24,10 +24,11 @@ class ItemsController < ApplicationController
     #下記の記載は動作確認用のため本実装の際は削除する
     item.grade = 1 # 商品状態
     item.brand_id = 1 # ブランドID
-    item.category_id = 1 # カテゴリーID
-
+    binding.pry
     if item.save
+      binding.pry
       image_params.to_unsafe_h.reverse_each do |key, value|
+        binding.pry
         if Itemimage.create(value.merge(item_id: item.id))
           # 出品完了ページがあるのでそちらに飛ぶ
         else

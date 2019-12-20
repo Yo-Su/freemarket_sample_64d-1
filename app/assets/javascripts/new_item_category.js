@@ -27,7 +27,7 @@ $(function(){
   // 子カテゴリーを選択した際に、孫カテゴリーを表示させる
   $(document).on('change', '#category_children', function(){
     var children_id = $(this).val()
-    $('#category_grandchildren').parent().removeClass('display_none')
+    $('#category_grandchild').parent().removeClass('display_none')
     $.ajax({
       type: 'GET',
       url: '/categories/set_grandchild_category',
@@ -35,15 +35,23 @@ $(function(){
       dataType: 'json'
     })
     .done(function(categories){
-      $("#category_grandchildren").empty()
-      $("#category_grandchildren").append('<option value="" selected>---</option>')
+      $("#category_grandchild").empty()
+      $("#category_grandchild").append('<option value="" selected>---</option>')
       $.each(categories, function(i, category){
         var grandchild_category = `<option value="${category.id}" name="category">${category.name}</option>`
-        $("#category_grandchildren").append(grandchild_category)
+        $("#category_grandchild").append(grandchild_category)
       })
     })
     .fail(function(){
       alert('error')
     })
+  })
+  $(document).on('click','#item_button', function(){
+    var category_id = $('#category_grandchild').val()
+    if (category_id.length !== 0) {
+      $("#category_parent").empty()
+      var category_grandchild = `<option value='${category_id}'></option>`
+      $('#category_parent').append(category_grandchild)
+      }
   })
 })
