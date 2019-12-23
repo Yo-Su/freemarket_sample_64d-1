@@ -17,10 +17,17 @@
             = f.fields_for :image do |image|
               .dropzone-container
                 #preview
+                  - @item.itemimages.each_with_index do |itemimage, i|
+                    %div{class: "img_view", data: {image: i}}
+                      = image_tag itemimage.image.url, name: "item[images_attributes][#{i}][image]"
+                      .upload-image__prev--btn
+                        .edit-btn 編集
+                        .delete-btn 削除
                 .dropzone-area
                   = image.label :image, class: "dropzone-box", for: "upload-image__btn" do
                     .input_area
-                      = image.file_field :image, id: "upload-image__btn", class: "upload-image", 'data-image': 0, type: "file", name: "item[images_attributes][0][image]"
+                      - @item.itemimages.each_with_index do |itemimage, i|
+                        = image.file_field :image, id: "upload-image__btn__#{i}", class: "upload-image", 'data-image': i, type: "file", name: "item[images_attributes][#{i}][image]"
                       %p
                         ドラッグアンドドロップ
                         %br

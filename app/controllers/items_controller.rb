@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :destroy, :edit, :update, :buy, :pay]
-  before_action :get_item, only: [:show, :buy, :pay, :destroy]
+  before_action :get_item, only: [:show, :buy, :pay, :destroy, :edit, :update]
   before_action :set_request_from, only: [:buy]
   before_action :set_card, only: [:buy, :pay]
 
@@ -46,18 +46,39 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @parent_category        = Category.where(ancestry: nil)
     @children_category      = @item.category.parent.parent.children
     @grandchildren_category = @item.category.parent.children
   end
 
   def update
-    @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to item_path(params[:id])
+    @item_images = @item.itemimages
+    item_image_count = @item_images.count
+
+    # 商品編集により画像が0以下になる場合、編集ページに戻る
+    if item_image_count + count_add_item_image - count_delete_item_image <= 0
+      redirect_to edit_item_path(@item.id)
     else
-      redirect_to root_path
+      if @item.update(item_params)
+        # 削除する画像がある場合、その画像を削除する
+        if choose_item_image_destroy
+          choose_item_image_destroy.each_with_index do |item_image, index|
+            @item_images[index].destroy if item_image == 0
+          end
+        end
+        # 新しく追加された画像がある場合、その画像を保存する
+        if image_params
+          image_params.to_unsafe_h.reverse_each do |key, value|
+            # 保存に失敗する、画像の保存に失敗したらトップページに移動
+            redirect_to root_path unless Itemimage.create(value.merge(item_id: @item.id))
+          end
+        end
+        # 全部完了したら商品詳細ページに移動
+        redirect_to item_path(@item.id)
+      else
+        # 商品の更新に失敗したらトップページに移動
+        redirect_to root_path
+      end
     end
   end
 
@@ -136,7 +157,7 @@ class ItemsController < ApplicationController
   end
 
   def image_params
-    params.require(:item).require(:images_attributes)
+    params.require(:item).require(:images_attributes) if params.require(:item)[:images_attributes]
   end
 
   # ユーザー登録を途中で抜けた場合のsessionを削除
@@ -163,6 +184,20 @@ class ItemsController < ApplicationController
   def set_request_from
     # 現在のURLを保存しておく
     session[:request_from] = request.original_url
+  end
+
+  def choose_item_image_destroy
+    params.require(:"item-image-array").split("").map{|item| item.to_i} if params[:"item-image-array"]
+  end
+
+  # 商品編集で追加する画像数
+  def count_add_item_image
+    params.require(:item)[:images_attributes] ? image_params.to_unsafe_h.length : 0
+  end
+
+  # 商品編集で削除する画像数
+  def count_delete_item_image
+    params[:"item-image-array"] ? choose_item_image_destroy.count(0) : 0
   end
 end
 
