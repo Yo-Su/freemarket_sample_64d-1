@@ -52,18 +52,18 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @itemimages = @item.itemimages
-    itemimage_count = @itemimages.count
+    @item_images = @item.itemimages
+    item_image_count = @item_images.count
 
     # 商品編集により画像が0以下になる場合、編集ページに戻る
-    if itemimage_count + count_add_itemimage - count_delete_itemimage <= 0
+    if item_image_count + count_add_item_image - count_delete_item_image <= 0
       redirect_to edit_item_path(@item.id)
     else
       if @item.update(item_params)
         # 削除する画像がある場合、その画像を削除する
-        if choose_itemimage_destroy
-          choose_itemimage_destroy.each_with_index do |itemimage, index|
-            @itemimages[index].destroy if itemimage == 0
+        if choose_item_image_destroy
+          choose_item_image_destroy.each_with_index do |item_image, index|
+            @item_images[index].destroy if item_image == 0
           end
         end
         # 新しく追加された画像がある場合、その画像を保存する
@@ -186,18 +186,18 @@ class ItemsController < ApplicationController
     session[:request_from] = request.original_url
   end
 
-  def choose_itemimage_destroy
+  def choose_item_image_destroy
     params.require(:"item-image-array").split("").map{|item| item.to_i} if params[:"item-image-array"]
   end
 
   # 商品編集で追加する画像数
-  def count_add_itemimage
+  def count_add_item_image
     params.require(:item)[:images_attributes] ? image_params.to_unsafe_h.length : 0
   end
 
   # 商品編集で削除する画像数
-  def count_delete_itemimage
-    params[:"item-image-array"] ? choose_itemimage_destroy.count(0) : 0
+  def count_delete_item_image
+    params[:"item-image-array"] ? choose_item_image_destroy.count(0) : 0
   end
 end
 
