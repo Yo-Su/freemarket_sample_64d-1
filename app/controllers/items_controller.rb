@@ -53,10 +53,10 @@ class ItemsController < ApplicationController
 
   def update
     @itemimages = @item.itemimages
-    @itemimage_count = @itemimages.count
+    itemimage_count = @itemimages.count
 
     # 商品編集により画像が0以下になる場合、編集ページに戻る
-    if @itemimage_count + count_add_itemimage - count_delete_itemimage <= 0
+    if itemimage_count + count_add_itemimage - count_delete_itemimage <= 0
       redirect_to edit_item_path(@item.id)
     else
       if @item.update(item_params)
@@ -69,11 +69,14 @@ class ItemsController < ApplicationController
         # 新しく追加された画像がある場合、その画像を保存する
         if image_params
           image_params.to_unsafe_h.reverse_each do |key, value|
+            # 保存に失敗する、画像の保存に失敗したらトップページに移動
             redirect_to root_path unless Itemimage.create(value.merge(item_id: @item.id))
           end
         end
+        # 全部完了したら商品詳細ページに移動
         redirect_to item_path(@item.id)
       else
+        # 商品の更新に失敗したらトップページに移動
         redirect_to root_path
       end
     end
