@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
   end
 
   def list
-    @items = Item.where("status < ?",3)
+    @items = Item.where("status < ?",3).limit(50).where.not(user_id: current_user)
   end
 
   private

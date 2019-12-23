@@ -15,6 +15,21 @@
             商品に戻る
             = link_to "", root_path, class: "done-main__content__box__group__button__link"
       .done-main__content__image
-        写真
+        .aside
+          .app-text
+            %h2 スマホでかんたんフリマアプリ
+            %p 今すぐ無料ダウンロード！
+            .app-text__figure
+              .app-text__figure--image
+                = link_to image_tag("logo_red.svg", width: "70px"), root_path
+              %ul
+                %li
+                  = link_to "#" do
+                    = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3135490372", width: "130px")
+                %li
+                  = link_to "#" do
+                    = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3135490372", width: "130px")
+          .app-image
+            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?3135490372", height: "260px")
 
   = render partial: 'footer'
