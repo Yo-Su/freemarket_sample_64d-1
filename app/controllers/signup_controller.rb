@@ -1,5 +1,5 @@
 class SignupController < ApplicationController
-  before_action :authenticate_user!, only:[:address_info, :credit_info]
+  # before_action :authenticate_user!, only:[:address_info, :credit_info]
 
   def index
   end
