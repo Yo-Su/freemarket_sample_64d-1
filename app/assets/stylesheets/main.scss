@@ -1,6 +1,6 @@
 @mixin item-review {
   margin: 0 auto;
-  max-width: 1020px;
+  max-width: 1040px;
   height: 100%;
   &__new {
     height: 100%;
@@ -29,7 +29,7 @@
   .item-images {
     margin: 0 auto;
     height: 544px;
-    width: 1040px;
+    // width: 1040px;
     &__link {
       text-decoration: none;
       &__contents {
@@ -145,6 +145,7 @@
     width: 100%;
     background-color: rgb(239, 239, 239);
     padding: 42px 0 0;
+    min-height: 650px;
     .item-review {
       @include item-review;
     }
