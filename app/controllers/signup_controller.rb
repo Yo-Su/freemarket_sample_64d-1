@@ -65,6 +65,7 @@ class SignupController < ApplicationController
       sign_in User.find(@user.id) unless user_signed_in?
       redirect_to address_info_signup_index_path
     else
+      session.delete(:password) unless session[:uid]
       redirect_to member_info_signup_index_path
     end
   end
