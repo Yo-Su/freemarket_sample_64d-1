@@ -45,6 +45,10 @@ class ItemsController < ApplicationController
     @images = Itemimage.includes(:item).where(item_id: params[:id])
     @itemimages = Itemimage.includes(:item).first
     @items = Item.where(user_id: @item.user_id).order("rand()").limit(6).where.not(id: @item.id)
+    @parent_category = @item.category.root
+    grandchild_category_first_id = Category.indirects_of(@parent_category).first.id
+    grandchild_category_last_id  = Category.indirects_of(@parent_category).last.id
+    @category_items = Item.where(category_id: grandchild_category_first_id..grandchild_category_last_id).limit(6).where.not(id: @item.id)
   end
 
   def edit

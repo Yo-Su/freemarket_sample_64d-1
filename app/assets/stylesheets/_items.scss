@@ -319,7 +319,7 @@
 
     .navi {
       margin: 0 auto;
-      width: 620px;
+      width: 700px;
       color: #0099e8;
       display: inline-block;
       padding: 32px 0 24px;
@@ -342,7 +342,7 @@
       background: #fff;
       margin: 24px auto;
       padding: 32px 0 24px;
-      width: 620px;
+      width: 700px;
 
       &-box{
         margin: 16px 0 0;
@@ -393,7 +393,7 @@
     }
 
     .related-item {
-      width: 620px;
+      width: 700px;
       height: 1500px;
       margin: 0 auto;
 
@@ -403,17 +403,21 @@
         font-weight: bold;
 
         &-item{
-          width: 620px;
-          position: relative;
-          float: left;
+          width: 720px;
+          display: flex;
+          justify-content: flex-start;
+          -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
           &__container{
             background-color: #fff;
-            margin: 0 20px 20px 0;
+            width: 220px;
+            margin-bottom: 20px;
+            margin-right: 20px;
             float:left;
             justify-content: space-between;
     
             .item_phot{
-              width: 185px;
+              width: 220px;
               height: 220px;
             }
       
@@ -422,6 +426,11 @@
               line-height: 1.5;
               bottom: 0;
               color: #333;
+              h3{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+              }
       
               &__info{
                 display: flex;
@@ -454,31 +463,40 @@
       &__category{
         font-size: 22px;
         font-weight: bold;
-        width: 620px;
-        position: relative;
-        float: left;
+        // width: 620px;
+        // position: relative;
+        // float: left;
 
         &-item{
-          width: 620px;
-          position: relative;
-          float: left;
+          width: 720px;
+          display: flex;
+          justify-content: flex-start;
+          -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
           &__container{
             background-color: #fff;
-            margin: 0 20px 20px 0;
+            width: 220px;
+            margin-bottom: 20px;
+            margin-right: 20px;
             float:left;
             justify-content: space-between;
-    
+
             .item_phot{
-              width: 185px;
+              width: 220px;
               height: 220px;
             }
-      
+
             &__item_body{
               padding:15px;
               line-height: 1.5;
               bottom: 0;
               color: #333;
-      
+              h3{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+              }
+
               &__info{
                 display: flex;
                 flex-direction:row;

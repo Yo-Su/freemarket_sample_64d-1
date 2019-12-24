@@ -155,22 +155,22 @@
 
       .related-item__category
         = link_to "###" do
-          = "#{@item.brand.try(:name)}その他の出品"
-        .related-item__category
-          - @items.each do |item|
-            .related-item__category-item__container
-              = link_to item_path(item.id) do
-                %figure
-                  = image_tag item.itemimages.first.image.url, class:'item_phot'
-                .related-item__category-item__container__item_body
-                  %h3
-                    = item.name
-                  .related-item__category-item__container__item_body__info
-                    .related-item__category-item__container__item_body__info-price
-                      = "¥#{item.price.to_s(:delimited)}"
-                    .related-item__category-item__container__item_body__info-like
-                      %i.far.fa-heart
-                        %span 68
+          = "#{@parent_category.try(:name)}その他の出品"
+        .related-item__category-item
+          - if @category_items
+            - @category_items.each do |item|
+              .related-item__category-item__container
+                = link_to item_path(item.id) do
+                  %figure
+                    = image_tag item.itemimages.first.image.url, class:'item_phot'
+                  .related-item__category-item__container__item_body
+                    %h3= item.name
+                    .related-item__category-item__container__item_body__info
+                      .related-item__category-item__container__item_body__info-price
+                        = "¥#{item.price.to_s(:delimited)}"
+                      .related-item__category-item__container__item_body__info-like
+                        %i.far.fa-heart
+                          %span 68
     -# 下記パンくずリスト時に実装のためコメントアウト
     -# .modal
     -# .bottom
