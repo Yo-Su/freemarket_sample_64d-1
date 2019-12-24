@@ -126,6 +126,10 @@ class ItemsController < ApplicationController
     @items = Item.where("status < ?",3).limit(50).where.not(user_id: current_user)
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
   private
   def get_item
     @item = Item.find(params[:id])

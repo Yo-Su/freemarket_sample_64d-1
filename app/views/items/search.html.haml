@@ -1,0 +1,21 @@
+= render "./shared/header"
+.main-topic
+  .items
+    .item-review
+      .item-review__new
+        .item-review__new__content
+          = "検索結果：#{}"
+      .item-images
+        - if @items
+          - @items.reverse.each do |item|
+            =link_to item_path(item.id), class: "item-images__link" do
+              .item-images__link__contents
+                .item-images__link__contents__container
+                  .item-images__link__contents__container__price
+                    = number_to_currency(item.price, unit: "¥ ", precision: 0)
+                = image_tag item.itemimages.first.image.url, alt:"商品写真", class:"item-images__link__contents__photo"
+                .item-images__link__contents__names
+                  = item.name
+
+= render "./shared/footer"
+= render "./shared/sell-btn"

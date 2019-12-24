@@ -3,11 +3,11 @@
     %h1
       = link_to image_tag("fmarket_logo_red.svg", width: "150px"), root_path
     .fuzzy_search
-      = form_tag("#",method: :get) do
-        %label.fuzzy_search__label
+      = form_with url: search_items_path, method: :get, local: true do |f|
+        = f.text_field :keyword, class:"fuzzy_search__field", placeholder:"何かお探しですか？"
+        = f.label :search, class: "fuzzy_search__label" do
           = icon 'fas', 'search', class: "fuzzy_search__label--icon"
-          = submit_tag 'search', :name => nil,class:"fuzzy_search__label--btn"
-        = text_field_tag :search, "",class:"fuzzy_search__field",placeholder:"何かお探しですか？"
+          = f.submit 'search', :name => nil,class:"fuzzy_search__label--btn"
   .header-bottom
     .header-bottom__left
       %ul.header-bottom__left__list
