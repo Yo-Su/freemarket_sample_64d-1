@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @image = Itemimage.includes(:item).first
+    @image = @item.itemimages.first
     @address = Address.find_by(user_id: current_user.id) if user_signed_in?
   end
 

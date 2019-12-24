@@ -51,6 +51,7 @@
                 background: #fff;
                 line-height: 1.5;
                 font-size: 16px;
+                padding-left: 10px;
               }
               .card-list{
                 ul{
@@ -91,6 +92,7 @@
                     z-index: 10;
                     color: #888;
                     font-size: 35px;
+                    pointer-events: none;
                   }
                   p{
                     display:inline;
@@ -107,6 +109,7 @@
                 background: #fff;
                 line-height: 1.5;
                 font-size: 16px;
+                padding-left: 10px;
               }
               .signup-seqcode{
                 text-align: right;
