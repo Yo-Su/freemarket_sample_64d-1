@@ -20,17 +20,19 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
+    @item = Item.new(item_params)
     # status:1 は"出品中"、出品時は必ず1になる
-    item.status = 1
-    item.user_id = current_user.id
+    @item.status = 1
+    @item.user_id = current_user.id
     # brandは未定義のため、一旦固定値
-    item.brand_id = 1 # ブランドID
-    if item.save
+    @item.brand_id = 1 # ブランドID
+    if @item.save
       image_params.to_unsafe_h.reverse_each do |key, value|
-        if Itemimage.create(value.merge(item_id: item.id))
+        image = Itemimage.new(value.merge(item_id: @item.id))
+        if image.save
           # 出品完了ページがあるのでそちらに飛ぶ
         else
+          @item.destroy
           redirect_to root_path
         end
       end
@@ -123,7 +125,7 @@ class ItemsController < ApplicationController
   end
 
   def list
-    @items = Item.where("status < ?",3).limit(50).where.not(user_id: current_user)
+    @items = Item.where("status < ?",3).limit(50).where(user_id: current_user)
   end
 
   def search
