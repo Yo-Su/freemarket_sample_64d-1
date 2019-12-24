@@ -48,10 +48,47 @@
       }
     }
     &__image{
-      background-color: aquamarine;
-      height: 254px;
-      text-align: center;
-      font-size: 100px;
+      .aside {
+        height: 260px;
+        background: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?61716930");
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .app-text {
+        padding: 30px 0px;
+        h2 {
+          color: #FFF;
+          font-size: 18px;
+          text-align: left;
+          font-weight: bold;
+          padding: 0 10px;
+        }
+        p {
+          color: #FFF;
+          font-size: 30px;
+          text-align: left;
+          padding: 0 10px;
+        }
+        &__figure {
+          display: flex;
+          padding: 18px;
+          ul {
+            display: flex;
+            li {
+              padding: 10px;
+            }
+            a:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+
     }
   }
 
