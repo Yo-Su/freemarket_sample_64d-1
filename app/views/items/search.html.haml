@@ -1,14 +1,10 @@
 = render "./shared/header"
--# = render "main"
 .main-topic
   .items
     .item-review
       .item-review__new
         .item-review__new__content
           = "検索結果：#{}"
-          -# %li
-            -# =link_to "", id:"",class: "more" do
-            -#   もっと見る >
       .item-images
         - if @items
           - @items.reverse.each do |item|
