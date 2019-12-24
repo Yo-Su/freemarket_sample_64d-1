@@ -1,6 +1,7 @@
 .main{
   margin: 40px auto 0;
   width: 1020px;
+  height: 700px;
   padding: 0px;
 
   .main-area {
@@ -9,7 +10,7 @@
 
   .main-box{
     width: 700px;
-    float: right;
+    margin: 0 auto;
     .card-main{
       background: #fff;
       padding: 0 0 40px;
