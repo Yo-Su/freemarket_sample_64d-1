@@ -14,6 +14,9 @@
               - else
                 .content-box__item-data__photo__main-image__pickupimage.image-hidden
                   = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
+            - if @item.status == "取引中"
+              .sold-out-pickup
+                .sold-out-pickup__text SOLD
           .content-box__item-data__photo__sub-images
             - @images.each_with_index do |itemimage, i|
               - if i == 0

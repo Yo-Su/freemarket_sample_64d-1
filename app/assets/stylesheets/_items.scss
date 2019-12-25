@@ -46,6 +46,27 @@
             opacity: 0.4;
           }
 
+          &__main-image {
+            position: relative;
+
+            .sold-out-pickup {
+              border-bottom: 120px solid transparent;
+              border-left: 120px solid #EA352D;
+              position: absolute;
+              top: 0px;
+              left: 0px;
+
+              &__text {
+                color: #fff;
+                font-size: 28px;
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 25px;
+                left: -116px;
+              }
+            }
+          }
+
           &__sub-images {
             background-color: #f5f5f5;
             width: 300px;
