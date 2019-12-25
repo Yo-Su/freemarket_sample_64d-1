@@ -14,7 +14,7 @@
     .hoby
       .font
         = name4
-.items
+.items-center
   .item-review
     .item-review__new
       .item-review__new__content
@@ -30,9 +30,13 @@
               .item-images__link__contents__container
                 .item-images__link__contents__container__price
                   = number_to_currency(item.price, unit: "¥ ", precision: 0)
-              = image_tag item.itemimages.first.image.url, alt:"商品写真", class:"item-images__link__contents__photo"
+              .item-images__link__contents__photo
+                =image_tag item.itemimages.first.image.url, alt:"商品写真"
+                - if item.status == "取引中"
+                  .sold-out-pickup
+                    .sold-out-pickup__text SOLD
               .item-images__link__contents__names
-                = item.name
+                .item-images__link__contents__names__box= item.name
 .items-center
   .item-review
     .item-review__new
@@ -49,9 +53,13 @@
               .item-images__link__contents__container
                 .item-images__link__contents__container__price
                   = number_to_currency(item.price, unit: "¥ ", precision: 0)
-              =image_tag item.itemimages.first.image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+              .item-images__link__contents__photo
+                =image_tag item.itemimages.first.image.url, alt:"商品写真"
+                - if item.status == "取引中"
+                  .sold-out-pickup
+                    .sold-out-pickup__text SOLD
               .item-images__link__contents__names
-                = item.name
+                .item-images__link__contents__names__box= item.name
 .items-center
   .item-review
     .item-review__new
@@ -68,10 +76,14 @@
               .item-images__link__contents__container
                 .item-images__link__contents__container__price
                   = number_to_currency(item.price, unit: "¥ ", precision: 0)
-              =image_tag item.itemimages.first.image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+              .item-images__link__contents__photo
+                =image_tag item.itemimages.first.image.url, alt:"商品写真"
+                - if item.status == "取引中"
+                  .sold-out-pickup
+                    .sold-out-pickup__text SOLD
               .item-images__link__contents__names
-                = item.name
-.items-under
+                .item-images__link__contents__names__box= item.name
+.items-center
   .item-review
     .item-review__new
       .item-review__new__content
@@ -87,6 +99,10 @@
               .item-images__link__contents__container
                 .item-images__link__contents__container__price
                   = number_to_currency(item.price, unit: "¥ ", precision: 0)
-              =image_tag item.itemimages.first.image.url, alt:"商品写真",class:"item-images__link__contents__photo"
+              .item-images__link__contents__photo
+                =image_tag item.itemimages.first.image.url, alt:"商品写真"
+                - if item.status == "取引中"
+                  .sold-out-pickup
+                    .sold-out-pickup__text SOLD
               .item-images__link__contents__names
-                = item.name
+                .item-images__link__contents__names__box= item.name

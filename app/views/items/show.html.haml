@@ -14,6 +14,9 @@
               - else
                 .content-box__item-data__photo__main-image__pickupimage.image-hidden
                   = image_tag pickupimage.image.url, size: "300x300", alt: "ユーザー投稿写真", data: {image_id: pickupimage.id}
+            - if @item.status == "取引中"
+              .sold-out-pickup
+                .sold-out-pickup__text SOLD
           .content-box__item-data__photo__sub-images
             - @images.each_with_index do |itemimage, i|
               - if i == 0
@@ -88,7 +91,10 @@
           .content-box__stop-btn この商品を削除する
       - else
         .content-box__buy-btn
-          = link_to "購入画面に進む", buy_item_path, class: "content-box__buy-btn__submit"
+          - if @item.status == "取引中"
+            .content-box__buy-btn__soldout 売り切れました
+          - else
+            = link_to "購入画面に進む", buy_item_path, class: "content-box__buy-btn__submit"
         .ccontent-box__note
           この商品はゆうゆうFmarket便を利用しているため、アプリからのみ購入できます。
         .content-box__item-description
@@ -141,8 +147,11 @@
           - @items.each do |item|
             .related-item__user-item__container
               = link_to item_path(item.id) do
-                %figure
+                .related-item__user-item__container__photo
                   = image_tag item.itemimages.first.image.url, class:'item_phot'
+                  - if item.status == "取引中"
+                    .sold-out-pickup
+                      .sold-out-pickup__text SOLD
                 .related-item__user-item__container__item_body
                   %h3
                     = item.name
@@ -161,8 +170,11 @@
             - @category_items.each do |item|
               .related-item__category-item__container
                 = link_to item_path(item.id) do
-                  %figure
+                  .related-item__category-item__container__photo
                     = image_tag item.itemimages.first.image.url, class:'item_phot'
+                    - if item.status == "取引中"
+                      .sold-out-pickup
+                        .sold-out-pickup__text SOLD
                   .related-item__category-item__container__item_body
                     %h3= item.name
                     .related-item__category-item__container__item_body__info

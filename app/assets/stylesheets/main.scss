@@ -53,11 +53,30 @@
           }
         }
         &__photo {
-          height: 188px;
-          width: 188px;
-          object-fit: cover;
-          text-decoration: none;
-          display: block;
+          position: relative;
+          img {
+            height: 188px;
+            width: 188px;
+            object-fit: cover;
+            text-decoration: none;
+            display: block;
+          }
+          .sold-out-pickup {
+            border-bottom: 80px solid transparent;
+            border-left: 80px solid #EA352D;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+            &__text {
+              color: #fff;
+              font-size: 20px;
+              transform: rotate(-45deg);
+              position: absolute;
+              top: 17px;
+              left: -80px;
+            }
+          }
         }
         &__names {
           color: black;
@@ -65,8 +84,12 @@
           height: 39px;
           line-height: 1.4em;
           padding: 12.5px 12px;
-          overflow: hidden;
           background-color: #ffffff;
+          &__box {
+            height: 39px;
+            word-wrap: break-word;
+            overflow: hidden;
+          }
         }
       }
     }
