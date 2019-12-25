@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
     @parent_category = @item.category.root
     grandchild_category_first_id = Category.indirects_of(@parent_category).first.id
     grandchild_category_last_id  = Category.indirects_of(@parent_category).last.id
-    @category_items = Item.where(category_id: grandchild_category_first_id..grandchild_category_last_id).limit(6).where.not(id: @item.id)
+    @category_items = Item.where(category_id: grandchild_category_first_id..grandchild_category_last_id).order("rand()").limit(6).where.not(id: @item.id)
   end
 
   def edit

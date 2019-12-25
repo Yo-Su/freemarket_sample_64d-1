@@ -147,8 +147,11 @@
           - @items.each do |item|
             .related-item__user-item__container
               = link_to item_path(item.id) do
-                %figure
+                .related-item__user-item__container__photo
                   = image_tag item.itemimages.first.image.url, class:'item_phot'
+                  - if item.status == "取引中"
+                    .sold-out-pickup
+                      .sold-out-pickup__text SOLD
                 .related-item__user-item__container__item_body
                   %h3
                     = item.name
@@ -167,8 +170,11 @@
             - @category_items.each do |item|
               .related-item__category-item__container
                 = link_to item_path(item.id) do
-                  %figure
+                  .related-item__category-item__container__photo
                     = image_tag item.itemimages.first.image.url, class:'item_phot'
+                    - if item.status == "取引中"
+                      .sold-out-pickup
+                        .sold-out-pickup__text SOLD
                   .related-item__category-item__container__item_body
                     %h3= item.name
                     .related-item__category-item__container__item_body__info
