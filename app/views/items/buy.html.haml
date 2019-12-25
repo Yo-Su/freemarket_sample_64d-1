@@ -58,7 +58,7 @@
                 = "#{@address.prefecture} #{@address.municipality} #{@address.block} #{@address.try(:building)}"
                 = "#{@address.last_name} #{@address.first_name}"
           .buy-area__buy-form__submit
-            - if @card && @address
+            - if @card && @address && @item.status != "取引中"
               = form_with url: pay_item_path, method: "post"  do |f|
                 = f.submit '購入する', class: "buy-area__buy-form__submit__btn"
             - else

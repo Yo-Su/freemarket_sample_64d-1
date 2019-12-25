@@ -91,7 +91,10 @@
           .content-box__stop-btn この商品を削除する
       - else
         .content-box__buy-btn
-          = link_to "購入画面に進む", buy_item_path, class: "content-box__buy-btn__submit"
+          - if @item.status == "取引中"
+            .content-box__buy-btn__soldout 売り切れました
+          - else
+            = link_to "購入画面に進む", buy_item_path, class: "content-box__buy-btn__submit"
         .ccontent-box__note
           この商品はゆうゆうFmarket便を利用しているため、アプリからのみ購入できます。
         .content-box__item-description
