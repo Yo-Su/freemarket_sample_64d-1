@@ -1,5 +1,7 @@
 <img src="https://user-images.githubusercontent.com/57243991/72206796-69725380-34d5-11ea-8fc9-ad78354a4d5a.jpg" width=900px>
 
+<br>
+
 <h1 align="center">「メルカリ」クローンアプリ</h1>
 
 <p align="center">
@@ -21,18 +23,26 @@
 <a href="https://github.com/wakuwakukatsu"><img src="https://avatars3.githubusercontent.com/u/57382328?s=460&v=4" height="60px" /></a>　
 <a href="https://github.com/tsuchida031025"><img src="https://avatars3.githubusercontent.com/u/56988875?s=460&v=4" height="60px;" /></a>
 </p>
+
 <br>
 
 
 # 📝 このアプリについて
 プログラミングスクールTECH::EXPERTの課題で作成したアプリです。
 5人チームのアジャイル開発を行いました。
+
 <br>
 
 
 # 📊 データベース設計
 
 <img src="https://user-images.githubusercontent.com/57243991/72207076-60cf4c80-34d8-11ea-8f4a-89f1f6770368.png" width=900px>
+
+<br>
+
+<details>
+<summary>データベース設計 各テーブル詳細</summary>
+<div>
 
 ## userテーブル
 |Column|Type|Options|
@@ -158,3 +168,6 @@
 ### Association
 - has_many  :items
 - has_ancestry
+
+</div>
+</details>
